@@ -1,0 +1,23 @@
+.page_list
+{
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    list-style-type: none;
+}
+
+#add_new_page
+{
+    float: right;
+    margin-top: 10px;
+}
+
+#title
+{
+    width: 100%;
+}
+
+label
+{
+    width: 100%;
+}

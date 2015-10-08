@@ -1,9 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f81d3cd-a2ec-4d11-8765-3522b17f2092" name="Default" comment="" />
+    <list default="true" id="7f81d3cd-a2ec-4d11-8765-3522b17f2092" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/test/image.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/test/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/.jscsrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/360.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/data/Data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/MIT-LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/effects/Tween.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_bordered-pulled.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_core.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/manipulation/_evalUrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_extras.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_fixed-width.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_icons.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_larger.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_path.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_rotated-flipped.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_spinning.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_stacked.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/_variables.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/data/accepts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core/access.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/addGetHookIf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/affix.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/event/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/alert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/event/alias.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/exports/amd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/effects/animatedSelector.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/arr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes/attr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/src/augment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/bootstrap-social.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/bootstrap-social.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/bootstrap-social.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap-social/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/bs-commonjs-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/bs-glyphicons-data-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/bs-lessdoc-parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/bs-raw-files-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/button.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/callbacks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/carousel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/class2type.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes/classes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/collapse.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/concat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/configBridge.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/var/cssExpand.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/curCSS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/css/custom.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/data/var/data_priv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/data/var/data_user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/defaultDisplay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/deferred.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/queue/delay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/deprecated.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/dimensions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/dropdown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/effects.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/event.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/traversing/findFilter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/js/flot-data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/scss/font-awesome.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/font-awesome/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/admin_panel/footer_view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/var/getStyles.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/js/get_page_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/exports/global.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/gulpfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/hasOwn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/admin_panel/header_view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/js/help_page_manipulation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/hiddenVisibleSelectors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/holder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/src/holder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/indexOf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/admin_panel/index_view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core/init.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/intro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/var/isHidden.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/dist/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/dist/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/dist/jquery.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/jsonp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/load.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/media/logo.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/manipulation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/dist/metisMenu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/src/metisMenu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/dist/metisMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/src/metisMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/dist/metisMenu.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/dist/metisMenu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/mocha.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/mocha/mocha.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/var/nonce.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/dist/js/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/offset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/src/ondomready.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/outro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/package.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/metisMenu/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core/parseHTML.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/parseJSON.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/parseXML.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/pnum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/holderjs/src/polyfills.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/popover.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes/prop.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/push.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/queue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/manipulation/var/rcheckableType.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core/ready.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/var/rmargin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/traversing/var/rneedsContext.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/rnotwhite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/var/rnumnonpx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/var/rquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/core/var/rsingleTag.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/grunt/sauce_browsers.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/css/sb-admin-2.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/js/sb-admin-2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/script.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/scrollspy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/selector-native.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/selector-sizzle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/selector.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/serialize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/sizzle/dist/sizzle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/sizzle/dist/sizzle.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/sizzle/dist/sizzle.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/slice.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/strundefined.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/event/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/manipulation/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/css/swap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/var/toString.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/bootstrap/js/transition.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/traversing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/attributes/val.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/wrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/admin_panel/bower_components/jquery/src/ajax/xhr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="360.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +247,49 @@
   <component name="FavoritesManager">
     <favorites_list name="360" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="flot-data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/admin_panel/js/flot-data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="18720">
+              <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.023696683" vertical-offset="0" max-vertical-offset="633">
+              <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer_view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin_panel/footer_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="345">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -31,9 +297,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="57" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1223" />
-    <option name="height" value="804" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -66,6 +332,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="360" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -78,7 +386,33 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/admin_panel" />
+      <recent name="$PROJECT_DIR$/assets" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -95,26 +429,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="-4" width="1223" height="804" extended-state="6" />
+    <frame x="57" y="24" width="1223" height="776" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24978831" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.254022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329927" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -139,5 +473,39 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/views/admin_panel/footer_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../360dpi_old/core/application/views/admin_panel/index_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6666666" vertical-offset="1035" max-vertical-offset="4080">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/admin_panel/js/flot-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="18720">
+          <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.023696683" vertical-offset="0" max-vertical-offset="633">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
