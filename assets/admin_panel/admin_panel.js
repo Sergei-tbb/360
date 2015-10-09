@@ -1,7 +1,5 @@
-/**
- * Created by sasha on 09.10.15.
- */
 $(document).ready(function () {
+
 
     $('a[id="pages"]').on('click', function(){
         $.ajax({
@@ -58,16 +56,17 @@ $(document).ready(function () {
                 alert('Произошла ошибка при опубликовании страницы');
             }
         });
-    })
+    });
 
     $('.create_page').on('click', function()
     {
         $.ajax({
-            url: '/index.php/AJAX/Pages/create_page/',
+            url: '/index.php/AJAX/Pages/create_page_modal/',
             success: function(data)
             {
                 $('.modal-header').html('<h4 class="modal-title" id="myModalLabel">Создание новой страницы</h4>');
                 $('.modal-body').html(data);
+                $('.modal-footer').append('<button type="button" class="btn btn-primary page_btn">Сохранить</button>');
             },
             error: function()
             {
@@ -77,5 +76,28 @@ $(document).ready(function () {
     });
 
 
+    $('.modal-footer').on('click', '.page_btn', function()
+    {
+        var title = $('input[name="title"]').val();
+        var page = $('input[name="page"]').val();
+        var date_time = $('input[name="date_time"]').val();
+        var keywords = $('textarea[name="keywords"]').val();
+        var description = $('textarea[name="description"]').val();
+        //var page_data = $('textarea[name="page_data"]').val();
+        var page_data = tinymce.get('page_data').getContent();
+        $.ajax({
+            url: '/index.php/AJAX/Pages/create_page',
+            type: 'POST',
+            data: {title: title, page: page, date_time: date_time, keywords: keywords, description: description, page_data: page_data},
+            success: function()
+            {
+                alert('success');
+            },
+            error: function()
+            {
+                alert('error');
+            }
+        });
+    });
 });
 

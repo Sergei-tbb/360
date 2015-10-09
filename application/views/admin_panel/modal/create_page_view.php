@@ -1,6 +1,9 @@
 <?
 $date = date('Y-m-d');
 ?>
+<script>
+    tinymce.init({selector:'.page_data'});
+</script>
 <div class="row">
     <div class="form-group">
         <div class="col-lg-12">
@@ -35,7 +38,7 @@ $date = date('Y-m-d');
     <div class="form-group">
         <div class="col-lg-12">
             <label for="page_data">Текст страницы:</label>
-            <textarea name="page_data" cols="3" rows="3" class="form-control"></textarea><br>
+            <textarea name="page_data" cols="3" rows="3" class="form-control page_data"></textarea><br>
         </div>
     </div>
 </div>

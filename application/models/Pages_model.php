@@ -32,7 +32,7 @@ class Pages_model extends CI_Model
             'description' => $data['description'],
             'page_data' => $data['page_data'],
             'date_time' => $data['date_time'],
-            'is_published' => $data['is_published']
+            'is_published' => 0
         );
 
         $this->db->insert('pages', $new_page);
@@ -42,7 +42,7 @@ class Pages_model extends CI_Model
 
     public function deleting_page($data)
     {
-        $this->db->where('page', $data['page']);
+        $this->db->where('id', $data['id']);
         $this->db->delete('pages');
 
         return $this->db->affected_rows();

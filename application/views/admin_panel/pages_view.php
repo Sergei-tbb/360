@@ -42,7 +42,6 @@
     </div>
     <!-- /.panel-body -->
 </div>
-<script src="<?=base_url();?>assets/admin_panel/admin_panel.js"></script>
 
 
 <!-- Modal -->
@@ -58,8 +57,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                <button type="button" class="btn btn-primary">Сохранить</button>
             </div>
         </div>
     </div>
 </div>
+
+<script src="<?=base_url();?>assets/admin_panel/admin_panel.js"></script>
