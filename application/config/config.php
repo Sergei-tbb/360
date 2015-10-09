@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://360dpi/';
 
 /*
 |--------------------------------------------------------------------------
@@ -232,7 +232,7 @@ $config['log_path'] = '';
 | Note: Leaving it blank will default to 'php'.
 |
 */
-$config['log_file_extension'] = '';
+$config['log_file_extension'] = '0644';
 
 /*
 |--------------------------------------------------------------------------
@@ -308,7 +308,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '1sr756s325de56sr65rcse45ae3s56er2e365dsr5263rsec5s62ra7eses523res7329udsr89034ysr879yk3';
 
 /*
 |--------------------------------------------------------------------------
@@ -483,7 +483,7 @@ $config['time_reference'] = 'local';
 | Note: You need to have eval() enabled for this to work.
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
