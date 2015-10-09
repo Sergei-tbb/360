@@ -24,7 +24,20 @@ $(document).ready(function () {
 
     $('.delete_page').on('click', function(){
         var id = $(this).parents('tr').data('id_page');
-        alert(id)    });
+//alert(id);
+        $.ajax({
+            url:"AJAX/Pages/remove",
+            type:"POST",
+            //dataType:"json",
+            data: id,
+            error:function() {
+                alert("error");
+            },
+            success: function() {
+                alert("success")
+            }
+        });
+    });
 
     $('input[name="is_published"]').on('change', function(){
 

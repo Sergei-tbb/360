@@ -33,12 +33,11 @@ class Pages_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function deleting_page($data)
+    public function remove($id)
     {
-        $this->db->where('page', $data['page']);
-        $this->db->delete('pages');
-
-        return $this->db->affected_rows();
+        return is_int($id) && $this->db->where('id', $id)->delete('pages')
+            ? $this->db->affected_rows()
+            : false;
     }
 
     public function publish_page($data)
