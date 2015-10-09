@@ -17,11 +17,10 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Изменить</th>
                     <th>Страница</th>
                     <th>Дата создания</th>
                     <th>Опубликована</th>
-                    <th>Удалить</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <?foreach($pages as $data):
@@ -29,11 +28,15 @@
                     $date_result = $date->format('d.m.Y');
                 ?>
                     <tr data-id_page="<?=$data['id'];?>">
-                        <td><span class="edit_page" ><i class="glyphicon glyphicon-pencil" title="Изменить"></i></span></td>
-                        <td><?if(empty($data['page'])) echo 'пусто'; else echo $data['page']; ?></td>
-                        <td><?if(empty($data['date_time'])) echo 'пусто'; else echo $date_result;?></td>
-                        <td><input type="checkbox" name="is_published" class="checkbox" <?if($data['is_published']==1) echo 'checked="checked"'; else echo '';?>></td>
-                        <td><span class="delete_page"><i class="glyphicon glyphicon-remove" title="Удалить"></i></span></td>
+                        <th><?if(empty($data['title'])) echo ''; else echo $data['title']; ?></th>
+                        <th><?if(empty($data['date_time'])) echo ''; else echo $date_result;?></th>
+                        <th><input type="checkbox" name="is_published" class="checkbox" <?if($data['is_published']==1) echo 'checked="checked"'; else echo '';?>></th>
+<!--                        <td><span class="edit_page" ><i class="glyphicon glyphicon-pencil" style="color: yellow;" title="Изменить"></i></span></td>-->
+<!--                        <td><span class="delete_page"><i class="glyphicon glyphicon-remove" style="color: red;" title="Удалить"></i></span></td>-->
+                        <th>
+                            <button type="button" class="btn btn-warning edit_page" data-toggle="modal" data-target="#pages_modal">Изменить</button>
+                            <button type="button" class="btn btn-danger delete_page" data-toggle="modal" data-target="#pages_modal">Удалить</button>
+                        </th>
                     </tr>
                 <?endforeach; ?>
             </table>

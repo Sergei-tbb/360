@@ -20,7 +20,7 @@ class Pages_model extends CI_Model
     {
         $this->db->where('id', $data['id']);
         $query = $this->db->get('pages');
-        return empty($query) ? false : $query->result_array();
+        return empty($query->result_array()) ? false : $query->result_array();
     }
 
     public function addition_page($data)
