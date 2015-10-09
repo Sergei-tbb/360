@@ -16,6 +16,13 @@ class Pages_model extends CI_Model
         return empty($query) ? false : $query->result_array();
     }
 
+    public function select_page($data)
+    {
+        $this->db->where('id', $data['id']);
+        $query = $this->db->get('pages');
+        return empty($query) ? false : $query->result_array();
+    }
+
     public function addition_page($data)
     {
         $new_page = array(
@@ -43,8 +50,8 @@ class Pages_model extends CI_Model
 
     public function publish_page($data)
     {
-        $publish = array('is_published', $data['published']);
-        $this->db->where('page', $data['page']);
+        $publish = array('is_published' => $data['state']);
+        $this->db->where('id', $data['id']);
         $this->db->update('pages', $publish);
 
         return $this->db->affected_rows();
