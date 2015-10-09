@@ -9,15 +9,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Migration_pages extends CI_Migration
 {
+    /**
+     * Create table "pages"
+     * public
+     * return null
+     */
     public function up()
     {
         $this->load->dbforge();
 
         $fields = array(
             'id' => array(
-                'type'           => 'INT',
-                'constraint'     => '3',
-                'unsigned'       => TRUE,
+                'type' => 'INT',
+                'constraint' => '3',
+                'unsigned' => TRUE,
                 'auto_increment' => TRUE,
                 'null' => FALSE
             ),
@@ -68,6 +73,11 @@ class Migration_pages extends CI_Migration
         }
     }
 
+    /**
+     * Remove table "pages"
+     * public
+     * return null
+     */
     public function down()
     {
         if($this->dbforge->drop_table('pages', TRUE))
