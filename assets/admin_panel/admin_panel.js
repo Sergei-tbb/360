@@ -17,27 +17,64 @@ $(document).ready(function () {
         })
     });
 
-    $('.edit_page').on('click', function(){
+    $('.edit_page').on('click', function()
+    {
+        var modal_title = "Изменение страницы - ";
         var id = $(this).parents('tr').data('id_page');
-        alert(id);
+        $.ajax({
+            url: '/index.php/AJAX/Pages/edit_page/',
+            type: 'POST',
+            data: {id: id},
+            success: function(data)
+            {
+                //modal_title + data['title'];
+                $('.modal-body').html(data);
+            },
+            error: function()
+            {
+                alert('error');
+            }
+        });
     });
 
     $('.delete_page').on('click', function(){
         var id = $(this).parents('tr').data('id_page');
-        alert(id)    });
+        alert(id)
+    });
 
-    $('input[name="is_published"]').on('change', function(){
+    $('input[name="is_published"]').on('change', function()
+    {
+        var id = $(this).parents('tr').data('id_page');
+        var state;
+        if($('input[name="is_published"]').prop('checked')==true) state = 1;
+        else if($('input[name="is_published"]').prop('checked')==false) state = 0;
 
-        if($('input[name="is_published"]').prop('checked')==true)
-        {
-            alert('is published true');
-        }
-        else if($('input[name="is_published"]').prop('checked')==false)
-        {
-            alert('is published false');
-        }
-
+        $.ajax({
+            url: '/index.php/AJAX/Pages/publish_page/',
+            type: 'POST',
+            data: {id: id, state: state},
+            error: function ()
+            {
+                alert('Произошла ошибка при опубликовании страницы');
+            }
+        });
     })
+
+    $('.create_page').on('click', function()
+    {
+        $.ajax({
+            url: '/index.php/AJAX/Pages/create_page/',
+            success: function(data)
+            {
+                $('.modal-header').html('<h4 class="modal-title" id="myModalLabel">Создание новой страницы</h4>');
+                $('.modal-body').html(data);
+            },
+            error: function()
+            {
+                alert('error create page');
+            }
+        })
+    });
 
 
 });
