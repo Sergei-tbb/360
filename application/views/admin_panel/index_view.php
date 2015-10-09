@@ -1,5 +1,3 @@
-
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -243,6 +241,9 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#" id="pages"><i class="fa fa-fw fa-edit"></i> Страницы</a>
                         </li>
 
 
