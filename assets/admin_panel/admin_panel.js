@@ -21,6 +21,7 @@ $(document).ready(function () {
     {
         var modal_title = "Изменение страницы - ";
         var id = $(this).parents('tr').data('id_page');
+        alert(id);
         $.ajax({
             url: '/index.php/AJAX/Pages/edit_page/',
             type: 'POST',
@@ -39,19 +40,22 @@ $(document).ready(function () {
 
     $('.delete_page').on('click', function(){
         var id = $(this).parents('tr').data('id_page');
-//alert(id);
-        $.ajax({
-            url:"AJAX/Pages/remove",
-            type:"POST",
-            //dataType:"json",
-            data: id,
-            error:function() {
-                alert("error");
-            },
-            success: function() {
-                alert("success")
-            }
-        });
+
+
+        $('#pages_modal').modal('toggle');
+
+        //$.ajax({
+        //    url:"AJAX/Pages/remove",
+        //    type:"POST",
+        //    //dataType:"json",
+        //    data: id,
+        //    error:function() {
+        //        alert("error");
+        //    },
+        //    success: function() {
+        //        alert("success")
+        //    }
+        //});
     });
 
     $('input[name="is_published"]').on('change', function()
