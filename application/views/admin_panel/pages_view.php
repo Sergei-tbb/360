@@ -28,15 +28,13 @@
                     $date_result = $date->format('d.m.Y');
                 ?>
                     <tr data-id_page="<?=$data['id'];?>">
-                        <th><?if(empty($data['title'])) echo ''; else echo $data['title']; ?></th>
-                        <th><?if(empty($data['date_time'])) echo ''; else echo $date_result;?></th>
-                        <th><input type="checkbox" name="is_published" class="checkbox" <?if($data['is_published']==1) echo 'checked="checked"'; else echo '';?>></th>
-<!--                        <td><span class="edit_page" ><i class="glyphicon glyphicon-pencil" style="color: yellow;" title="Изменить"></i></span></td>-->
-<!--                        <td><span class="delete_page"><i class="glyphicon glyphicon-remove" style="color: red;" title="Удалить"></i></span></td>-->
-                        <th>
+                        <td><?if(empty($data['title'])) echo ''; else echo $data['title']; ?></td>
+                        <td><?if(empty($data['date_time'])) echo ''; else echo $date_result;?></td>
+                        <td><input type="checkbox" name="is_published" class="checkbox" <?if($data['is_published']==1) echo 'checked="checked"'; else echo '';?>></td>
+                        <td>
                             <button type="button" class="btn btn-warning edit_page" data-toggle="modal" data-target="#pages_modal">Изменить</button>
-                            <button type="button" class="btn btn-danger delete_page" data-toggle="modal" data-target="#pages_modal">Удалить</button>
-                        </th>
+                            <button type="button" class="btn btn-danger delete_page">Удалить</button>
+                        </td>
                     </tr>
                 <?endforeach; ?>
             </table>

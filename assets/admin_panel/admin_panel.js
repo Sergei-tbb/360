@@ -39,21 +39,32 @@ $(document).ready(function () {
     $('.delete_page').on('click', function(){
         var id = $(this).parents('tr').data('id_page');
 
-
-        $('#pages_modal').modal('toggle');
-
-        //$.ajax({
-        //    url:"AJAX/Pages/remove",
-        //    type:"POST",
-        //    //dataType:"json",
-        //    data: id,
-        //    error:function() {
-        //        alert("error");
-        //    },
-        //    success: function() {
-        //        alert("success")
-        //    }
-        //});
+        bootbox.confirm({
+            message: 'Вы действительн охотите удалить страницу?',
+            buttons: {
+                'cancel': {
+                    label: 'Отмена',
+                    className: 'btn-default'
+                },
+                'confirm': {
+                    label: 'Удалить',
+                    className: 'btn-danger pull-right'
+                }
+            },
+            callback: function() {
+                $.ajax({
+                        url:"AJAX/Pages/remove",
+                        type:"POST",
+                        data: id,
+                        error:function() {
+                            alert("error");
+                        },
+                        success: function() {
+                            alert("success")
+                        }
+                    })
+                }
+        });
     });
 
     $('input[name="is_published"]').on('change', function()

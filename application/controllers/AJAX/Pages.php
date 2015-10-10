@@ -45,6 +45,11 @@ class Pages extends CI_Controller
         $this->Pages_model->addition_page($data);
     }
 
+    /**
+     * Remove page
+     * public
+     * return null
+     */
     public function remove()
     {
         $id_page = (int)$this->input->post('id');

@@ -40,9 +40,15 @@ class Pages_model extends CI_Model
         return $this->db->affected_rows();
     }
 
+    /**
+     * Remove page
+     * public
+     * @param integer $id - id of page
+     * @return bool
+     */
     public function remove($id)
     {
-        return is_int($id) && $this->db->where('id', $id)->delete('pages')
+        return is_int($id) && strlen($id) <= 3 && $this->db->where('id', $id)->delete('pages')
             ? $this->db->affected_rows()
             : false;
     }

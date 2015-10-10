@@ -21,6 +21,8 @@
 
     <script src="<?= base_url();?>assets/admin_panel/admin_panel.js"></script>
 
+    <script src="<?= base_url();?>assets/bootbox/bootbox.js"></script>
+
     <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
 </body>
 </html>
