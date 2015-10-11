@@ -3,3 +3,5 @@
 .idea/*
 **/.idea/workspace.xml **/.idea/tasks.xml
 .idea
+/nbproject/private/
+/nbproject
