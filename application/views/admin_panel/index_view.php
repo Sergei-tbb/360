@@ -226,24 +226,11 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="#" id="pages">Страницы</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Страницы сайта<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="page" data-page="help_pages_view">
-                                    <a href="#">Помощь</a>
-                                </li>
-                                <li>
-                                    <a href="#">Мой кабинет</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#" id="pages"><i class="fa fa-fw fa-edit"></i> Страницы</a>
+                            <a href="#" id="roles">Роли</a>
                         </li>
 
 

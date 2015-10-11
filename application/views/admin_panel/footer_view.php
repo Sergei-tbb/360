@@ -24,5 +24,7 @@
     <script src="<?= base_url();?>assets/bootbox/bootbox.js"></script>
 
     <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+
+    <script src="<?= base_url();?>assets/admin_panel/admin_init.js"></script>
 </body>
 </html>

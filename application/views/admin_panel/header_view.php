@@ -49,4 +49,6 @@
 
     <![endif]-->
 
+    <script src="<?=base_url(); ?>assets/admin_panel/admin_functions.js"></script>
+
 </head>
