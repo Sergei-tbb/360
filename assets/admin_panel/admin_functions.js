@@ -2,6 +2,13 @@
  * Created by zoltarrr on 10.10.15.
  */
 
+/**
+ * Get html for display
+ * @param page_method - page method
+ * @param page_name - page name
+ * @param page_type - type of page
+ * @returns {string}
+ */
 function getPageData(page_method, page_name, page_type) {
     var page_data ="";
 

@@ -14,10 +14,10 @@ class Page_load extends CI_Controller
 
         try
         {
-//            if ($this->input->is_ajax_request() == false)
-//            {
-//                throw new Exception("No direct script access allowed");
-//            }
+            if ($this->input->is_ajax_request() == false)
+            {
+                throw new Exception("No direct script access allowed");
+            }
 
             $this->load->view("admin_panel/".$page_name."_view");
         }

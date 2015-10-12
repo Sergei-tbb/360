@@ -15,6 +15,18 @@ $(document).ready(function () {
         })
     });
 
+    $('#roles').on('click', function() {
+        $.ajax({
+            url:'/index.php/Admin_panel/roles/',
+            success: function(data) {
+                $('#roles-list').html(data);
+            },
+            error: function(data) {
+                $('#roles-list').html(data);
+            }
+        });
+    });
+
     $('.edit_page').on('click', function()
     {
         var modal_title = "Изменение страницы - ";
@@ -42,19 +54,17 @@ $(document).ready(function () {
         bootbox.confirm({
             message: 'Вы действительн охотите удалить страницу?',
             buttons: {
-                'cancel': {
+                cancel: {
                     label: 'Отмена',
                     className: 'btn-default'
                 },
-                'confirm': {
+                confirm: {
                     label: 'Удалить',
-                    className: 'btn-danger pull-right'
-                }
-            },
-            callback: function() {
-                $.ajax({
-                        url:"AJAX/Pages/remove",
+                    className: 'btn-danger pull-right',
+                    callback: $.ajax({
+                        url:"index.php/AJAX/Pages/remove",
                         type:"POST",
+                        async: true,
                         data: id,
                         error:function() {
                             alert("error");
@@ -63,6 +73,10 @@ $(document).ready(function () {
                             alert("success")
                         }
                     })
+                }
+            },
+            callback: function() {
+
                 }
         });
     });
@@ -126,5 +140,44 @@ $(document).ready(function () {
             }
         });
     });
+
 });
+
+//$('.remove-role').on('click', function() {
+//    var id = $(this).parents('tr').data('role-id');
+//
+//    remove(id, "Roles", "remove", "роль");
+//});
+//
+//function remove(id, pageName, methodName, objectDelete) {
+//    bootbox.confirm({
+//        message: 'Вы действительн охотите удалить '+objectDelete+'?',
+//        buttons: {
+//            cancel: {
+//                label: 'Отмена',
+//                className: 'btn-default'
+//            },
+//            confirm: {
+//                label: 'Удалить',
+//                className: 'btn-danger pull-right',
+//                callback: $.ajax({
+//                    url:"index.php/AJAX/"+pageName+"/"+methodName+"",
+//                    type:"POST",
+//                    dataType:'json',
+//                    async: true,
+//                    data: id,
+//                    error:function(data) {
+//                        console.log(data);
+//                    },
+//                    success: function(data) {
+//                        console.log(data);
+//                    }
+//                })
+//            }
+//        },
+//        callback: function() {
+//
+//        }
+//    });
+//}
 

@@ -37,7 +37,7 @@ class Roles extends CI_Controller
 
             if ($this->Roles_model->insert($data))
             {
-                echo json_encode(array("message"=>"All is ok. Page was add successfully"));
+                echo json_encode(array("message"=>"All is ok. Role was add successfully"));
             }
             else
             {
@@ -45,6 +45,43 @@ class Roles extends CI_Controller
             }
         }
         catch (Exception $exp)
+        {
+            echo json_encode(array("message"=>$exp->getMessage()));
+        }
+    }
+
+    /**
+     * Remove role
+     * public
+     * return null
+     */
+    public function display_roles()
+    {
+        header("ContentType: application/json");
+
+        try
+        {
+            if ($this->input->is_ajax_request() == false)
+            {
+                throw new Exception("No direct script access allowed");
+            }
+            $id_role = (int)$this->input->post("id");
+
+            if(is_null($id_role) || empty($id_role))
+            {
+                throw new Exception("Invalid data");
+            }
+
+            if($this->Roles_model->remove($id_role))
+            {
+                echo json_encode(array("message" => "Role was remove successfully."));
+            }
+            else
+            {
+                throw new Exception("Can't remove the role");
+            }
+        }
+        catch(Exception $exp)
         {
             echo json_encode(array("message"=>$exp->getMessage()));
         }

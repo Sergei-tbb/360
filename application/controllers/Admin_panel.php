@@ -28,4 +28,11 @@ class Admin_panel extends CI_Controller
         $this->load->view('admin_panel/pages_view', $data);
     }
 
+    public function roles()
+    {
+        $this->load->model('Roles_model');
+        $data['roles'] = $this->Roles_model->gel_all();
+        $this->load->view("admin_panel/roles_list_view", $data);
+    }
+
 }

@@ -13,7 +13,7 @@
 <div class="panel panel-default">
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <div class="table-responsive">
+        <div class="table-responsive" id="roles-list">
 
         </div>
         <!-- /.table-responsive -->
