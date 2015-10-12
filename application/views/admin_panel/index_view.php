@@ -215,7 +215,7 @@
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
-                        <li class="divider"></li>
+                  <span class="fa arrow">      <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
@@ -229,20 +229,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Страницы сайта<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="page" data-page="help_pages_view">
-                                    <a href="#">Помощь</a>
-                                </li>
-                                <li>
-                                    <a href="#">Мой кабинет</a>
-                                </li>
-                            </ul>
+                        <li class="pages">
+                            <a href="#">Страницы</a>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li class="menu">
+                            <a href="#" id="menu">Меню</a>
                         </li>
 
 
