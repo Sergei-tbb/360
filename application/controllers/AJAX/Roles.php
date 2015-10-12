@@ -55,7 +55,7 @@ class Roles extends CI_Controller
      * public
      * return null
      */
-    public function display_roles()
+    public function remove()
     {
         header("ContentType: application/json");
 
@@ -86,4 +86,5 @@ class Roles extends CI_Controller
             echo json_encode(array("message"=>$exp->getMessage()));
         }
     }
+
 }

@@ -32,41 +32,6 @@
     $('.remove-role').on('click', function() {
         var id = $(this).parents('tr').data('role-id');
 
-        remove(id, "Roles", "remove", "роль");
+        remove(id, "Roles", "роль");
     });
-
-    function remove(id, pageName, methodName, objectDelete) {
-        bootbox.confirm({
-            message: 'Вы действительн охотите удалить '+objectDelete+'?',
-            size: "small",
-            buttons: {
-                cancel: {
-                    label: 'Отмена',
-                    className: 'btn-default'
-                },
-                confirm: {
-                    label: 'Удалить',
-                    className: 'btn-danger pull-right',
-                    callback: function () {
-                        $.ajax({
-                            url:"AJAX/"+pageName+"/"+methodName+"",
-                            type:"POST",
-                            dataType:'json',
-                            async: true,
-                            data: id,
-                            error:function(data) {
-                                console.log(data);
-                            },
-                            success: function(data) {
-                                console.log(data);
-                            }
-                        })
-                    }
-                }
-            },
-            callback: function() {
-
-            }
-        });
-    }
 </script>
