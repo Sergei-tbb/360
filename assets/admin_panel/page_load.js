@@ -23,3 +23,20 @@ function getPageData(page_method, page_name, page_type) {
 
     return page_data;
 }
+
+function getTableContent(pageName, pastIn) {+
+    -
+
+    $.ajax({
+        url: "/index.php/ajax/View/"+pageName+"_list",
+        dataType: "html",
+        success: function(data)
+        {
+            $(pastIn).html(data);
+        },
+        error: function()
+        {
+            bootbox.alert("Data not found.");
+        }
+    });
+}

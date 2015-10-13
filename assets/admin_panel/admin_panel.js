@@ -10,6 +10,9 @@ $(document).ready(function(){
 
         $("#page-wrapper").html(page_data);
 
+        getTableContent("roles", ".panel-body");
+
+
         $("#side-menu li").removeClass("active");
         $(this).parent().addClass("active");
     });

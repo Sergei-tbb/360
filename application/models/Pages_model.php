@@ -6,20 +6,20 @@
  * and open the template in the editor.
  */
 
-class Menus_model extends CI_Model {
+class Pages_model extends CI_Model {
     /**
-     * Insert new menu
+     * Insert new page
      * @access public
      * @param array $data
      * @return bool
      */
     public function create(array $data) {
         return $this->db
-                ->insert("menus", $data);
+                ->insert("pages", $data);
     }
 
     /**
-     * Update existing menu data
+     * Update existing page data
      * @access public
      * @param int $id
      * @param array $data
@@ -28,11 +28,11 @@ class Menus_model extends CI_Model {
     public function update($id, array $data) {
         return $this->db
                 ->where("id",$id)
-                ->update("menu",$data);
+                ->update("pages",$data);
     }
 
     /**
-     * Delete existing menus data
+     * Delete existing page data
      * @access public
      * @param int $id
      * @return bool
@@ -40,28 +40,33 @@ class Menus_model extends CI_Model {
     public function delete($id) {
         return $this->db
                 ->where("id",$id)
-                ->delete("menu");
+                ->delete("pages");
     }
 
     /**
-     * Get menu(s) data
+     * Get page(s) data
      * @access public
      * @param mixed $id int
-     * int if you want to get 1 menu,
-     * null if you want to get all menus
+     * int if you want to get 1 page,
+     * null if you want to get all pages
      * @return array of objects
      */
     public function get($id = null) {
         $query = null;
-        $this->db
-            ->select("id,name")
-            ->from("menus");
 
-        if (!is_null($id)) {
-            $this->db->where("id",$id);
+        if (is_null($id)) {
+            $query = $this->db
+                    ->select("id,title,is_published")
+                    ->from("pages")
+                    ->get()
+                    ->result();
+        } else {
+            $query = $this->db
+                    ->select("id,title,keywords,description,page_data,is_published")
+                    ->from("pages")
+                    ->get()
+                    ->result();
         }
-
-        $query = $this->db->get()->result();
 
         return $query;
     }

@@ -47,4 +47,6 @@
     <script src="/core/ckeditor/ckeditor.js"></script>
     <![endif]-->
 
+    <script src="<?= base_url();?>assets/admin_panel/page_load.js"></script>
+
 </head>

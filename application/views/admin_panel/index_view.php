@@ -233,8 +233,8 @@
                             <a href="#">Страницы</a>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="menu">
-                            <a href="#" id="menu">Меню</a>
+                        <li>
+                            <a href="#" id="roles">Роли</a>
                         </li>
 
 

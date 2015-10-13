@@ -21,6 +21,7 @@
 
     <script src="<?= base_url();?>assets/admin_panel/admin_panel.js"></script>
 
-    <script src="<?= base_url();?>assets/admin_panel/page_load.js"></script>
+
+
 </body>
 </html>
