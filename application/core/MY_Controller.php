@@ -14,6 +14,12 @@
 class MY_Controller extends CI_Controller {
 
     /**
+     * CodeIgniter isntance
+     * @var object
+     */
+    private $instance;
+
+    /**
      * Table name
      * @var string
      */
@@ -34,11 +40,13 @@ class MY_Controller extends CI_Controller {
     public function __construct($args) {
         parent::__construct();
 
+        $this->instance =& get_instance();
+
         $this->tbname = $args['tbname'];
 
-        $this->load->model($this->tbname."_model", "working_model");
+        $this->instance->load->model($this->tbname."_model", "working_model");
 
-        $this->tbfileds = get_object_vars($this->working_model);
+        $this->tbfileds = get_object_vars($this->instance->working_model);
     }
 
     /**
@@ -62,7 +70,7 @@ class MY_Controller extends CI_Controller {
      */
     public function create(array $data) {
         return $this->_basic_validation($data)
-                ? $this->db->insert($this->tbname, $data)
+                ? $this->instance->db->insert($this->tbname, $data)
                 : false;
     }
 
@@ -73,7 +81,7 @@ class MY_Controller extends CI_Controller {
      * @return mixed boolead or object
      */
     public function read_one($id, $reading_fields = "*") {
-        return $this->db
+        return $this->instance->db
                 ->select($reading_fields)
                 ->from($this->tbname)
                 ->where("id", $id)
@@ -86,7 +94,7 @@ class MY_Controller extends CI_Controller {
      * @return mixed boolean or array oj objects
      */
     public function read_all() {
-        return $this->db
+        return $this->instance->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
                 ->where(1)
@@ -111,7 +119,7 @@ class MY_Controller extends CI_Controller {
      */
     public function update($id,array $data) {
         return $this->_basic_validation($data)
-                ? $this->db->where("id", $id)->update($data)
+                ? $this->instance->db->where("id", $id)->update($data)
                 : false;
     }
 
@@ -121,7 +129,7 @@ class MY_Controller extends CI_Controller {
      * @return boolean
      */
     public function delete($id) {
-        return $this->db
+        return $this->instance->db
                 ->where("id", $id)
                 ->delete($this->tbname);
     }
