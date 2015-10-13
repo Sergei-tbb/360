@@ -125,8 +125,8 @@ class MY_Controller extends CI_Controller {
                 ->where("id", $id)
                 ->delete($this->tbname);
     }
-    
-    public function __destruct() {
 
+    public function __destruct() {
+        $this->working_model = null;
     }
 }
