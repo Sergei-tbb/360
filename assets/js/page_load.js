@@ -40,28 +40,24 @@ function getPageData(page_method, page_name, page_type) {
  * @param controllerName
  * @param methodName
  */
-function add_object_modal(title, pageData, size, formId, controllerName, methodName) {
+function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName) {
     bootbox.dialog({
         title: title,
         message: pageData,
         size: size,
         buttons: {
             success: {
-                label: "Создать",
+                label: buttonName,
                 className: "btn-success pull-left",
                 callback: function() {
                     var form_data = $("#"+formId).serialize();
                     $.ajax({
                         url : "/index.php/ajax/"+controllerName+"/"+methodName,
-                        type: "post",
+                        type: "POST",
                         data: form_data,
-                        dataType: "html",
+                        dataType: "json",
                         success: function(data) {
-                            bootbox.alert(data);
-                        },
-                        error:function(data){
-                            console.log(data);
-                            alert("Error");
+                            bootbox.alert(data.message);
                         }
                     });
                 }
@@ -71,6 +67,53 @@ function add_object_modal(title, pageData, size, formId, controllerName, methodN
                 className: "btn-default pull-right",
                 callback: function() {
                 }
+            }
+        }
+    });
+}
+
+/**
+ *
+ * @param controllerName
+ * @param methodName
+ * @param idName
+ */
+function displayListData(controllerName, methodName, idName) {
+    $.ajax({
+        url:"ajax/"+controllerName+"/"+methodName,
+        success: function(data) {
+            $("."+idName+"-body").html(data);
+        }
+    });
+}
+
+function deleteObjectModal(id, objectName, controllerName, methodName) {
+    bootbox.confirm({
+        message: "Вы действительно хотите удалить "+objectName,
+        buttons: {
+            confirm: {
+                label: 'Удалить',
+                className: 'btn-danger pull-left'
+            },
+            cancel: {
+                label: 'Закрыть',
+                className: 'btn-default'
+            }
+        },
+        callback: function(result){
+            if(result) {
+                $.ajax({
+                    url:"ajax/"+controllerName+"/"+methodName,
+                    type:"POST",
+                    dataType:"json",
+                    data: id,
+                    success: function(data) {
+                        bootbox.alert(data.message);
+                    }
+                });
+            }
+            else {
+                alert("Failed!");
             }
         }
     });

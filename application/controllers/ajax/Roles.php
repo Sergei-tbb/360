@@ -20,67 +20,74 @@ class Roles extends MY_Controller
         $this->result = array();
     }
 
-//    public function add_new_role()
-//    {
-//        header("ContentType: application/json");
-//
-//        try{
-//            if($this->input->is_ajax_request() == false)
-//            {
-//               throw new Exception("No direct script access allowed");
-//            }
-//
-//            $data = $this->input->post();
-//
-//            if(!$this->_validate_add_role())
-//            {
-//                throw new Exception("Не правильные данные.");
-//            }
-//            if($this->create($data))
-//            {
-//                throw new Exception("Роль была успешно создана.");
-//            }
-//            else
-//            {
-//                throw new Exception("Не возможно создат новую роль.");
-//            }
-//        }
-//        catch(Exception $exp)
-//        {
-//            echo json_encode(array("message" => $exp->getMessage()));
-//        }
-//    }
-
-public function add_new_role()
-{
-    try
+    public function add_new_role()
     {
-        if($this->input->is_ajax_request() === false)
+        try
         {
-           throw new Exception("No direct script access allowed");
-        }
+            if($this->input->is_ajax_request() === false)
+            {
+               throw new Exception("No direct script access allowed.");
+            }
 
-        $data = $this->input->post();
+            $data = $this->input->post();
 
-        if ($this->_validate_add_role() === false)
-        {
-            throw new Exception("Invalid data!");
-        }
+            if ($this->_validate_add_role() === false)
+            {
+                throw new Exception("Invalid data!");
+            }
 
-        if ($this->create($data))
-        {
-            $this->result = array("message" => "New role was added successfully");
+            if ($this->create($data))
+            {
+                $this->result = array("message" => "New role was added successfully.");
+            }
+            else
+            {
+                throw new Exception("Can't add new role.");
+            }
         }
-        else
+        catch(Exception $exp)
         {
-            throw new Exception("Can't add new role");
+            $this->result = array("message" => $exp->getMessage());
         }
     }
-    catch(Exception $exp)
+
+    public function display_all()
     {
-        $this->result = array("message" => $exp->getMessage());
+        $data['roles'] = $this->read_all();
+        $this->load->view("admin_panel/roles_list_view", $data);
     }
-}
+
+    public function delete_role()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            if(is_null($data) || !is_numeric($data['id']) || strlen($data['id']) > 2)
+            {
+                throw new Exception("Invalid data!");
+            }
+
+            if($this->delete($data))
+            {
+                $this->result = array("message" => "Role was delete successfully.");
+            }
+            else
+            {
+                throw new Exception(".");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+        }
+    }
 
     /**
      * @return mixed
@@ -101,9 +108,6 @@ public function add_new_role()
 
     public function __destruct()
     {
-//        header("ContentType: application/json");
-
-        echo "123";
-        //$this->load->view("admin_panel/alert_view", $this->result);
+        echo json_encode($this->result);
     }
 }

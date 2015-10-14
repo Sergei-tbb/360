@@ -18,10 +18,11 @@
     </div>
 </div>
 <br>
+
 <div class="panel panel-default">
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <div class="table-responsive" id="roles-list">
+        <div class="table-responsive roles-body">
 
         </div>
         <!-- /.table-responsive -->
@@ -29,10 +30,12 @@
     <!-- /.panel-body -->
 </div>
 <script>
-$('#role-add').on("click", function() {
-    var page_data = getPageData("admin", "create_role", "html");
+    $(document).ready(function() {
+        displayListData("roles", "display_all", "roles");
+    });
 
-    add_object_modal("Создать новую роль", page_data, "small", "create-role", "Roles", "add_new_role");
-
+    $('#role-add').on("click", function() {
+       var page_data = getPageData("admin", "create_role", "html");
+       addObjectModal("Создать новую роль", page_data, "small", "create-role", "Roles", "add_new_role", "Создать");
     });
 </script>
