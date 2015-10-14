@@ -14,7 +14,6 @@ class Roles extends MY_Controller
     public function __construct()
     {
         parent::__construct(array("tbname" => "roles"));
-//        $this->load->model('Roles_model');
         $this->load->library("form_validation");
         $this->load->helper("security");
 
@@ -102,8 +101,9 @@ public function add_new_role()
 
     public function __destruct()
     {
-        header("ContentType: application/json;");
+//        header("ContentType: application/json");
 
-        echo json_encode($this->result);
+        echo "123";
+        //$this->load->view("admin_panel/alert_view", $this->result);
     }
 }

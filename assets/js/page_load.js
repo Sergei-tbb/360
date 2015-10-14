@@ -50,14 +50,18 @@ function add_object_modal(title, pageData, size, formId, controllerName, methodN
                 label: "Создать",
                 className: "btn-success pull-left",
                 callback: function() {
-                    var form_data = $(formId).serialize();
+                    var form_data = $("#"+formId).serialize();
                     $.ajax({
                         url : "/index.php/ajax/"+controllerName+"/"+methodName,
                         type: "post",
                         data: form_data,
-                        dataType: "json",
+                        dataType: "html",
                         success: function(data) {
-                            bootbox.alert(data.message);
+                            bootbox.alert(data);
+                        },
+                        error:function(data){
+                            console.log(data);
+                            alert("Error");
                         }
                     });
                 }
