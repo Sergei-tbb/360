@@ -30,3 +30,44 @@ function getPageData(page_method, page_name, page_type) {
 
     return page_data;
 }
+
+/**
+ *
+ * @param title
+ * @param pageData
+ * @param size
+ * @param formId
+ * @param controllerName
+ * @param methodName
+ */
+function add_object_modal(title, pageData, size, formId, controllerName, methodName) {
+    bootbox.dialog({
+        title: title,
+        message: pageData,
+        size: size,
+        buttons: {
+            success: {
+                label: "Создать",
+                className: "btn-success pull-left",
+                callback: function() {
+                    var form_data = $(formId).serialize();
+                    $.ajax({
+                        url : "/index.php/ajax/"+controllerName+"/"+methodName,
+                        type: "post",
+                        data: form_data,
+                        dataType: "json",
+                        success: function(data) {
+                            bootbox.alert(data.message);
+                        }
+                    });
+                }
+            },
+            close: {
+                label: "Закрыть",
+                className: "btn-default pull-right",
+                callback: function() {
+                }
+            }
+        }
+    });
+}
