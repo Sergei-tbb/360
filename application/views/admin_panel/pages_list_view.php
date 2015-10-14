@@ -9,7 +9,7 @@
             </tr>
             <tbody>
             <?foreach($pages as $data):?>
-                <tr>
+                <tr data-id_page="<?= $data->id;?>">
                     <td><?echo $data->id;?></td>
                     <td><?= $data->title;?></td>
                     <td><input type="checkbox" name="is_published" <?if($data->is_published==1) echo 'checked="checked"';?> ></td>

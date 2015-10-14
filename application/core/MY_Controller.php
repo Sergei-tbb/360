@@ -54,7 +54,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    private function _basic_validation(array $data) {
+    private function _basic_validation($data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
                 return true;
@@ -117,9 +117,9 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function update($id,array $data) {
+    public function update($id, $data) {
         return $this->_basic_validation($data)
-                ? $this->instance->db->where("id", $id)->update($data)
+                ? $this->db->where("id", $id)->update($this->tbname,$data)
                 : false;
     }
 
