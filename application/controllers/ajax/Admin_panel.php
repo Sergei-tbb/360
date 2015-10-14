@@ -1,18 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zoltarrr
- * Date: 13.10.15
- * Time: 18:55
- */
+
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class Roles extends MY_Controller
+class Admin_panel extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct(array("tbname" => "roles"));
-        $this->load->model('Roles_model');
+        parent::__construct();
     }
 
     public function index()

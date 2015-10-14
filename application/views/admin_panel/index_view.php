@@ -232,6 +232,9 @@
                         <li>
                             <a href="#" id="pages">Страницы</a>
                         </li>
+                        <li>
+                            <a href="#" id="roles">Роли</a>
+                        </li>
 
 
 
