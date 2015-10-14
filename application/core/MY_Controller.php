@@ -55,8 +55,8 @@ class MY_Controller extends CI_Controller {
      * @return boolean
      */
     private function _basic_validation(array $data) {
-        foreach ($data as $field) {
-            if (!in_array($this->tbfileds, $field)) {
+        foreach ($data as $key => $value) {
+            if (in_array($this->tbfileds, $key) === false) {
                 return false;
             }
         }
