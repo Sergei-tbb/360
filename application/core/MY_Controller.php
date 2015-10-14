@@ -89,7 +89,7 @@ class MY_Controller extends CI_Controller {
         return $this->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
-                ->where(1)
+//                ->where(1)
                 ->get()
                 ->result();
     }
