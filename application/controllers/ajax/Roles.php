@@ -79,7 +79,7 @@ class Roles extends MY_Controller
             }
             else
             {
-                throw new Exception(".");
+                throw new Exception("Can't delete a role.");
             }
 
         }

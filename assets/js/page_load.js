@@ -106,7 +106,7 @@ function deleteObjectModal(id, objectName, controllerName, methodName) {
                     url:"ajax/"+controllerName+"/"+methodName,
                     type:"POST",
                     dataType:"json",
-                    data: id,
+                    data: "id="+id,
                     success: function(data) {
                         bootbox.alert(data.message);
                     }
