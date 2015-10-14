@@ -56,7 +56,7 @@ class MY_Controller extends CI_Controller {
      */
     private function _basic_validation(array $data) {
         foreach ($data as $key => $value) {
-            if (in_array($this->tbfileds, $key) === false) {
+            if (in_array($key, $this->tbfileds) === false) {
                 return false;
             }
         }
