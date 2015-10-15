@@ -158,7 +158,7 @@ class Roles extends MY_Controller
             }
             $data = $this->input->post();
 
-            if(!is_numeric($id) || strlen($data["id"]) > 2 || $this->_validate_role() === FALSE)
+            if(!is_numeric($id) || strlen($id) > 2 || $this->_validate_role() === FALSE)
             {
                 throw new Exception("Invalid data");
             }
@@ -195,6 +195,9 @@ class Roles extends MY_Controller
 
     public function __destruct()
     {
-        echo json_encode($this->result);
+        if($this->result)
+        {
+            echo json_encode($this->result);
+        }
     }
 }

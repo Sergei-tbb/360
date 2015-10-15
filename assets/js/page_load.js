@@ -63,7 +63,7 @@ function addObjectModal(title, pageData, size, formId, controllerName, methodNam
                         data: form_data,
                         dataType: "json",
                         success: function(data) {
-                            bootbox.alert(data);
+                            bootbox.alert(data.message);
                             displayListData(controllerName, "display_all", controllerName);
                         },
                         error:function() {
