@@ -15,32 +15,38 @@ $(document).ready(function(){
     });
 });
 
-function getPageData(page_method, page_name, page_type) {
-    var page_data ="";
+/**
+ * Get data of page
+ * @param pageMethod
+ * @param pageName
+ * @param pageType
+ * @returns {string}
+ */
+function getPageData(pageMethod, pageName, pageType) {
+    var pageData ="";
 
     $.ajax({
-        url: "/index.php/ajax/View_load/"+page_method+"/"+page_name,
-        dataType: page_type,
+        url: "/index.php/ajax/View_load/"+pageMethod+"/"+pageName,
+        dataType: pageType,
         type: "get",
         async: false,
         success: function(data) {
-            page_data = data;
+            pageData = data;
         }
     });
-
-    return page_data;
+    return pageData;
 }
 
 /**
- *
- * @param title
- * @param pageData
- * @param size
- * @param formId
- * @param controllerName
- * @param methodName
+ * Display modal window of create and edit
+ * @param title - title of modal
+ * @param pageData - content data
+ * @param size - modal size
+ * @param formId - id name of form
+ * @param controllerName(lowercase) - name of controller
+ * @param methodName - name of method
  */
-function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName) {
+function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName, id) {
     bootbox.dialog({
         title: title,
         message: pageData,
@@ -52,12 +58,16 @@ function addObjectModal(title, pageData, size, formId, controllerName, methodNam
                 callback: function() {
                     var form_data = $("#"+formId).serialize();
                     $.ajax({
-                        url : "/index.php/ajax/"+controllerName+"/"+methodName,
+                        url : "/index.php/ajax/"+controllerName+"/"+methodName+"/"+id,
                         type: "POST",
                         data: form_data,
                         dataType: "json",
                         success: function(data) {
-                            bootbox.alert(data.message);
+                            bootbox.alert(data);
+                            displayListData(controllerName, "display_all", controllerName);
+                        },
+                        error:function() {
+                            alert("Error!");
                         }
                     });
                 }
@@ -73,10 +83,10 @@ function addObjectModal(title, pageData, size, formId, controllerName, methodNam
 }
 
 /**
- *
- * @param controllerName
- * @param methodName
- * @param idName
+ * Display list of data
+ * @param controllerName - name of controller
+ * @param methodName - name of method
+ * @param idName - id name of insert tag
  */
 function displayListData(controllerName, methodName, idName) {
     $.ajax({
@@ -87,6 +97,13 @@ function displayListData(controllerName, methodName, idName) {
     });
 }
 
+/**
+ * Display delete modal
+ * @param id - id number of selected object
+ * @param objectName - name of deleted object
+ * @param controllerName - name of controller
+ * @param methodName - name of method
+ */
 function deleteObjectModal(id, objectName, controllerName, methodName) {
     bootbox.confirm({
         message: "Вы действительно хотите удалить "+objectName,
@@ -109,12 +126,31 @@ function deleteObjectModal(id, objectName, controllerName, methodName) {
                     data: "id="+id,
                     success: function(data) {
                         bootbox.alert(data.message);
+                        $("tr[data-id="+id+"]").remove();
                     }
                 });
             }
-            else {
-                alert("Failed!");
-            }
         }
     });
+}
+
+/**
+ * Display edit form
+ * @param id - id number of selected object
+ * @param controllerName - name of controller
+ * @param methodName - name of method
+ * @returns {string}
+ */
+function getEditForm(id, controllerName, methodName) {
+    var pageData = "";
+    $.ajax({
+        url:"ajax/"+controllerName+"/"+methodName,
+        type:"POST",
+        data: "id="+id,
+        async: false,
+        success: function(data) {
+            pageData = data;
+        }
+    });
+    return pageData;
 }

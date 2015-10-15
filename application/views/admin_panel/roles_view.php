@@ -10,24 +10,18 @@
     <div class="col-lg-12">
         <h1 class="page-header">Роли</h1>
     </div>
-    <!-- /.col-lg-12 -->
     <div class="col-sm-12">
-        <button type="button" class="btn btn-info" id="role-add">
-    Создать новую роль
-</button>
+        <button type="button" class="btn btn-info" id="role-add">Создать новую роль</button>
     </div>
 </div>
 <br>
 
 <div class="panel panel-default">
-    <!-- /.panel-heading -->
     <div class="panel-body">
         <div class="table-responsive roles-body">
 
         </div>
-        <!-- /.table-responsive -->
     </div>
-    <!-- /.panel-body -->
 </div>
 <script>
     $(document).ready(function() {
@@ -35,7 +29,7 @@
     });
 
     $('#role-add').on("click", function() {
-       var page_data = getPageData("admin", "create_role", "html");
-       addObjectModal("Создать новую роль", page_data, "small", "create-role", "Roles", "add_new_role", "Создать");
+       var page_data = getPageData("admin", "roles_create", "html");
+       addObjectModal("Создать новую роль", page_data, "small", "create-role", "roles", "add_new_role", "Создать");
     });
 </script>

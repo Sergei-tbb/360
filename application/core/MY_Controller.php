@@ -119,7 +119,7 @@ class MY_Controller extends CI_Controller {
      */
     public function update($id,array $data) {
         return $this->_basic_validation($data)
-                ? $this->instance->db->where("id", $id)->update($data)
+                ? $this->instance->db->where("id", $id)->update($this->tbname, $data)
                 : false;
     }
 
