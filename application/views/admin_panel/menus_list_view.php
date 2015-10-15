@@ -12,6 +12,7 @@
                     <td><?echo $data->id;?></td>
                     <td><?= $data->name;?></td>
                     <td>
+                        <input type="button" class="btn btn-success menu-pages" value="Страницы">
                         <input type="button" class="btn btn-warning menu-edit" value="Редактировать">
                         <input type="button" class="btn btn-danger menu-del" value="Удалить">
                     </td>
@@ -21,3 +22,10 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(document).on('click', '.page-menu-delete', function()
+    {
+        bootbox.hideAll();
+    });
+</script>

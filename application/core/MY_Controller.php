@@ -68,9 +68,9 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function create(array $data) {
+    public function create($data) {
         return $this->_basic_validation($data)
-                ? $this->instance->db->insert($this->tbname, $data)
+                ? $this->db->insert($this->tbname, $data)
                 : false;
     }
 
@@ -104,12 +104,14 @@ class MY_Controller extends CI_Controller {
 
     /**
      * Read operation custom query
-     * @param object $obj
+     * @param string $string
      * @return object
      */
-    public function read_custom($obj) {
-        return $obj->get()->result();
+    public function read_custom($string)
+    {
+        return $this->db->query($string)->result();
     }
+
 
     /**
      * Update operation
@@ -129,7 +131,7 @@ class MY_Controller extends CI_Controller {
      * @return boolean
      */
     public function delete($id) {
-        return $this->instance->db
+        return $this->db
                 ->where("id", $id)
                 ->delete($this->tbname);
     }

@@ -261,3 +261,103 @@ $(document).on("click", ".menu-del", function() {
 
     })
 });
+
+
+$(document).on('click', '.page-menu', function()
+{
+    var id = $(this).parent().parent('tr').data('id_page');
+
+    $.ajax({
+        url: '/index.php/ajax/Menus/get_pages_menu/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Меню",
+                buttons: {
+                    success: {
+                        label: "Обновить",
+                        className: "btn-success",
+                        callback: function()
+                        {
+                            var id_menu = $('select[name="menu"] option:selected').val();
+                            var id_page = $('select[name="menu"] option:selected').data('id_page');
+
+
+                            $.ajax({
+                                url: '/index.php/ajax/Menus_pages/add_pages_menu/',
+                                type: 'POST',
+                                data: {id_page: id_page, id_menu: id_menu},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function() {}
+                    }
+                }
+            });
+        }
+
+    });
+});
+
+
+$(document).on('click', '.menu-pages', function()
+{
+    var id = $(this).parent().parent('tr').data('id_menu');
+    $.ajax({
+        url: '/index.php/ajax/Menus_pages/get_menu_pages/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Меню",
+                buttons: {
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-success",
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+    });
+
+
+});
+
+
+$(document).on('click', '.page-menu-delete', function()
+{
+    var id = $(this).parent().parent('tr').data('menu_page');
+
+    $.ajax({
+        url: '/index.php/ajax/Menus_pages/delete_menu_page/'+id,
+        success: function(data)
+        {
+            bootbox.alert(data, function(){});
+        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+    });
+
+
+});

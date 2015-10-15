@@ -121,12 +121,11 @@ function deleteObjectModal(id, objectName, controllerName, methodName) {
 
 function updateList(name_module, name_method, inId)
 {
-    $('.'+inId+'-body').empty();
-
     $.ajax({
         url: '/index.php/ajax/'+name_module+'/'+name_method,
         success: function(data)
         {
+            $('.'+inId+'-body').empty();
             $('.'+inId+'-body').html(data);
         },
         error: function(data)

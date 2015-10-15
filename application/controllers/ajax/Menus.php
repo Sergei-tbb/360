@@ -174,4 +174,33 @@ class Menus extends MY_Controller
             echo $this->result['message'];
         }
     }
+
+    public function get_pages_menu($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $string = "SELECT pages.id, menus.id as menu_id, menus.name FROM pages JOIN menus WHERE pages.id={$id}";
+            if($this->read_custom($string))
+            {
+                $data['menu'] = $this->read_custom($string);
+                $this->load->view('admin_panel/menus_pages_view', $data);
+            }
+            else
+            {
+                throw new Exception(".");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
 }
