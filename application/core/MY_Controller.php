@@ -54,7 +54,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    private function _basic_validation($data) {
+    private function _basic_validation(array $data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
                 return true;
@@ -68,9 +68,9 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function create($data) {
+    public function create(array $data) {
         return $this->_basic_validation($data)
-                ? $this->db->insert($this->tbname, $data)
+                ? $this->instance->db->insert($this->tbname, $data)
                 : false;
     }
 
@@ -94,7 +94,7 @@ class MY_Controller extends CI_Controller {
      * @return mixed boolean or array oj objects
      */
     public function read_all() {
-        return $this->db
+        return $this->instance->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
 //                ->where(1)
@@ -104,14 +104,12 @@ class MY_Controller extends CI_Controller {
 
     /**
      * Read operation custom query
-     * @param string $string
+     * @param object $obj
      * @return object
      */
-    public function read_custom($string)
-    {
-        return $this->db->query($string)->result();
+    public function read_custom($obj) {
+        return $obj->get()->result();
     }
-
 
     /**
      * Update operation
@@ -119,9 +117,9 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function update($id, $data) {
+    public function update($id,array $data) {
         return $this->_basic_validation($data)
-                ? $this->db->where("id", $id)->update($this->tbname,$data)
+                ? $this->instance->db->where("id", $id)->update($this->tbname, $data)
                 : false;
     }
 
@@ -131,7 +129,7 @@ class MY_Controller extends CI_Controller {
      * @return boolean
      */
     public function delete($id) {
-        return $this->db
+        return $this->instance->db
                 ->where("id", $id)
                 ->delete($this->tbname);
     }

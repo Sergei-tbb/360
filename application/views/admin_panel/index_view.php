@@ -241,6 +241,9 @@
                         <li>
                             <a href="#" id="notifications">Уведомления</a>
                         </li>
+                        <li>
+                            <a href="#" id="statuses">Статусы</a>
+                        </li>
 
 
 

@@ -18,7 +18,7 @@ class Migration extends CI_Controller
         }
         else
         {
-            echo "\nMigrations ran successfully!\n";
+            echo "\nMigrations run successfully!\n";
         }
     }
 }
