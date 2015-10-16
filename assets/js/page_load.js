@@ -154,3 +154,19 @@ function getEditForm(id, controllerName, methodName) {
     });
     return pageData;
 }
+
+/**
+ * Display preview of select image
+ * @param input - used input
+ */
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

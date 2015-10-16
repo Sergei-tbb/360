@@ -235,6 +235,9 @@
                         <li>
                             <a href="#" id="roles">Роли</a>
                         </li>
+                        <li>
+                            <a href="#" id="statuses">Статусы</a>
+                        </li>
 
 
 
