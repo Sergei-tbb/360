@@ -6,6 +6,8 @@
  * Time: 16:58
  */
 
+defined("BASEPATH") or exit("No direct script access allowed");
+
 class Migration_notifications extends CI_Migration
 {
     public function up()
@@ -16,6 +18,11 @@ class Migration_notifications extends CI_Migration
                 'constraint' => 11,
                 'null' => FALSE,
                 'auto_increment' => TRUE
+            ),
+            'title' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                'null' => FALSE
             ),
             'notification' => array(
                 'type' => 'VARCHAR',

@@ -488,7 +488,9 @@ $(document).on('click', '.notification-roles', function()
     var id_notification = $(this).parent().parent('tr').data('id_notification');
 
     $.ajax({
-        url: '/index.php/ajax/Notifications/notification_roles/',
+        url: '/index.php/ajax/Notifications/notifications_roles/',
+        type: 'POST',
+        data: {id: id_notification},
         success: function(data)
         {
             bootbox.dialog({
@@ -500,7 +502,22 @@ $(document).on('click', '.notification-roles', function()
                         className: "btn-success",
                         callback: function()
                         {
+                            var roles = $('select[name="roles_name"]').val();
+                            var id = $('input[name="id"]').val();
 
+                            $.ajax({
+                                url: '/index.php/ajax/Notifications_roles/new_notification_role/',
+                                type: 'POST',
+                                data: {id_notification: id, id_role: roles},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
                         }
                     },
                     danger: {
@@ -514,3 +531,48 @@ $(document).on('click', '.notification-roles', function()
 
     });
 });
+
+$(document).on('click', '.edit-notifications', function()
+{
+    var id_role = $(this).parent().parent('tr').data('id');
+
+    $.ajax({
+        url: '/index.php/ajax/Roles/get_list_notifications/'+id_role,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Уведомления роли",
+                buttons: {
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function() {}
+                    }
+                }
+            });
+        }
+
+    });
+});
+
+$(document).on('click', '.del-not-roles', function()
+{
+
+    var id = $(this).parent().parent('tr').data('id_notification_roles');
+
+    $.ajax({
+        url: '/index.php/ajax/Notifications_roles/delete_notification_roles/'+id,
+        success: function(data)
+        {
+            bootbox.hideAll();
+            bootbox.alert(data, function(){});
+        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+    });
+});
+
+

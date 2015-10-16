@@ -54,7 +54,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    private function _basic_validation(array $data) {
+    private function _basic_validation($data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
                 return true;
@@ -68,7 +68,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function create(array $data) {
+    public function create($data) {
         return $this->_basic_validation($data)
                 ? $this->instance->db->insert($this->tbname, $data)
                 : false;
@@ -107,8 +107,9 @@ class MY_Controller extends CI_Controller {
      * @param object $obj
      * @return object
      */
-    public function read_custom($obj) {
-        return $obj->get()->result();
+    public function read_custom($string)
+    {
+        return $this->instance->db->query($string)->result();
     }
 
     /**

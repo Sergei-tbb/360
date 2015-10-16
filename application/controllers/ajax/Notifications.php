@@ -15,6 +15,7 @@ class Notifications extends MY_Controller
         $this->load->library("form_validation");
         $this->load->helper("security");
 
+        $this->result = array();
     }
 
     public function get_list_notifications()
@@ -163,7 +164,7 @@ class Notifications extends MY_Controller
         }
     }
 
-    public function new_notification_roles($id)
+    public function notifications_roles()
     {
         try
         {
@@ -172,16 +173,17 @@ class Notifications extends MY_Controller
                 throw new Exception("No direct script access allowed.");
             }
 
-            $data = $this->input->post();
-
-            if ($this->create($data))
+            $string = "SELECT * FROM roles";
+            if ($this->read_custom($string))
             {
-                $this->result = array("message" => "New role was added to notification successfully.");
-                echo $this->result['message'];
+                $data['roles'] = $this->read_custom($string);
+                $data['id'] = $this->input->post();
+                $data['selected'] = $this->get_notification_roles($data['id']['id']);
+                $this->load->view('admin_panel/notifications_roles_view', $data);
             }
             else
             {
-                throw new Exception("Can't add new role to notification.");
+                throw new Exception("Can't load roles and notification.");
             }
         }
         catch(Exception $exp)
@@ -190,6 +192,33 @@ class Notifications extends MY_Controller
             echo $this->result['message'];
         }
     }
+
+    public function get_notification_roles($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $string = "SELECT notifications_roles.id_role as selected
+                        FROM notifications_roles, notifications
+                        WHERE notifications.id={$id}
+                        AND notifications.id=notifications_roles.id_notification";
+
+            if($this->read_custom($string))
+            {
+                return $selected = $this->read_custom($string);
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
 
 
     private function _validate_new_update_notification()

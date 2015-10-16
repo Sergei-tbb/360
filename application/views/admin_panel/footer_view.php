@@ -28,5 +28,10 @@
 
     <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
 
+    <script src="<?= base_url();?>assets/select/chosen.jquery.js"></script>
+
+
+    <script src="<?= base_url();?>assets/select/chosen.proto.js"></script>
+
 </body>
 </html>

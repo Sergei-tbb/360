@@ -13,6 +13,7 @@
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
                 <td><?= $data->name ;?></td>
                 <td>
+                    <button type="button" class="btn btn-sm btn-success edit-notifications">Уведомления</button>
                     <button type="button" class="btn btn-sm btn-warning edit-role">Изменить</button>
                     <button type="button" class="btn btn-sm btn-danger remove-role">Удалить</button>
                 </td>
