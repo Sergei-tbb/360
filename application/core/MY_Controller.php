@@ -94,7 +94,7 @@ class MY_Controller extends CI_Controller {
      * @return mixed boolean or array oj objects
      */
     public function read_all() {
-        return $this->instance->db
+        return $this->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
 //                ->where(1)

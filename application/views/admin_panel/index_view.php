@@ -238,6 +238,9 @@
                         <li>
                             <a href="#" id="roles">Роли</a>
                         </li>
+                        <li>
+                            <a href="#" id="notifications">Уведомления</a>
+                        </li>
 
 
 

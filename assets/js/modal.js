@@ -361,3 +361,156 @@ $(document).on('click', '.page-menu-delete', function()
 
 
 });
+
+
+$(document).on('click', '#notifications-add', function()
+{
+    var modal_body = getPageData('admin', 'notifications_new', 'html');
+
+    bootbox.dialog({
+        message: modal_body,
+        title: "Создать новое уведомление",
+        buttons: {
+            success: {
+                label: 'Создать',
+                className: 'btn-success',
+                callback: function()
+                {
+                    var title = $('input[name="title"]').val();
+                    var notification = $('textarea[name="notification"]').val();
+
+                    $.ajax({
+                        url: '/index.php/ajax/Notifications/new_notification/',
+                        type: 'POST',
+                        data: {title: title, notification: notification},
+                        success: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                            updateList('Notifications', 'get_list_notifications', 'notifications');
+                        },
+                        error: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                        }
+                    });
+                }
+            },
+            danger: {
+                label: "Закрыть",
+                className: "btn-danger",
+                callback: function()
+                {
+
+                }
+            }
+        }
+    });
+});
+
+
+$(document).on('click', '.notification-edit', function()
+{
+    var id_notification = $(this).parent().parent('tr').data('id_notification');
+
+    $.ajax({
+        url: '/index.php/ajax/Notifications/get_one_notification/'+id_notification,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Редактирование уведомлений",
+                buttons: {
+                    success: {
+                        label: "Изменить",
+                        className: "btn-success",
+                        callback: function()
+                        {
+                            var id = $('input[name="id"]').val();
+                            var title = $('input[name="title"]').val();
+                            var notification = $('textarea[name="notification"]').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/Notifications/update_notification/'+id,
+                                type: 'POST',
+                                data: {title: title, notification: notification},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('Notifications', 'get_list_notifications', 'notifications')
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function() {}
+                    }
+                }
+            });
+        }
+
+    });
+});
+
+$(document).on("click", ".notification-del", function() {
+
+    var id = $(this).parent().parent('tr').data('id_notification');
+
+    bootbox.confirm("Вы действительно хотите удалить выбранное уведомление?", function(result)
+    {
+        if(result==true)
+        {
+            $.ajax({
+                url: '/index.php/ajax/Notifications/delete_notification/'+id,
+                success: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                    updateList('Notifications', 'get_list_notifications', 'notifications')
+                },
+                error: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                }
+            });
+        }
+
+    })
+});
+
+
+$(document).on('click', '.notification-roles', function()
+{
+    var id_notification = $(this).parent().parent('tr').data('id_notification');
+
+    $.ajax({
+        url: '/index.php/ajax/Notifications/notification_roles/',
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Роли уведомлений",
+                buttons: {
+                    success: {
+                        label: "Изменить",
+                        className: "btn-success",
+                        callback: function()
+                        {
+
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function() {}
+                    }
+                }
+            });
+        }
+
+    });
+});
