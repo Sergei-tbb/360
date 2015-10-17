@@ -244,6 +244,9 @@
                         <li>
                             <a href="#" id="statuses">Статусы</a>
                         </li>
+                        <li>
+                            <a href="#" id="users">Пользователи</a>
+                        </li>
 
 
 

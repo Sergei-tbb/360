@@ -575,4 +575,154 @@ $(document).on('click', '.del-not-roles', function()
     });
 });
 
+$(document).on('click', '#user-add', function(){
+
+
+    //var modal_body = loadView('Users', 'new_user_roles', 'add', 'Создание нового пользователя');
+    var modal_body;
+
+    $.ajax({
+        url: '/index.php/ajax/Users/new_user_roles',
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Создание нового пользователя",
+                buttons: {
+                    success: {
+                        label: 'Создать',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+
+                            var name = $('input[name="name"]').val();
+                            var surname = $('input[name="surname"]').val();
+                            var middlename = $('input[name="middlename"]').val();
+                            var email = $('input[name="email"]').val();
+                            var password = $('input[name="password"]').val();
+                            var id_user_role = $('select[name="roles"] option:selected').val();
+
+
+                            $.ajax({
+                                url: '/index.php/ajax/Users/add_user/',
+                                type: 'POST',
+                                data: {name: name, surname: surname, middlename: middlename, email: email, password: password, id_user_role: id_user_role},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('Users', 'get_list_users', 'users');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        },
+        error: function(data)
+        {
+            modal_body = data;
+        }
+    });
+
+
+
+});
+
+$(document).on('click', '.delete-user', function(){
+    var id = $(this).parent().parent('tr').data('id_user');
+
+    bootbox.confirm('Вы уверены, что хотите удалить этого пользователя?', function(result) {
+        if(result==true)
+        {
+            $.ajax({
+                url: '/index.php/ajax/Users/delete_user/'+id,
+                success: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                    updateList('Users', 'get_list_users', 'users');
+                },
+                error: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                }
+            });
+        }
+    });
+});
+
+$(document).on('click', '.edit-user', function(){
+
+
+    var modal_body;
+    var id = $(this).parent().parent('tr').data('id_user');
+
+    $.ajax({
+        url: '/index.php/ajax/Users/get_one_user/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Изменение данных пользователя",
+                buttons: {
+                    success: {
+                        label: 'Изменить',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+                            var name = $('input[name="name"]').val();
+                            var surname = $('input[name="surname"]').val();
+                            var middlename = $('input[name="middlename"]').val();
+                            var email = $('input[name="email"]').val();
+                            var password = $('input[name="password"]').val();
+                            var id_user_role = $('select[name="roles"] option:selected').val();
+                            var id = $('input[name="id"]').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/Users/edit_user/'+id,
+                                type: 'POST',
+                                data: {name: name, surname: surname, middlename: middlename, email: email, password: password, id_user_role: id_user_role},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('Users', 'get_list_users', 'users');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        },
+        error: function(data)
+        {
+            modal_body = data;
+        }
+    });
+
+
+
+});
 

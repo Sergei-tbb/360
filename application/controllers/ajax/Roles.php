@@ -142,6 +142,24 @@ class Roles extends MY_Controller
         }
     }
 
+
+    public function get_list_roles()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            return $this->read_all();
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+        }
+    }
+
     /**
      * Edit role
      * public
