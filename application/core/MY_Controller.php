@@ -104,11 +104,11 @@ class MY_Controller extends CI_Controller {
 
     /**
      * Read operation custom query
-     * @param object $obj
+     * @param string $query_string
      * @return object
      */
-    public function read_custom($obj) {
-        return $obj->get()->result();
+    public function read_custom($query_string) {
+        return $obj->query(strval($query_string))->result();
     }
 
     /**

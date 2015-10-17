@@ -11,7 +11,7 @@
  *
  * @author snegas
  */
-class Delivery_region_cities_model {
+class Delivery_region_cities_model extends CI_Model {
 
     var $id;
 

@@ -11,7 +11,7 @@
  *
  * @author snegas
  */
-class Delivery_streets_model {
+class Delivery_streets_model extends CI_Model {
 
     var $id;
 

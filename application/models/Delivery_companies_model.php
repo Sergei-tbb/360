@@ -11,7 +11,7 @@
  *
  * @author snegas
  */
-class Delivery_companies_model {
+class Delivery_companies_model extends CI_Model {
 
     var $id;
 

@@ -11,7 +11,7 @@
  *
  * @author snegas
  */
-class Delivery_countries_model {
+class Delivery_countries_model extends CI_Model {
 
     var $id;
 
