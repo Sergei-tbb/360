@@ -1,16 +1,20 @@
-<form id="create-statuses" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
+<form id="create-statuses" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name-status">Введите название статуса: </label>
-            <input type="text" class="form-control" required name="name" id="name-status" value="<? if(!empty($status->name)) echo $status->name;?>" />
+<!--            <input type="hidden" name="id" value="--><?// if(!empty($statuses->id)) echo $statuses->id ?><!--"/>-->
+            <input  id="name-status" class="form-control" type="text" name="name" required value="<? if(!empty($statuses->name)) echo $statuses->name;?>" />
         </br>
         <label for="name-status">Выберите картинку статуса:</label>
-        <input type="file" class="form-control" required name="image" id="image-status" value="<? if(!empty($status->image)) echo $status->name;?>" />
-        <span>Максимальный размер файла 1М</span>
+        <input id="image-statuses" class="form-control" type="file" name="image" required value="<? if(!empty($statuses->image)) echo $statuses->name;?>" />
+        <span>Максимальное разрешение файла 100px*100px, размер 50kB</span>
     </div>
 </form>
-<img id="blah" style="max-width: 200px;" class="img-responsive center-block" src="<?=base_url();?>download/statuses_image/default.png" />
+<img id="preview-img" style="max-width: 200px;" class="img-responsive center-block" src="<?=base_url();?>download/statuses_image/<? echo (!empty($statuses->picture))
+                                                                                                                                        ? $statuses->picture
+                                                                                                                                        : "default.png" ;?>" />
 <script>
-    $("#image-status").change(function(){
+    $("#image-statuses").change(function(){
         readURL(this);
     });
+
 </script>

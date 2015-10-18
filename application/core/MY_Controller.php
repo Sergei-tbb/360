@@ -107,7 +107,7 @@ class MY_Controller extends CI_Controller {
      * @param object $obj
      * @return object
      */
-    public function read_custom($obj) {
+    public function read_custom(&$obj) {
         return $obj->get()->result();
     }
 

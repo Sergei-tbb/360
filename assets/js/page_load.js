@@ -45,8 +45,9 @@ function getPageData(pageMethod, pageName, pageType) {
  * @param formId - id name of form
  * @param controllerName(lowercase) - name of controller
  * @param methodName - name of method
+ * @param handler - if file used method sendFormDataWithFile()
  */
-function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName, id) {
+function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName, id, heandler) {
     bootbox.dialog({
         title: title,
         message: pageData,
@@ -56,20 +57,11 @@ function addObjectModal(title, pageData, size, formId, controllerName, methodNam
                 label: buttonName,
                 className: "btn-success pull-left",
                 callback: function() {
-                    var form_data = $("#"+formId).serialize();
-                    $.ajax({
-                        url : "/index.php/ajax/"+controllerName+"/"+methodName+"/"+id,
-                        type: "POST",
-                        data: form_data,
-                        dataType: "json",
-                        success: function(data) {
-                            bootbox.alert(data.message);
-                            displayListData(controllerName, "display_all", controllerName);
-                        },
-                        error:function() {
-                            alert("Error!");
-                        }
-                    });
+                    if(heandler == "file") {
+                        sendFormDataWithFile(controllerName, methodName, id, formId);
+                    }else{
+                        sendFormData(controllerName, methodName, id, formId);
+                    }
                 }
             },
             close: {
@@ -164,9 +156,54 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
+            $('#preview-img').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function sendFormDataWithFile(controllerName, methodName, id, formId) {
+
+        //var fileData = $("#image-"+controllerName).prop("files")[0];
+        var formData = new FormData($("#"+formId)[0]);
+        //formData.append("file", fileData);
+        if(id) {
+            formData.append("id", id);
+        }
+
+        $.ajax({
+            url:"/index.php/ajax/"+controllerName+"/"+methodName,
+            type:"POST",
+            cache:false,
+            contentType:false,
+            processData:false,
+            dataType:"json",
+            data:formData,
+            success:function(data) {
+                bootbox.alert(data.message);
+                displayListData(controllerName, "display_all", controllerName);
+            },
+            error:function() {
+                alert("Error!");
+            }
+        });
+    return false;
+}
+
+function sendFormData(controllerName, methodName, id, formId) {
+    var form_data = $("#"+formId).serialize();
+    $.ajax({
+        url : "/index.php/ajax/"+controllerName+"/"+methodName+"/"+id,
+        type: "POST",
+        data: form_data,
+        dataType: "json",
+        success: function(data) {
+            bootbox.alert(data.message);
+            displayListData(controllerName, "display_all", controllerName);
+        },
+        error:function() {
+            alert("Error!");
+        }
+    });
 }

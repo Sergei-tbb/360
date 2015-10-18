@@ -17,8 +17,11 @@
 </div>
 
 <script>
+    $(document).ready(function() {
+        displayListData("statuses", "display_all", "statuses")
+    });
     $('#statuses-add').on("click", function() {
         var pageData = getPageData("admin", "statuses_create", "html");
-        addObjectModal("Создать новый статус", pageData, "small", "create-statuses", "statuses", "add_new_statuses", "Создать");
+        addObjectModal("Создать новый статус", pageData, "small", "create-statuses", "statuses", "add_new_statuses", "Создать", "", "file");
     });
 </script>

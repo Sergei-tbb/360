@@ -9,7 +9,7 @@ class Migration_statuses extends CI_Migration
         $fields_pages = array(
             'id' => array(
                 'type' => 'INT',
-                'constraint' => 11,
+                'constraint' => 5,
                 'auto_increment' => TRUE
             ),
             'name' => array(
