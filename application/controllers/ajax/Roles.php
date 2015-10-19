@@ -25,7 +25,7 @@ class Roles extends MY_Controller
         $query_str = $this->db->select('id, name')->from('statuses')->order_by('name');
 
         $data['role']['statuses'] = $this->read_custom($query_str);
-        if(empty($data['role']['statuses']))
+        if(empty($data['roles']['statuses']))
         {
             throw new Exception("Select data not found");
         }

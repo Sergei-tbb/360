@@ -29,7 +29,7 @@
     });
 
     $('#role-add').on("click", function() {
-       var page_data = displayStatuses("roles", "display_role_status");
+       var page_data = getPageData("admin", "roles_create", "html");
        addObjectModal("Создать новую роль", page_data, "small", "create-role", "roles", "add_new_role", "Создать");
     });
 </script>

@@ -18,7 +18,7 @@
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статусы<span class="caret"></span></button>
                         <ul class="dropdown-menu scrollable-menu" style="height: auto; max-height: 200px; overflow-x: hidden;" role="menu">
                     <? if(empty($roles['statuses'])) : ?>
-                        <li><a href="#">Нет выбраных статусов</a></li>
+                        <li><a href="#" id="statuses-rols-edit" title="Изменить статус">Нет выбраных статусов</a></li>
                     <? else : ?>
                         <? foreach($roles['statuses'] as $status) : ?>
                             <li><a href="#"><?= $status->name ;?></a></li>
