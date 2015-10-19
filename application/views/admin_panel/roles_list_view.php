@@ -6,12 +6,17 @@
         <tr>
             <th style="max-width: 0.5em;">#</th>
             <th>Название</th>
+            <th>Статус</th>
             <th></th>
         </tr>
         <? foreach($roles as $data):?>
             <tr data-id="<?= $data->id ;?>">
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
                 <td><?= $data->name ;?></td>
+                <td><select class="form-control" name="statuses" multiple size="3">
+                        <option value="0">Статус не выбран</option>
+                        <option value="0">Выберите статус</option>
+                    </select></td>
                 <td>
                     <button type="button" class="btn btn-sm btn-warning edit-role">Изменить</button>
                     <button type="button" class="btn btn-sm btn-danger remove-role">Удалить</button>
