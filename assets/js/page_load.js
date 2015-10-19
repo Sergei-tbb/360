@@ -182,10 +182,7 @@ function readURL(input) {
 }
 
 function sendFormDataWithFile(controllerName, methodName, id, formId) {
-
-        //var fileData = $("#image-"+controllerName).prop("files")[0];
         var formData = new FormData($("#"+formId)[0]);
-        //formData.append("file", fileData);
         if(id) {
             formData.append("id", id);
         }
@@ -223,6 +220,82 @@ function sendFormData(controllerName, methodName, id, formId) {
         },
         error:function() {
             alert("Error!");
+        }
+    });
+}
+
+function save_statuses_rols(statuses, id)
+{
+    $.ajax({
+        url:"/index.php/ajax/statuses_rols/add_statuses_rols",
+        type:"POST",
+        data:"id="+id+"&statuses"+statuses,
+        success: function(data){
+            alert("Success");
+        },
+
+        error: function(){
+            alert("Error");
+        }
+    });
+}
+
+function updateList(name_module, name_method, inId)
+{
+    $.ajax({
+        url: '/index.php/ajax/'+name_module+'/'+name_method,
+        success: function(data)
+        {
+            $('.'+inId+'-body').empty();
+            $('.'+inId+'-body').html(data);
+        },
+        error: function(data)
+        {
+            $('.'+inId+'-body').html(data);
+        }
+    });
+}
+
+function loadView(module_name, method_name, type, modal_title)
+{
+    $.ajax({
+        url: '/index.php/ajax/'+module_name+'/'+method_name,
+        success: function(data)
+        {
+            //page_data = data;
+            if(type=='add')
+            {add_new(data, modal_title);}
+        }
+    });
+}
+
+
+function add_new(data, title)
+{
+    bootbox.dialog({
+        message: data,
+        title: title,
+        buttons: {
+            success: {
+                label: 'Создать',
+                className: 'btn-success',
+                callback: function()
+                {
+                    //if(isArray(data_callback)===true)
+                    //{
+                    //    bootbox.alert('Массив');
+                    //}
+                    //else
+                    //{
+                    //    bootbox.alert('Строка');
+                    //}
+                }
+            },
+            danger: {
+                label: 'Закрыть',
+                className: 'btn-danger',
+                callback: {}
+            }
         }
     });
 }
