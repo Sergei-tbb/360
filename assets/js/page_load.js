@@ -96,7 +96,7 @@ function displayListData(controllerName, methodName, idName) {
  * @param controllerName - name of controller
  * @param methodName - name of method
  */
-function deleteObjectModal(id, objectName, controllerName, methodName) {
+function deleteObjectModal(id, objectName, controllerName, methodName, idName) {
     bootbox.confirm({
         message: "Вы действительно хотите удалить "+objectName,
         buttons: {
@@ -118,7 +118,7 @@ function deleteObjectModal(id, objectName, controllerName, methodName) {
                     data: "id="+id,
                     success: function(data) {
                         bootbox.alert(data.message);
-                        $("tr[data-id="+id+"]").remove();
+                        displayListData(controllerName, "display_all", idName);
                     }
                 });
             }

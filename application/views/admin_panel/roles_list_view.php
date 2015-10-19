@@ -23,7 +23,7 @@
     <script>
         $(".remove-role").on("click", function() {
             var id = $(this).parents("tr").data("id");
-            deleteObjectModal(id, "роль", "roles", "delete_role");
+            deleteObjectModal(id, "роль", "roles", "delete_role", "roles");
         });
 
         $(".edit-role").on("click", function() {

@@ -146,11 +146,33 @@ class Statuses extends MY_Controller
 
             $data = $this->input->post();
 
-            if(empty($data) || !is_numeric($data['id']) || strlen($data['id']) > 5)
+            if(!empty($data) || is_numeric($data['id']) || strlen($data['id']) <= 5)
             {
-                if(!in_array($_FILES['image']['error'], array(2,3,4,5,6,7,8)))
-                {
+                if($_FILES['image']['error'] === 0) {
+                    foreach (array('gif', 'jpg', 'png') as $format){
 
+                        $file_path = base_url() . "download/statuses_image/" . $data['id'] . "_status_image." . $format;
+                        $headers = @get_headers($file_path);
+
+                        if (preg_match("|200|", $headers[0]))
+                        {
+                            if (strpos($headers[0], '200'))
+                            {
+                                unlink("download/statuses_image/".$data['id']."_status_image.".$format);
+                                break;
+                            }
+                        }
+                    }
+                    $data['picture'] = $this->_do_upload($data['id']);
+                }
+
+                if($this->update($data['id'], $data) === FALSE)
+                {
+                    throw new Exception("Data was not update");
+                }
+                else
+                {
+                    $this->result = array("message" => "Status was update successfully");
                 }
             }
         }
@@ -164,7 +186,6 @@ class Statuses extends MY_Controller
     {
         $config['upload_path']   = 'download/statuses_image';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['overwrite']     = TRUE;
         $config['max_size']      = 50;
         $config['max_width']     = '100';
         $config['max_height']    = '100';
