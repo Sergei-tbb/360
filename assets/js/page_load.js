@@ -37,6 +37,22 @@ function getPageData(pageMethod, pageName, pageType) {
     return pageData;
 }
 
+function getPageDataFolders(pageMethod, folderName, pageName, pageType) {
+    var pageData ="";
+
+    $.ajax({
+        url: "/index.php/ajax/View_load/"+pageMethod+"/"+folderName+"/"+pageName,
+        dataType: pageType,
+        type: "get",
+        async: false,
+        success: function(data) {
+            pageData = data;
+        }
+    });
+    return pageData;
+}
+
+
 /**
  * Display modal window of create and edit
  * @param title - title of modal

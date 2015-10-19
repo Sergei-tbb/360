@@ -71,8 +71,7 @@ $(document).on("click", ".page-del", function() {
     })
 });
 
-$(document).on('click', 'input[name="is_published"]', function()
-{
+$(document).on('click', 'input[name="is_published"]', function() {
     var is_published;
     var id = $(this).parent().parent('tr').data('id_page');
     if($('input[name="is_published"]').prop('checked'))
@@ -99,8 +98,7 @@ $(document).on('click', 'input[name="is_published"]', function()
     });
 });
 
-$(document).on('click', '.page-edit', function()
-{
+$(document).on('click', '.page-edit', function() {
     var id = $(this).parent().parent('tr').data('id_page');
 
     $.ajax({
@@ -190,8 +188,7 @@ $(document).on("click", "#menu-add", function() {
 });
 
 
-$(document).on('click', '.menu-edit', function()
-{
+$(document).on('click', '.menu-edit', function() {
     var id = $(this).parent().parent('tr').data('id_menu');
 
     $.ajax({
@@ -263,8 +260,7 @@ $(document).on("click", ".menu-del", function() {
 });
 
 
-$(document).on('click', '.page-menu', function()
-{
+$(document).on('click', '.page-menu', function() {
     var id = $(this).parent().parent('tr').data('id_page');
 
     $.ajax({
@@ -312,8 +308,7 @@ $(document).on('click', '.page-menu', function()
 });
 
 
-$(document).on('click', '.menu-pages', function()
-{
+$(document).on('click', '.menu-pages', function() {
     var id = $(this).parent().parent('tr').data('id_menu');
     $.ajax({
         url: '/index.php/ajax/Menus_pages/get_menu_pages/'+id,
@@ -343,8 +338,7 @@ $(document).on('click', '.menu-pages', function()
 });
 
 
-$(document).on('click', '.page-menu-delete', function()
-{
+$(document).on('click', '.page-menu-delete', function() {
     var id = $(this).parent().parent('tr').data('menu_page');
 
     $.ajax({
@@ -363,8 +357,7 @@ $(document).on('click', '.page-menu-delete', function()
 });
 
 
-$(document).on('click', '#notifications-add', function()
-{
+$(document).on('click', '#notifications-add', function() {
     var modal_body = getPageData('admin', 'notifications_new', 'html');
 
     bootbox.dialog({
@@ -408,8 +401,7 @@ $(document).on('click', '#notifications-add', function()
 });
 
 
-$(document).on('click', '.notification-edit', function()
-{
+$(document).on('click', '.notification-edit', function() {
     var id_notification = $(this).parent().parent('tr').data('id_notification');
 
     $.ajax({
@@ -483,8 +475,7 @@ $(document).on("click", ".notification-del", function() {
 });
 
 
-$(document).on('click', '.notification-roles', function()
-{
+$(document).on('click', '.notification-roles', function() {
     var id_notification = $(this).parent().parent('tr').data('id_notification');
 
     $.ajax({
@@ -532,8 +523,7 @@ $(document).on('click', '.notification-roles', function()
     });
 });
 
-$(document).on('click', '.edit-notifications', function()
-{
+$(document).on('click', '.edit-notifications', function() {
     var id_role = $(this).parent().parent('tr').data('id');
 
     $.ajax({
@@ -556,8 +546,7 @@ $(document).on('click', '.edit-notifications', function()
     });
 });
 
-$(document).on('click', '.del-not-roles', function()
-{
+$(document).on('click', '.del-not-roles', function() {
 
     var id = $(this).parent().parent('tr').data('id_notification_roles');
 
@@ -725,4 +714,125 @@ $(document).on('click', '.edit-user', function(){
 
 
 });
+
+$(document).on("click", ".faq-add", function() {
+
+    var modal_body = getPageDataFolders('admin_folders', 'faq', 'faq_add', 'html');
+    bootbox.dialog({
+        message: modal_body,
+        title: "Создание новой страницы помощи",
+        buttons: {
+            success: {
+                label: "Создать",
+                className: "btn-success",
+                callback: function()
+                {
+                    var title = $('input[name="title"]').val();
+                    var page_data = CKEDITOR.instances.page_data.getData();
+
+                    $.ajax({
+                        url: '/index.php/ajax/faq/Faq/add_faq',
+                        type: 'POST',
+                        data: {title: title, page_data: page_data},
+                        success: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                            updateList('faq/Faq', 'get_list_faq', 'faq');
+                        },
+                        error: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                        }
+                    });
+                }
+            },
+            danger: {
+                label: "Закрыть",
+                className: "btn-danger",
+                callback: function() {}
+            }
+        }
+    });
+});
+
+$(document).on('click', '.faq-delete', function(){
+    var id = $(this).parent().parent('tr').data('id_faq');
+
+    bootbox.confirm('Вы уверены, что хотите удалить выбранную страницу?', function(result) {
+        if(result==true)
+        {
+            $.ajax({
+                url: '/index.php/ajax/faq/Faq/delete_faq/'+id,
+                success: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                    updateList('faq/Faq', 'get_list_faq', 'faq');
+                },
+                error: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                }
+            });
+        }
+    });
+});
+
+$(document).on('click', '.faq-edit', function(){
+
+    var id = $(this).parent().parent('tr').data('id_faq');
+
+    $.ajax({
+        url: '/index.php/ajax/faq/Faq/get_one_faq/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: "Изменение данных пользователя",
+                buttons: {
+                    success: {
+                        label: 'Изменить',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+                            var title = $('input[name="title"]').val();
+                            var page_data = CKEDITOR.instances.page_data.getData();
+                            var id = $('input[name="id"]').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/faq/Faq/edit_faq/'+id,
+                                type: 'POST',
+                                data: {title: title, page_data: page_data},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('faq/Faq', 'get_list_faq', 'faq');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: "Закрыть",
+                        className: "btn-danger",
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        },
+    });
+
+
+
+});
+
+
+
+
+
 

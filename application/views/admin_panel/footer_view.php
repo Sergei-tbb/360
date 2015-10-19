@@ -35,6 +35,8 @@
 
     <script src="<?= base_url();?>assets/select/chosen.proto.js"></script>
 
+    <script src="<?= base_url();?>assets/js/delivery.js"></script>
+
 
 </body>
 </html>

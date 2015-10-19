@@ -17,7 +17,7 @@
     $(document).ready(function()
     {
         $.ajax({
-            url: '/index.php/ajax/delivery/Delivery_regions/get_regions_list/',
+            url: '/index.php/ajax/delivery/Delivery_regions/get_list_regions/',
             success: function(data)
             {
                 $('.regions-body').html(data);

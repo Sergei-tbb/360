@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: sasha
- * Date: 18.10.15
- * Time: 1:38
- */
+<div class="row">
+    <div class="col-lg-12">
+        <?foreach($country as $data):?>
+        <label for="name">Страна</label>
+        <input type="text" name="name" class="form-control" value="<?=$data->name;?>">
+        <input type="hidden" name="id" value="<?=$data->id;?>">
+        <?endforeach;?>
+    </div>
+</div>

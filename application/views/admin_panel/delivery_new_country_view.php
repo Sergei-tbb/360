@@ -1,7 +1,6 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: sasha
- * Date: 18.10.15
- * Time: 1:28
- */
+<div class="row">
+    <div class="col-lg-12">
+        <label for="name">Страна</label>
+        <input type="text" name="name" class="form-control" value="">
+    </div>
+</div>

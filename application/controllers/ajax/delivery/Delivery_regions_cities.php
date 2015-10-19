@@ -11,7 +11,7 @@
  *
  * @author snegas
  */
-class Delivery_region_cities extends MY_Controller
+class Delivery_regions_cities extends MY_Controller
 {
 
     private $result;
@@ -37,15 +37,34 @@ class Delivery_region_cities extends MY_Controller
 
             $data = $this->input->post();
 
-            if ($this->create($data))
+            $count = count($data['id_city']);
+
+            for($i=0; $i<=$count-1; $i++)
             {
-                $this->result = array('message' => "Город был успешно добавлен!");
-                echo $this->result['message'];
+                $new_data = array(
+                    'id_region' => $data['id_region'],
+                    'id_city' => $data['id_city'][$i]
+                );
+
+                $string = "SELECT COUNT(*) as count FROM delivery_regions_cities
+                            WHERE id_region='{$data['id_region']}'
+                            AND id_city='{$data['id_city'][$i]}'";
+
+                $result_count = $this->read_custom($string);
+
+                if($result_count['0']->count==0)
+                {
+                    if($this->create($new_data))
+                    {
+                        $this->result = array('message' => 'Город был успешно добавлен!');
+                    }
+                    else
+                    {
+                        throw new Exception("Can't add city to region.");
+                    }
+                }
             }
-            else
-            {
-                throw new Exception("Can't add city to region.");
-            }
+            echo $this->result['message'];
         }
         catch(Exception $exp)
         {

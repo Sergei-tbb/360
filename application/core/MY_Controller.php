@@ -57,11 +57,7 @@ class MY_Controller extends CI_Controller {
     private function _basic_validation($data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
-<<<<<<< HEAD
-                return false;
-=======
                 return true;
->>>>>>> t5_users
             }
         }
         return false;
@@ -111,14 +107,8 @@ class MY_Controller extends CI_Controller {
      * @param string $query_string
      * @return object
      */
-<<<<<<< HEAD
     public function read_custom($query_string) {
-        return $obj->query(strval($query_string))->result();
-=======
-    public function read_custom($string)
-    {
-        return $this->instance->db->query($string)->result();
->>>>>>> t5_users
+        return $this->instance->db->query($query_string)->result();
     }
 
     /**

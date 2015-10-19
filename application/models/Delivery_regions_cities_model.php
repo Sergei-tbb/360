@@ -11,11 +11,11 @@
  *
  * @author snegas
  */
-class Delivery_region_cities_model extends CI_Model {
+class Delivery_regions_cities_model extends CI_Model {
 
     var $id;
 
-    var $id_regions;
+    var $id_region;
 
-    var $id_cities;
+    var $id_city;
 }
