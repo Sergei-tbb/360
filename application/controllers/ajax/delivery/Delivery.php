@@ -19,6 +19,9 @@ class Delivery extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for getting list of delivery companies
+     */
     public function get_list_delivery_companies()
     {
         $data['companies'] = $this->read_all();
@@ -32,6 +35,9 @@ class Delivery extends MY_Controller
         }
     }
 
+    /**
+     * method for creating new delivery companies
+     */
     public function new_delivery_company()
     {
         try
@@ -65,6 +71,10 @@ class Delivery extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting delivery companies
+     */
     public function delete_delivery_company($id)
     {
         try
@@ -91,6 +101,10 @@ class Delivery extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of the delivery company
+     */
     public function get_one_company($id)
     {
         try
@@ -117,6 +131,10 @@ class Delivery extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for editing all data of delivery companies
+     */
     public function edit_delivery_company($id)
     {
         try
@@ -150,6 +168,10 @@ class Delivery extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for loading departments of delivery companies
+     */
     public function load_delivery_department_view($id)
     {
         $string_countries = "SELECT * FROM delivery_countries";

@@ -23,6 +23,9 @@ class Delivery_streets extends MY_Controller {
         $this->result = array();
     }
 
+    /**
+     * getting list of the streets
+     */
     public function get_list_streets()
     {
         $data['streets'] = $this->read_all();
@@ -36,6 +39,9 @@ class Delivery_streets extends MY_Controller {
         }
     }
 
+    /**
+     * method for adding new streets
+     */
     public function add_street()
     {
         try
@@ -69,6 +75,9 @@ class Delivery_streets extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id - id of street for get all data
+     */
     public function get_one_street($id)
     {
         try
@@ -96,6 +105,9 @@ class Delivery_streets extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id - var for edit street
+     */
     public function edit_street($id)
     {
         try
@@ -129,6 +141,9 @@ class Delivery_streets extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id - variable for deleting street
+     */
     public function delete_street($id)
     {
         try
@@ -155,6 +170,13 @@ class Delivery_streets extends MY_Controller {
         }
     }
 
+    /**
+     * @param $region
+     * @param $city
+     * region - id region
+     * city - id city
+     * method for getting list of the streets in cities
+     */
     public function load_streets($region, $city)
     {
         $string = "SELECT * FROM delivery_regions_cities_streets";

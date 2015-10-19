@@ -19,6 +19,10 @@ class Menus_pages extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * @param $id
+     * method for getting all data of pages menus
+     */
     public function get_menu_pages($id)
     {
         try
@@ -47,7 +51,9 @@ class Menus_pages extends MY_Controller
         }
     }
 
-
+    /**
+     * method for adding pages to menus
+     */
     public function add_pages_menu()
     {
         try
@@ -82,6 +88,10 @@ class Menus_pages extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting pages from menus
+     */
     public function delete_menu_page($id)
     {
         try

@@ -24,6 +24,11 @@ class Delivery_region_cities_streets extends MY_Controller {
         $this->result = array();
     }
 
+    /**
+     * @param $id_region
+     * @param $id_city
+     * method for addition new street to city of region
+     */
     public function create_new_region_city_street($id_region, $id_city)
     {
         try

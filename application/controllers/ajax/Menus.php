@@ -19,12 +19,18 @@ class Menus extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for getting lits of menus
+     */
     public function menu_list()
     {
         $data['menus'] = $this->read_all();
         $this->load->view('admin_panel/menus_list_view', $data);
     }
 
+    /**
+     * method for creating new menu
+     */
     public function new_menu()
     {
         try
@@ -73,6 +79,10 @@ class Menus extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of menu
+     */
     public function get_menu($id)
     {
         try
@@ -100,6 +110,10 @@ class Menus extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for updating all data of menu
+     */
     public function update_menu($id)
     {
         try
@@ -148,6 +162,10 @@ class Menus extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting menus
+     */
     public function delete_menu($id)
     {
         try
@@ -175,6 +193,10 @@ class Menus extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for getting pages of menus
+     */
     public function get_pages_menu($id)
     {
         try

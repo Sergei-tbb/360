@@ -20,6 +20,9 @@ class Notifications_roles extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for adding role to notification
+     */
     public function new_notification_role()
     {
         try
@@ -70,6 +73,10 @@ class Notifications_roles extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting roles from notifications
+     */
     public function delete_notification_roles($id)
     {
         try

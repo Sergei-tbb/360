@@ -18,6 +18,9 @@ class Notifications extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for getting list of notifications
+     */
     public function get_list_notifications()
     {
         try
@@ -39,6 +42,9 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * method for creating new notifications
+     */
     public function new_notification()
     {
         try
@@ -72,6 +78,10 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting notifications
+     */
     public function delete_notification($id)
     {
         try
@@ -99,6 +109,10 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of notification
+     */
     public function get_one_notification($id)
     {
         try
@@ -131,6 +145,10 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for updating all data of notifications
+     */
     public function update_notification($id)
     {
         try
@@ -164,6 +182,9 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * method of load view and data of notifications and roles
+     */
     public function notifications_roles()
     {
         try
@@ -193,6 +214,11 @@ class Notifications extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return object
+     * method for getting data of notifications roles
+     */
     public function get_notification_roles($id)
     {
         try
@@ -218,8 +244,6 @@ class Notifications extends MY_Controller
             echo $this->result['message'];
         }
     }
-
-
 
     private function _validate_new_update_notification()
     {

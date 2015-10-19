@@ -20,6 +20,9 @@ class Users extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for getting list of users
+     */
     public function get_list_users()
     {
         $string = "SELECT * FROM roles";
@@ -37,6 +40,9 @@ class Users extends MY_Controller
         }
     }
 
+    /**
+     * method for adding roles to users
+     */
     public function new_user_roles()
     {
         $string = "SELECT * FROM roles";
@@ -44,6 +50,9 @@ class Users extends MY_Controller
         $this->load->view('admin_panel/users_new_view', $data);
     }
 
+    /**
+     * method for creating users
+     */
     public function add_user()
     {
         try
@@ -92,6 +101,10 @@ class Users extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * methdo for deleting users
+     */
     public function delete_user($id)
     {
         try
@@ -119,6 +132,10 @@ class Users extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of user
+     */
     public function get_one_user($id)
     {
         try
@@ -149,6 +166,10 @@ class Users extends MY_Controller
         }
     }
 
+    /**
+     * @param $id
+     * method for editing all data of users
+     */
     public function edit_user($id)
     {
         try

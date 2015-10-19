@@ -23,6 +23,9 @@ class Delivery_cities extends MY_Controller {
         $this->result = array();
     }
 
+    /**
+     * method for getting list of cities
+     */
     public function get_list_cities()
     {
         $string_cities_regions = "SELECT * FROM delivery_regions_cities";
@@ -40,6 +43,9 @@ class Delivery_cities extends MY_Controller {
         }
     }
 
+    /**
+     * method for addition new cities
+     */
     public function add_city()
     {
         try
@@ -73,6 +79,10 @@ class Delivery_cities extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of city
+     */
     public function get_one_city($id)
     {
         try
@@ -100,6 +110,10 @@ class Delivery_cities extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for editing all data of city
+     */
     public function edit_city($id)
     {
         try
@@ -133,6 +147,10 @@ class Delivery_cities extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting cities
+     */
     public function delete_city($id)
     {
         try

@@ -19,12 +19,18 @@ class Pages extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * getting list of pages
+     */
     public function pages_list()
     {
         $data['pages'] = $this->read_all();
         $this->load->view('admin_panel/pages_list_view', $data);
     }
 
+    /**
+     * deleting page
+     */
     public function delete_page()
     {
         try
@@ -73,6 +79,9 @@ class Pages extends MY_Controller
         }
     }
 
+    /**
+     * creating new page
+     */
     public function new_page()
     {
         try
@@ -124,6 +133,9 @@ class Pages extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of page for publish/unpublish
+     */
     public function publish_page($id)
     {
         try
@@ -180,6 +192,9 @@ class Pages extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of page for getting all data
+     */
     public function get_page($id)
     {
         try
@@ -207,6 +222,9 @@ class Pages extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of page for updating
+     */
     public function update_page($id)
     {
         try

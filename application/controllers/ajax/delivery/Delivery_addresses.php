@@ -21,6 +21,10 @@ class Delivery_addresses extends MY_Controller {
         $this->result = array();
     }
 
+    /**
+     * @param $id_street
+     * method for creating new department of delivery companies
+     */
     public function new_department($id_street)
     {
         try
@@ -76,6 +80,10 @@ class Delivery_addresses extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting current departments of delivery companies
+     */
     public function delete_department($id)
     {
         try
@@ -102,6 +110,9 @@ class Delivery_addresses extends MY_Controller {
         }
     }
 
+    /**
+     * method for getting list of addresses
+     */
     public function get_list_addresses()
     {
         $string_company = "SELECT * FROM delivery_companies";

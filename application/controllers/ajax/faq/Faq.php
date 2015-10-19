@@ -20,6 +20,10 @@ class Faq extends MY_Controller
         $this->result = array();
     }
 
+    /***
+     * @data['faq'] - array with data about pages of FAQ
+     *
+     */
     public function get_list_faq()
     {
         $data['faq'] = $this->read_all();
@@ -35,6 +39,9 @@ class Faq extends MY_Controller
         }
     }
 
+    /**
+     *create FAQ page
+     */
     public function add_faq()
     {
         try
@@ -69,6 +76,9 @@ class Faq extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of FAQ page
+     */
     public function delete_faq($id)
     {
         try
@@ -97,6 +107,9 @@ class Faq extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of FAQ page
+     */
     public function get_one_faq($id)
     {
         try
@@ -124,6 +137,9 @@ class Faq extends MY_Controller
         }
     }
 
+    /**
+     * @param $id - id of FAQ page
+     */
     public function edit_faq($id)
     {
         try

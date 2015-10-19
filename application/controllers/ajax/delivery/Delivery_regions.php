@@ -23,6 +23,9 @@ class Delivery_regions extends MY_Controller {
         $this->result = array();
     }
 
+    /**
+     * method for getting list of the regions
+     */
     public function get_list_regions()
     {
         $string = "SELECT * FROM delivery_countries";
@@ -38,6 +41,9 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * method for addition regions to countries
+     */
     public function load_new_region()
     {
         $string = "SELECT * FROM delivery_countries";
@@ -52,6 +58,9 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * method for addition new regions
+     */
     public function add_region()
     {
         try
@@ -85,6 +94,10 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for getting all data of regions
+     */
     public function get_one_region($id)
     {
         try
@@ -114,6 +127,10 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for editing all data of regions
+     */
     public function edit_region($id)
     {
         try
@@ -147,6 +164,10 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * @param $id
+     * method for deleting regions
+     */
     public function delete_region($id)
     {
         try
@@ -173,6 +194,9 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * method for addition regions to country
+     */
     public function add_country_regions($id)
     {
         try
@@ -201,6 +225,9 @@ class Delivery_regions extends MY_Controller {
         }
     }
 
+    /**
+     * method for loading list cities of regions
+     */
     public function load_regions_cities($id)
     {
         $string = "SELECT * FROM delivery_cities";

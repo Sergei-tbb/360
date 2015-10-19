@@ -26,6 +26,9 @@ class Delivery_regions_cities extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * method for adding cities to regions
+     */
     public function add_regions_cities()
     {
         try
