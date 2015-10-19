@@ -54,13 +54,17 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    private function _basic_validation(array $data) {
+    private function _basic_validation($data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
+<<<<<<< HEAD
                 return false;
+=======
+                return true;
+>>>>>>> t5_users
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -68,7 +72,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function create(array $data) {
+    public function create($data) {
         return $this->_basic_validation($data)
                 ? $this->instance->db->insert($this->tbname, $data)
                 : false;
@@ -97,7 +101,7 @@ class MY_Controller extends CI_Controller {
         return $this->instance->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
-                ->where(1)
+//                ->where(1)
                 ->get()
                 ->result();
     }
@@ -107,8 +111,14 @@ class MY_Controller extends CI_Controller {
      * @param string $query_string
      * @return object
      */
+<<<<<<< HEAD
     public function read_custom($query_string) {
         return $obj->query(strval($query_string))->result();
+=======
+    public function read_custom($string)
+    {
+        return $this->instance->db->query($string)->result();
+>>>>>>> t5_users
     }
 
     /**
@@ -119,7 +129,7 @@ class MY_Controller extends CI_Controller {
      */
     public function update($id,array $data) {
         return $this->_basic_validation($data)
-                ? $this->instance->db->where("id", $id)->update($data)
+                ? $this->instance->db->where("id", $id)->update($this->tbname, $data)
                 : false;
     }
 

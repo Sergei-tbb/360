@@ -230,20 +230,24 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="#" id="pages">Страницы</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Страницы сайта<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="page" data-page="help_pages_view">
-                                    <a href="#">Помощь</a>
-                                </li>
-                                <li>
-                                    <a href="#">Мой кабинет</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="#" id="menus">Меню</a>
                         </li>
+                        <li>
+                            <a href="#" id="roles">Роли</a>
+                        </li>
+                        <li>
+                            <a href="#" id="notifications">Уведомления</a>
+                        </li>
+                        <li>
+                            <a href="#" id="statuses">Статусы</a>
+                        </li>
+                        <li>
+                            <a href="#" id="users">Пользователи</a>
+                        </li>
+
 
 
                     </ul>
