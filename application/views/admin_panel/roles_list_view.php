@@ -13,10 +13,20 @@
             <tr data-id="<?= $data->id ;?>">
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
                 <td><?= $data->name ;?></td>
-                <td><select class="form-control" name="statuses" multiple size="3">
-                        <option value="0">Статус не выбран</option>
-                        <option value="0">Выберите статус</option>
-                    </select></td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статусы<span class="caret"></span></button>
+                        <ul class="dropdown-menu scrollable-menu" style="height: auto; max-height: 200px; overflow-x: hidden;" role="menu">
+                    <? if(empty($roles['statuses'])) : ?>
+                        <li><a href="#">Нет выбраных статусов</a></li>
+                    <? else : ?>
+                        <? foreach($roles['statuses'] as $status) : ?>
+                            <li><a href="#"><?= $status->name ;?></a></li>
+                        <? endforeach ;?>
+                    <? endif ;?>
+                        </ul>
+                    </div>
+                </td>
                 <td>
                     <button type="button" class="btn btn-sm btn-warning edit-role">Изменить</button>
                     <button type="button" class="btn btn-sm btn-danger remove-role">Удалить</button>

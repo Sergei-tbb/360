@@ -15,6 +15,24 @@ $(document).ready(function(){
     });
 });
 
+function displayStatuses(controllerName, methodName) {
+    var pageData="";
+
+    $.ajax({
+        url: "/index.php/ajax/"+controllerName+"/"+methodName,
+        type:"POST",
+        async:false,
+        success: function(data) {
+            pageData = data;
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+
+    return pageData;
+}
+
 /**
  * Get data of page
  * @param pageMethod
@@ -199,6 +217,7 @@ function sendFormData(controllerName, methodName, id, formId) {
         data: form_data,
         dataType: "json",
         success: function(data) {
+
             bootbox.alert(data.message);
             displayListData(controllerName, "display_all", controllerName);
         },
