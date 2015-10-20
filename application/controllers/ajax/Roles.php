@@ -20,17 +20,17 @@ class Roles extends MY_Controller
         $this->result = array();
     }
 
-    public function display_role_status()
-    {
-        $query_str = $this->db->select('id, name')->from('statuses')->order_by('name');
-
-        $data['role']['statuses'] = $this->read_custom($query_str);
-        if(empty($data['roles']['statuses']))
-        {
-            throw new Exception("Select data not found");
-        }
-        $this->load->view("admin_panel/roles_create_view", $data);
-    }
+//    public function display_role_status()
+//    {
+//        $query_str = $this->db->select('id, name')->from('statuses')->order_by('name');
+//
+//        $data['role']['statuses'] = $this->read_custom($query_str);
+//        if(empty($data['roles']['statuses']))
+//        {
+//            throw new Exception("Select data not found");
+//        }
+//        $this->load->view("admin_panel/roles_create_view", $data);
+//    }
 
     /**
      * Create new role

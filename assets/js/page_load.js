@@ -15,24 +15,6 @@ $(document).ready(function(){
     });
 });
 
-function displayStatuses(controllerName, methodName) {
-    var pageData="";
-
-    $.ajax({
-        url: "/index.php/ajax/"+controllerName+"/"+methodName,
-        type:"POST",
-        async:false,
-        success: function(data) {
-            pageData = data;
-        },
-        error: function(data) {
-            console.log(data);
-        }
-    });
-
-    return pageData;
-}
-
 /**
  * Get data of page
  * @param pageMethod
@@ -154,7 +136,7 @@ function deleteObjectModal(id, objectName, controllerName, methodName, idName) {
 function getEditForm(id, controllerName, methodName) {
     var pageData = "";
     $.ajax({
-        url:"ajax/"+controllerName+"/"+methodName,
+        url:"/index.php/ajax/"+controllerName+"/"+methodName,
         type:"POST",
         data: "id="+id,
         async: false,
@@ -181,6 +163,14 @@ function readURL(input) {
     }
 }
 
+/**
+ *
+ * @param controllerName
+ * @param methodName
+ * @param id
+ * @param formId
+ * @returns {boolean}
+ */
 function sendFormDataWithFile(controllerName, methodName, id, formId) {
         var formData = new FormData($("#"+formId)[0]);
         if(id) {
@@ -206,6 +196,13 @@ function sendFormDataWithFile(controllerName, methodName, id, formId) {
     return false;
 }
 
+/**
+ *
+ * @param controllerName
+ * @param methodName
+ * @param id
+ * @param formId
+ */
 function sendFormData(controllerName, methodName, id, formId) {
     var form_data = $("#"+formId).serialize();
     $.ajax({
@@ -220,22 +217,6 @@ function sendFormData(controllerName, methodName, id, formId) {
         },
         error:function() {
             alert("Error!");
-        }
-    });
-}
-
-function save_statuses_rols(statuses, id)
-{
-    $.ajax({
-        url:"/index.php/ajax/statuses_rols/add_statuses_rols",
-        type:"POST",
-        data:"id="+id+"&statuses"+statuses,
-        success: function(data){
-            alert("Success");
-        },
-
-        error: function(){
-            alert("Error");
         }
     });
 }

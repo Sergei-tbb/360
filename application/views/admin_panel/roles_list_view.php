@@ -14,18 +14,7 @@
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
                 <td><?= $data->name ;?></td>
                 <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статусы<span class="caret"></span></button>
-                        <ul class="dropdown-menu scrollable-menu" style="height: auto; max-height: 200px; overflow-x: hidden;" role="menu">
-                    <? if(empty($roles['statuses'])) : ?>
-                        <li><a href="#" id="statuses-rols-edit" title="Изменить статус">Нет выбраных статусов</a></li>
-                    <? else : ?>
-                        <? foreach($roles['statuses'] as $status) : ?>
-                            <li><a href="#"><?= $status->name ;?></a></li>
-                        <? endforeach ;?>
-                    <? endif ;?>
-                        </ul>
-                    </div>
+                    <button type="button" class="btn btn-sm btn-primary edit-statuses-rols">Статусы</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-sm btn-warning edit-role">Изменить</button>
@@ -39,6 +28,14 @@
         $(".remove-role").on("click", function() {
             var id = $(this).parents("tr").data("id");
             deleteObjectModal(id, "роль", "roles", "delete_role", "roles");
+
+        });
+
+
+        $(".edit-statuses-rols").on("click", function() {
+            var id = $(this).parents("tr").data("id");
+            var pageData = getEditForm(id, "statuses_rols", "display_statuses_rols");
+            addObjectModal("Выбрать статус", pageData, "large", "manipulation-statuses-rols", "statuses-rols", "display_statuses_rols", "Изменить", id);
         });
 
         $(".edit-role").on("click", function() {
