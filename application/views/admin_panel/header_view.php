@@ -34,6 +34,8 @@
 
     <!-- Custom CSS -->
     <link href="<?= base_url();?>assets/bootstrap/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/select/chosen.min.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="<?= base_url();?>assets/bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -45,6 +47,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
     <script src="/core/ckeditor/ckeditor.js"></script>
+
+
 
     <![endif]-->
 

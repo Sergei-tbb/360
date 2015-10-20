@@ -188,9 +188,6 @@ function sendFormDataWithFile(controllerName, methodName, id, formId) {
             success:function(data) {
                 bootbox.alert(data.message);
                 displayListData(controllerName, "display_all", controllerName);
-            },
-            error:function() {
-                alert("Error!");
             }
         });
     return false;
@@ -204,16 +201,18 @@ function sendFormDataWithFile(controllerName, methodName, id, formId) {
  * @param formId
  */
 function sendFormData(controllerName, methodName, id, formId) {
-    var form_data = $("#"+formId).serialize();
+    var formData = $("#"+formId).serialize();
     $.ajax({
         url : "/index.php/ajax/"+controllerName+"/"+methodName+"/"+id,
         type: "POST",
-        data: form_data,
+        data: formData,
         dataType: "json",
         success: function(data) {
 
             bootbox.alert(data.message);
-            displayListData(controllerName, "display_all", controllerName);
+            if(controllerName != "statuses_rols") {
+                displayListData(controllerName, "display_all", controllerName);
+            }
         },
         error:function() {
             alert("Error!");
