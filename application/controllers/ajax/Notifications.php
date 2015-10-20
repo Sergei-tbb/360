@@ -13,7 +13,6 @@ class Notifications extends MY_Controller
         parent::__construct(array('tbname' => 'notifications'));
         $this->load->helper(array('form', 'url'));
         $this->load->library("form_validation");
-        $this->load->helper("security");
 
         $this->result = array();
     }

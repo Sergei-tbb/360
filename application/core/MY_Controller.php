@@ -111,6 +111,12 @@ class MY_Controller extends CI_Controller {
         return $this->instance->db->query($query_string)->result();
     }
 
+    public function update_custom($data, array $where) {
+        return $this->_basic_validation($data)
+            ? $this->instance->db->where($where)->update($this->tbname, $data)
+            : false;
+    }
+
     /**
      * Update operation
      * @param integer $id
