@@ -117,13 +117,20 @@ class MY_Controller extends CI_Controller {
             : false;
     }
 
+    public function create_custom($table_name, array $data)
+    {
+        return $this->instance->db->insert($table_name, $data)
+            ? true
+            : false;
+    }
+
     /**
      * Update operation
      * @param integer $id
      * @param array $data
      * @return boolean
      */
-    public function update($id,array $data) {
+    public function update($id, $data) {
         return $this->_basic_validation($data)
                 ? $this->instance->db->where("id", $id)->update($this->tbname, $data)
                 : false;

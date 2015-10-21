@@ -1,17 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ubuntu
- * Date: 05.08.15
- * Time: 13:36
- */
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<body>
 
 <head>
 
@@ -21,34 +9,27 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Админ панель</title>
+    <title>Creative - Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?= base_url();?>assets/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url();?>assets/bootstrap/css/custom.css" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
-    <link href="<?= base_url();?>assets/bootstrap/bower_components/bootstrap/dist/css/bootstrap-custom.css" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="<?= base_url();?>assets/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-
-    <!-- Custom CSS -->
-    <link href="<?= base_url();?>assets/bootstrap/css/sb-admin-2.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="<?=base_url();?>assets/index/css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
-    <link href="<?= base_url();?>assets/bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<?=base_url();?>assets/index/font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="<?=base_url();?>assets/index/css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?=base_url();?>assets/index/css/creative.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-
-
-
     <![endif]-->
-
 
 </head>

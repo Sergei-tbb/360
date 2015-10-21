@@ -18,7 +18,7 @@ $(document).on("click", "#page-add", function() {
                     var date_time = $('input[name="date_time"]').val();
                     var keywords = $('input[name="keywords"]').val();
                     var description = $('textarea[name="description"]').val();
-                    var page_data = tinyMCE.activeEditor.getContent();
+                    var page_data = CKEDITOR.instances.page_data.getData();
                     $.ajax({
                         url: '/index.php/ajax/Pages/new_page/',
                         type: 'POST',
@@ -72,30 +72,19 @@ $(document).on("click", ".page-del", function() {
 });
 
 $(document).on('click', 'input[name="is_published"]', function() {
-    var is_published;
     var id = $(this).parent().parent('tr').data('id_page');
-    if($('input[name="is_published"]').prop('checked'))
-    {
-        is_published = 1;
-    }
-    else
-    {
-        is_published = 0;
-    }
 
-    $.ajax({
-        url: '/index.php/ajax/Pages/publish_page/'+id,
-        type: 'POST',
-        data: {is_published: is_published},
-        success: function(data)
-        {
-            bootbox.alert(data, function() {});
-        },
-        error: function(data)
-        {
-            bootbox.alert(data, function() {});
-        }
-    });
+        $.ajax({
+            url: '/index.php/ajax/Pages/publish_page/' + id,
+            success: function (data) {
+                bootbox.alert(data, function () {
+                });
+            },
+            error: function (data) {
+                bootbox.alert(data, function () {
+                });
+            }
+        });
 });
 
 $(document).on('click', '.page-edit', function() {
@@ -830,6 +819,8 @@ $(document).on('click', '.faq-edit', function(){
 
 
 });
+
+
 
 
 

@@ -145,29 +145,28 @@ class Pages extends MY_Controller
                 throw new Exception("No direct script access allowed.");
             }
 
-            $data = $this->input->post();
+            if($this->read_one($id))
+            {
+                $state = $this->read_one($id);
 
-            if($this->_validation_publish_page()===false)
-            {
-                throw new Exception("Invalid data!");
-            }
+                if($state['0']->is_published==1)
+                {
+                    $new_data = array('is_published' => 0);
+                }
+                elseif($state['0']->is_published==0)
+                {
+                    $new_data = array('is_published' => 1);
+                }
 
-            if($this->update($id, $data))
-            {
-                if($data['is_published']==0)
+                if ($this->update($id, $new_data))
                 {
-                    $string='unpublished';
+                    $this->result = array("message" => "Page was updated successfully.");
+                    echo $this->result['message'];
                 }
-                elseif($data['is_published']==1)
+                else
                 {
-                    $string='published';
+                    throw new Exception(".");
                 }
-                $this->result = array("message" => "Page was {$string} successfully.");
-                echo $this->result['message'];
-            }
-            else
-            {
-                throw new Exception(".");
             }
 
         }
@@ -276,6 +275,20 @@ class Pages extends MY_Controller
         }
     }
 
-
+    public function display_page($id)
+    {
+        if($this->read_custom("SELECT COUNT(*) as count FROM menus_pages WHERE id_page={$id}"))
+        {
+            $count = $this->read_custom("SELECT COUNT(*) as count FROM menus_pages WHERE id_page={$id}");
+            if($count['0']->count==1)
+            {
+                if($this->read_one($id))
+                {
+                    $data['page'] = $this->read_one($id);
+                    $this->load->view('static_page/index_view', $data);
+                }
+            }
+        }
+    }
 
 }

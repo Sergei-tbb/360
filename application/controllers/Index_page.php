@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index_page extends CI_Controller {
+class Index_page extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,10 +18,19 @@ class Index_page extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+	{
+		parent::__construct(array('tbname' => 'menus_pages'));
+	}
+
 	public function index()
 	{
+		$data['pages'] = $this->read_custom("SELECT * FROM menus_pages, pages
+												WHERE menus_pages.id_page=pages.id
+												AND pages.is_published!=0");
 		$this->load->view('index_page/header_view');
-		$this->load->view('index_page/index_view');
+		$this->load->view('index_page/index_view', $data);
 		$this->load->view('index_page/footer_view');
 	}
 }

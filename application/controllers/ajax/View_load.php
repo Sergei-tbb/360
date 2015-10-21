@@ -59,4 +59,21 @@ class View_load extends CI_Controller
             echo $exp->getMessage();
         }
     }
+
+    public function personal_page($page_name)
+    {
+        header("ContentType: application/json");
+        try
+        {
+            if ($this->input->is_ajax_request() == false)
+            {
+                throw new Exception("No direct script access allowed");
+            }
+            $this->load->view("personal_page/".$page_name."_view");
+        }
+        catch (Exception $exp)
+        {
+            echo $exp->getMessage();
+        }
+    }
 }

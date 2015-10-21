@@ -231,7 +231,6 @@ class Users extends MY_Controller
         }
     }
 
-
     public function send_reset()
     {
         try
@@ -333,7 +332,6 @@ class Users extends MY_Controller
         }
     }
 
-
     private function _validation_user()
     {
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -347,6 +345,128 @@ class Users extends MY_Controller
         else
         {
             return true;
+        }
+    }
+
+    public function load_user_data($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            if($this->read_one($id))
+            {
+                $data['user'] = $this->read_one($id);
+                $data['id'] = $id;
+                $this->load->view('personal_page/user_data_view', $data);
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function update_user_data($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            if($this->update($id, $data))
+            {
+                $this->result = array('message' => 'Данные пользователя успешно обновлены');
+                echo $this->result['message'];
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function new_contractor_view($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data['id'] = $id;
+            $this->load->view('personal_page/new_contractor_view', $data);
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function add_contractor($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            $contractor_data = array(
+                'id_user' => $id,
+                'name' => $data['name'],
+                'middlename' => $data['middlename'],
+                'surname' => $data['surname'],
+                'email' => $data['email'],
+            );
+
+            $contractor_phone = array(
+                'phone' => $data['phone'],
+                'is_main' => 1,
+                'is_notify' => 1
+            );
+
+            if($this->create_custom('users_contractors', $contractor_data))
+            {
+                if ($this->create_custom('phones', $contractor_phone))
+                {
+                    if ($this->read_custom('SELECT id FROM phones WHERE phone='.$data['phone']))
+                    {
+                        $phone_id = $this->read_custom('SELECT id FROM phones WHERE phone='.$data['phone']);
+                        if ($this->read_custom('SELECT * FROM users_contractors WHERE email='.$data['email']))
+                        {
+                            $contractor_id = $this->read_custom('SELECT id
+                                                                FROM users_contractors
+                                                                WHERE email='.$data['email']);
+                            if($this->create_custom('contractor_phones', array(
+                                'id_users_contactors' => $contractor_id['id'],
+                                'id_phones' => $phone_id['id'])))
+                            {
+                                $this->result = array('message' => 'Подрядчик успешно добавлен');
+                                echo $this->result['message'];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
         }
     }
 }
