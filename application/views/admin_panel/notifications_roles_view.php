@@ -10,11 +10,19 @@
         <select name="roles_name" data-placeholder="Выберите роли..." class="chosen-container chosen-container-multi" multiple style="width:550px;">
             <?foreach($roles as $data):?>
                 <option value="<?=$data->id;?>"
-                <?foreach($selected as $value):
-                    if($value->selected==$data->id) echo 'selected="selected"'; else echo ''; endforeach;?>>
+                <?
+                if(!empty($selected)):
+                    foreach($selected as $value):
+                        if($value->selected==$data->id)
+                            echo 'selected="selected"';
+                        else
+                            echo 'selected=""';
+                    endforeach;
+                endif;?>>
                     <?=$data->name;?>
                 </option>
             <?endforeach;?>
+
         </select>
         <input type="hidden" name="id" value="<?= $id['id'];?>">
         <br><br>
