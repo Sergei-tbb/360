@@ -155,6 +155,7 @@
                 <?endforeach;?>
                     <input type="button" class="btn btn-success edit_user" value="Редактировать">
                     <input type="button" class="btn btn-warning add_contractor" value="Новый подрядчик">
+                    <input type="button" class="btn btn-danger update_password" value="Изменить пароль">
                 </div>
 
             </div>

@@ -107,3 +107,67 @@ $(document).on('click', '.add_contractor', function(){
         }
     });
 });
+
+$(document).on('click', '.update_password', function(){
+
+    var user_id = $('input[name="id"]').val();
+
+    $.ajax({
+        url: '/index.php/Users/update_password_view/'+user_id,
+        success: function(data) {
+            bootbox.dialog({
+                message: data,
+                title: 'Изменение пароля пользователя',
+                buttons: {
+                    success: {
+                        label: 'Изменить',
+                        className: 'btn-success',
+                        callback: function () {
+                            var new_password = $('input[name="new_password"]').val();
+                            var new_password2 = $('input[name="new_password2"]').val();
+                            var old_password = $('input[name="old_password"]').val();
+                            var id = $('input[name="id_p"]').val();
+
+                            if(new_password==new_password2)
+                            {
+                                $.ajax({
+                                    url: '/index.php/Users/update_password/'+id,
+                                    type: 'POST',
+                                    data: {new_password: new_password, old_password: old_password},
+                                    success: function(data)
+                                    {
+                                        bootbox.alert(data, function(){});
+                                    },
+                                    error: function(data)
+                                    {
+                                        bootbox.alert(data, function(){});
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                bootbox.alert('Пароли не совпадают', function(){});
+                            }
+
+
+
+                        }
+                    },
+                    danger: {
+                        label: 'Отмена',
+                        className: 'btn-danger',
+                        callback: function () {
+
+                        }
+                    }
+                }
+
+            });
+        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+    });
+});
+

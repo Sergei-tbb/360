@@ -361,6 +361,7 @@ class Users extends MY_Controller
             {
                 $data['user'] = $this->read_one($id);
                 $data['id'] = $id;
+                $data['phone'] = $this->read_custom("SELECT * FROM users_phones, phones WHERE users_phones.id_phone=phones.id AND users_phones.id_user={$id}");
                 $this->load->view('personal_page/user_data_view', $data);
             }
         }
@@ -441,27 +442,87 @@ class Users extends MY_Controller
 
             if($this->create_custom('users_contractors', $contractor_data))
             {
-                if ($this->create_custom('phones', $contractor_phone))
+                if($this->read_custom("SELECT id FROM users_contractors WHERE email='{$contractor_data['email']}'"))
                 {
-                    if ($this->read_custom('SELECT id FROM phones WHERE phone='.$data['phone']))
+                    $contractor = $this->read_custom("SELECT id FROM users_contractors WHERE email='{$contractor_data['email']}'");
+                    if(!empty($contractor['0']->id))
                     {
-                        $phone_id = $this->read_custom('SELECT id FROM phones WHERE phone='.$data['phone']);
-                        if ($this->read_custom('SELECT * FROM users_contractors WHERE email='.$data['email']))
+                        if($this->create_custom('phones', $contractor_phone))
                         {
-                            $contractor_id = $this->read_custom('SELECT id
-                                                                FROM users_contractors
-                                                                WHERE email='.$data['email']);
-                            if($this->create_custom('contractor_phones', array(
-                                'id_users_contactors' => $contractor_id['id'],
-                                'id_phones' => $phone_id['id'])))
+                            if($this->read_custom("SELECT id FROM phones WHERE phone='{$contractor_phone['phone']}'"))
                             {
-                                $this->result = array('message' => 'Подрядчик успешно добавлен');
-                                echo $this->result['message'];
+                                $phones = $this->read_custom("SELECT id FROM phones WHERE phone='{$contractor_phone['phone']}'");
+                                $phones_data = array('id_users_contactors' => $contractor['0']->id, 'id_phones' => $phones['0']->id);
+                                if($this->create_custom('contractor_phones', $phones_data))
+                                {
+                                    echo 'Подрядчик успешно добвлен!';
+                                }
+
                             }
                         }
                     }
                 }
             }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function update_password_view($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            if(!empty($id))
+            {
+                $data['id'] = $id;
+                $this->load->view('personal_page/update_password_view', $data);
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function update_password($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            if($this->read_one($id))
+            {
+                $user_data = $this->read_one($id);
+                $old_password = $this->encrypt->decode($user_data['0']->password);
+
+                if($old_password==$data['old_password'])
+                {
+                    if($this->update($id, array('password' => $this->encrypt->encode($data['new_password']))))
+                    {
+                        $this->result = array('message' => 'Password was successfully updated');
+                        echo $this->result['message'];
+                    }
+                }
+                else
+                {
+                    throw new Exception('Введите правильный старый пароль!');
+                }
+            }
+
         }
         catch(Exception $exp)
         {
