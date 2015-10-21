@@ -9,11 +9,12 @@
             </tr>
             <tbody>
             <?foreach($pages as $data):?>
-                <tr>
+                <tr data-id_page="<?= $data->id;?>">
                     <td><?echo $data->id;?></td>
                     <td><?= $data->title;?></td>
                     <td><input type="checkbox" name="is_published" <?if($data->is_published==1) echo 'checked="checked"';?> ></td>
                     <td>
+                        <input type="button" class="btn btn-success page-menu" value="Меню">
                         <input type="button" class="btn btn-warning page-edit" value="Редактировать">
                         <input type="button" class="btn btn-danger page-del" value="Удалить">
                     </td>

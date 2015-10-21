@@ -228,19 +228,47 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-
                         <li>
                             <a href="#" id="pages">Страницы</a>
+                        </li>
+                        <li>
+                            <a href="#" id="menus">Меню</a>
                         </li>
                         <li>
                             <a href="#" id="roles">Роли</a>
                         </li>
                         <li>
+                            <a href="#" id="notifications">Уведомления</a>
+                        </li>
+                        <li>
                             <a href="#" id="statuses">Статусы</a>
                         </li>
-
-
-
+                        <li>
+                            <a href="#" id="users">Пользователи</a>
+                        </li>
+                        <li>
+                            <a href="#" id="delivery">Службы доставки <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                <li>
+                                    <a href="#" id="addresses">Отделения</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="countries">Страны</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="regions">Регионы</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="cities">Города</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="streets">Улицы</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" id="faq">Раздел помощи</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -143,6 +143,24 @@ class Roles extends MY_Controller
         }
     }
 
+
+    public function get_list_roles()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            return $this->read_all();
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+        }
+    }
+
     /**
      * Edit role
      * public
@@ -178,6 +196,38 @@ class Roles extends MY_Controller
             $this->result = array("message" => $ext->getMessage());
         }
     }
+
+
+    public function get_list_notifications($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed");
+            }
+            $data = $this->input->post();
+
+            $string = "SELECT notifications_roles.id as nr_id, notifications.id as not_id, notifications.notification, roles.id as roles_id, roles.name
+                        FROM notifications, notifications_roles, roles
+                        WHERE notifications_roles.id_role={$id}
+                        AND notifications_roles.id_role=roles.id";
+            if($this->read_custom($string) === FALSE)
+            {
+                throw new Exception("Data was not update");
+            }
+            else
+            {
+                $data['notifications'] = $this->read_custom($string);
+                $this->load->view('admin_panel/roles_notifications_view', $data);
+            }
+        }
+        catch(Exception $ext)
+        {
+            $this->result = array("message" => $ext->getMessage());
+        }
+    }
+
 
     /**
      * Validate form for create and edit of role

@@ -37,6 +37,22 @@ function getPageData(pageMethod, pageName, pageType) {
     return pageData;
 }
 
+function getPageDataFolders(pageMethod, folderName, pageName, pageType) {
+    var pageData ="";
+
+    $.ajax({
+        url: "/index.php/ajax/View_load/"+pageMethod+"/"+folderName+"/"+pageName,
+        dataType: pageType,
+        type: "get",
+        async: false,
+        success: function(data) {
+            pageData = data;
+        }
+    });
+    return pageData;
+}
+
+
 /**
  * Display modal window of create and edit
  * @param title - title of modal
@@ -218,6 +234,67 @@ function sendFormData(controllerName, methodName, id, formId) {
             alert("Error!");
         }
     });
+}
+
+function updateList(name_module, name_method, inId)
+{
+    $.ajax({
+        url: '/index.php/ajax/'+name_module+'/'+name_method,
+        success: function(data)
+        {
+            $('.'+inId+'-body').empty();
+            $('.'+inId+'-body').html(data);
+        },
+        error: function(data)
+        {
+            $('.'+inId+'-body').html(data);
+        }
+    });
+}
+
+function loadView(module_name, method_name, type, modal_title)
+{
+    $.ajax({
+        url: '/index.php/ajax/'+module_name+'/'+method_name,
+        success: function(data)
+        {
+            //page_data = data;
+            if(type=='add')
+            {add_new(data, modal_title);}
+        }
+    });
+}
+
+
+function add_new(data, title)
+{
+    bootbox.dialog({
+        message: data,
+        title: title,
+        buttons: {
+            success: {
+                label: 'Создать',
+                className: 'btn-success',
+                callback: function()
+                {
+                    //if(isArray(data_callback)===true)
+                    //{
+                    //    bootbox.alert('Массив');
+                    //}
+                    //else
+                    //{
+                    //    bootbox.alert('Строка');
+                    //}
+                }
+            },
+            danger: {
+                label: 'Закрыть',
+                className: 'btn-danger',
+                callback: {}
+            }
+        }
+    });
+}
 }
 
 function updateList(name_module, name_method, inId)

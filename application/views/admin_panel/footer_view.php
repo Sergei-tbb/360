@@ -22,6 +22,8 @@
 
     <script src="<?= base_url();?>assets/js/page_load.js"></script>
 
+    <script src="<?= base_url();?>assets/js/users.js"></script>
+
     <script src="<?= base_url();?>assets/bootbox/bootbox.js"></script>
 
     <script src="<?= base_url();?>assets/js/modal.js"></script>
@@ -31,6 +33,14 @@
     <script src="<?= base_url();?>assets/select/chosen.proto.js"></script>
 
     <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+
+    <script src="<?= base_url();?>assets/select/chosen.jquery.js"></script>
+
+
+    <script src="<?= base_url();?>assets/select/chosen.proto.js"></script>
+
+    <script src="<?= base_url();?>assets/js/delivery.js"></script>
+
 
 </body>
 </html>
