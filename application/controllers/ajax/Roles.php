@@ -219,7 +219,7 @@ class Roles extends MY_Controller
             }
             else
             {
-                $data['notifications'] = $this->read_custom_($string);
+                $data['notifications'] = $this->read_custom($string);
                 $this->load->view('admin_panel/roles_notifications_view', $data);
             }
         }
