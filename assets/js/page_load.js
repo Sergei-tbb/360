@@ -294,7 +294,7 @@ function add_new(data, title)
             }
         }
     });
-}
+
 }
 
 function updateList(name_module, name_method, inId)
