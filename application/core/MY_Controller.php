@@ -111,10 +111,17 @@ class MY_Controller extends CI_Controller {
         return $this->instance->db->query($query_string)->result();
     }
 
-    public function update_custom($data, array $where) {
+    public function update_custom($data, $where) {
         return $this->_basic_validation($data)
             ? $this->instance->db->where($where)->update($this->tbname, $data)
             : false;
+    }
+
+    public function update_free_custom($query_string)
+    {
+        return $this->instance->db->query($query_string)
+            ? false
+            : true;
     }
 
     public function create_custom($table_name, array $data)

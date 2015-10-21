@@ -21,6 +21,11 @@
                         <a href="#" class="page-scroll static_page"><?=$data->title;?></a>
                     </li>
                 <?endforeach;?>
+                <?foreach($faq as $val):?>
+                    <li data-id_faq="<?=$val->id;?>">
+                        <a href="#" class="page-scroll faq_page"><?=$val->title;?></a>
+                    </li>
+                <?endforeach;?>
 
                 <li>
                     <a href="<?=base_url();?>index.php/admin_panel/" class="page-scroll">Админ-панель</a>

@@ -117,7 +117,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="index.html">Персональные данные</a>
+                    <a href="<?base_url();?>/index.php/personal_page/">Персональные данные</a>
                 </li>
 
             </ul>

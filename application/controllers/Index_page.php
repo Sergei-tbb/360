@@ -29,6 +29,7 @@ class Index_page extends MY_Controller {
 		$data['pages'] = $this->read_custom("SELECT * FROM menus_pages, pages
 												WHERE menus_pages.id_page=pages.id
 												AND pages.is_published!=0");
+		$data['faq'] = $this->read_custom("SELECT * FROM faq");
 		$this->load->view('index_page/header_view');
 		$this->load->view('index_page/index_view', $data);
 		$this->load->view('index_page/footer_view');

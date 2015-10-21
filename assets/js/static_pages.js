@@ -11,3 +11,18 @@ $(document).on('click', '.static_page', function(){
         }
     });
 });
+
+$(document).on('click', '.faq_page', function(){
+    var id = $(this).parent('li').data('id_faq');
+    $.ajax({
+        url: '/index.php/ajax/Pages/display_faq/'+id,
+        success: function(data)
+        {
+            $('.container').html(data);
+        },
+        error: function(data)
+        {
+            $('.container').html(data);
+        }
+    });
+});

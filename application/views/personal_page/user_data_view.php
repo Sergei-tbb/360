@@ -10,8 +10,9 @@
         <label for="email_m">E-mail</label>
         <input type="text" name="email_m" class="form-control" value="<?=$data->email;?>">
         <label for="phone_m">Телефон</label>
-        <input type="text" name="phone_m" class="form-control" value="<?if(!empty($phones['0']->phone)) echo $phones['0']->phone; else echo '';?>">
+        <input type="text" name="phone_m" class="form-control" value="<?if(!empty($phone['0']->phone)) echo $phone['0']->phone; else echo '';?>">
         <input type="hidden" name="id" value="<?=$data->id;?>">
+        <input type="hidden" name="id_phone" value="<?if(!empty($phone['0']->id_phone)) echo $phone['0']->id_phone; else echo '';?>">
         <?endforeach;?>
     </div>
 </div>

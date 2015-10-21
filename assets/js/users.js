@@ -21,22 +21,25 @@ $(document).on('click', '.edit_user', function(){
                             var middlename = $('input[name="middlename_m"]').val();
                             var surname = $('input[name="surname_m"]').val();
                             var email = $('input[name="email_m"]').val();
+                            var phone = $('input[name="phone_m"]').val();
+                            var id_phone = $('input[name="id_phone"]').val();
                             var id = $('input[name="id"]').val();
 
                             $.ajax({
                                 url: '/index.php/Users/update_user_data/'+id,
                                 type: 'POST',
-                                data: {name: name, surname: surname, middlename: middlename, email: email},
+                                data: {name: name, surname: surname, middlename: middlename, email: email, phone: phone, id_phone: id_phone},
                                 success: function(data)
                                 {
                                     bootbox.alert(data, function(){});
-                                    location.reload();
+
                                 },
                                 error: function(data)
                                 {
                                     bootbox.alert(data, function(){});
                                 }
                             });
+                            location.reload();
                         }
                     },
                     danger: {

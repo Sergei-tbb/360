@@ -287,7 +287,9 @@ class Users extends MY_Controller
             }
             else
             {
+                $this->load->view('index_page/header_view');
                 $this->load->view('index_page/recovery_password_view', $data);
+                $this->load->view('index_page/footer_view');
             }
         }
         catch(Exception $exp)
@@ -308,21 +310,17 @@ class Users extends MY_Controller
 
             $data = $this->input->post();
 
-            if (!empty($id) and !empty($data['password']) and !empty($data['confirm_password']))
+            if(!empty($id) and !empty($data['password']))
             {
-                if ($data['password'] == $data['confirm_password'])
+                if ($this->update_custom(array('password' => $this->encrypt->encode($data['password'])), array('id' => $id)))
                 {
-                    if ($this->update_custom(array('password' => $this->enctypt->encode($data['password'])), array('id' => $id)))
-                    {
-                        $this->result = array('message' => 'Пароль успешно восстановлен! Вы можете войти в свою учетную запись');
-                        echo $this->result['message'];
-                    }
-
+                    $this->result = array('message' => 'Пароль успешно восстановлен! Вы можете войти в свою учетную запись');
+                    echo $this->result['message'];
                 }
-                else
-                {
-                    throw new Exception("Пароли не совпадают!");
-                }
+            }
+            else
+            {
+                throw new Exception("При сбросе пароля произошла ошибка! Попробуйте позже.");
             }
         }
         catch(Exception $exp)
@@ -383,10 +381,20 @@ class Users extends MY_Controller
 
             $data = $this->input->post();
 
-            if($this->update($id, $data))
+            $user_data = array(
+                'name' => $data['name'],
+                'middlename' => $data['middlename'],
+                'surname' => $data['surname'],
+                'email' => $data['email']
+            );
+
+            if($this->update($id, $user_data))
             {
-                $this->result = array('message' => 'Данные пользователя успешно обновлены');
-                echo $this->result['message'];
+                if($this->update_free_custom("UPDATE phones SET phone={$data['phone']} WHERE id={$data['id_phone']}"))
+                {
+                    $this->result = array('message' => 'Данные пользователя успешно обновлены');
+                    echo $this->result['message'];
+                }
             }
         }
         catch(Exception $exp)

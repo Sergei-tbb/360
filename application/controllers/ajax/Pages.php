@@ -291,4 +291,18 @@ class Pages extends MY_Controller
         }
     }
 
+
+    public function display_faq($id)
+    {
+        if($this->read_custom("SELECT *, COUNT(*) as count FROM faq WHERE id={$id}"))
+        {
+            $count = $this->read_custom("SELECT *, COUNT(*) as count FROM faq WHERE id={$id}");
+            if($count['0']->count==1)
+            {
+                $data['page'] = $count;
+                $this->load->view('static_page/index_view', $data);
+            }
+        }
+    }
+
 }

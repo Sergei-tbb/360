@@ -110,19 +110,26 @@ $(document).on('click', '.reset_password', function(){
     var password = $('input[name="new_password"]').val();
     var confirm_password = $('input[name="confirm_password"]').val();
     var id = $('input[name="id"]').val();
-    $.ajax({
-        url: '/index.php/Users/save_new_password/'+id,
-        type: 'POST',
-        data: {password: password, confirm_password: confirm_password},
-        success: function(data)
-        {
-            bootbox.alert(data, function(){});
-        },
-        error: function(data)
-        {
-            bootbox.alert(data, function(){});
-        }
-    });
+    if(password==confirm_password)
+    {
+        $.ajax({
+            url: '/index.php/Users/save_new_password/' + id,
+            type: 'POST',
+            data: {password: password},
+            success: function (data)
+            {
+                bootbox.alert(data, function(){});
+            },
+            error: function (data)
+            {
+                bootbox.alert(data, function(){});
+            }
+        });
+    }
+    else if(password!=confirm_password)
+    {
+        bootbox.alert('Пароли не совпадают!', function(){});
+    }
 });
 
 
@@ -143,7 +150,7 @@ $(document).on('click', '.forgot-password', function(){
                     var email = $('input[name="email"]').val();
 
                     $.ajax({
-                        url: '/index.php/Users/reset_password/',
+                        url: '/index.php/Users/send_reset/',
                         type: 'POST',
                         data: {email: email},
                         success: function(data)
