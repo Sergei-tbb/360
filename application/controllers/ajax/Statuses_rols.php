@@ -34,7 +34,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id, name,")->from("statuses")->order_by("name");
-            $all_statuses = $this->read_custom($query_str);
+            $all_statuses = $this->read_custom_($query_str);
 
             if(!empty($all_statuses))
             {
@@ -42,7 +42,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id_statuses")->from($this->tbname)->where("id_roles", $data['id']);
-            $selected = $this->read_custom($query_str);
+            $selected = $this->read_custom_($query_str);
             if(!empty($selected))
             {
                 $data['selected'] = $selected;
@@ -78,7 +78,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id_statuses")->from("statuses_rols")->where("id_roles", $id);
-            $query_res = $this->read_custom($query_str);
+            $query_res = $this->read_custom_($query_str);
 
             if(!empty($query_res))
             {
@@ -97,7 +97,7 @@ class Statuses_rols extends MY_Controller
             $delete_id = array_diff($select, $data['id_statuses']);
             $insert_id = array_diff($data['id_statuses'],$select);
 
-            if(!is_null($delete_id) || !is_null($insert_id))
+            if(count($delete_id) || count($insert_id))
             {
                 if($this->_update_statuses($delete_id, $insert_id, $id))
                 {
@@ -121,23 +121,30 @@ class Statuses_rols extends MY_Controller
      */
     private function _update_statuses($delete_id, $insert_id, $id)
     {
-        if(!is_null($delete_id))
+        $delete = TRUE;
+        $insert = TRUE;
+        if(count($delete_id))
         {
             foreach($delete_id as $id_statuses)
             {
-                $this->db->where("id_roles", $id, "id_statuses", $id_statuses)->delete("statuses_rols");
+                $delete_data = array("id_roles" => $id, "id_statuses" => $id_statuses);
+                if($this->db->delete("statuses_rols", $delete_data) === FALSE)
+                {
+                    $delete = FALSE;
+                }
             }
-            $delete = TRUE;
         }
 
-        if(!is_null($insert_id))
+        if(count($insert_id))
         {
             foreach($insert_id as $id_statuses)
             {
                 $insert_data = array("id_roles" => $id, "id_statuses" => $id_statuses);
-                $this->db->insert("statuses_rols", $insert_data);
+                if($this->db->insert("statuses_rols", $insert_data) === FALSE)
+                {
+                    $insert = FALSE;
+                }
             }
-            $insert = TRUE;
         }
         if($delete === TRUE || $insert ===TRUE)
         {
