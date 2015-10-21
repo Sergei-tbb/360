@@ -14,6 +14,6 @@
 class Delivery_streets_model extends CI_Model {
 
     var $id;
-
+    var $id_city;
     var $name;
 }

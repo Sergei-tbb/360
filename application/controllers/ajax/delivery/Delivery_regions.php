@@ -197,7 +197,7 @@ class Delivery_regions extends MY_Controller {
     /**
      * method for addition regions to country
      */
-    public function add_country_regions($id)
+    public function add_country_regions()
     {
         try
         {
@@ -208,15 +208,29 @@ class Delivery_regions extends MY_Controller {
 
             $data = $this->input->post();
 
-            if ($this->update($id, $data))
-            {
-                $this->result = array('message' => "Регион был успешно добавлен!");
-                echo $this->result['message'];
+            $count = count($data['id_region']);
+
+            for($i=0; $i<=$count-1; $i++) {
+                if ($this->read_custom("SELECT COUNT(*) as count FROM delivery_regions WHERE id={$data['id_region'][$i]} AND id_country={$data['id_country']}"))
+                {
+                    $result = $this->read_custom("SELECT COUNT(*) as count FROM delivery_regions WHERE id={$data['id_region'][$i]} AND id_country={$data['id_country']}");
+                    if ($result['0']->count == 0)
+                    {
+                        $id = $data['id_region'][$i];
+                        if ($this->update($id, array('id_country' => $data['id_country'])))
+                        {
+                            $this->result = array('message' => "Регион был успешно добавлен!");
+                        }
+                        else
+                        {
+                            throw new Exception("Can't add new region.");
+                        }
+
+                    }
+
+                }
             }
-            else
-            {
-                throw new Exception("Can't add new region.");
-            }
+            echo $this->result['message'];
         }
         catch(Exception $exp)
         {
@@ -230,10 +244,16 @@ class Delivery_regions extends MY_Controller {
      */
     public function load_regions_cities($id)
     {
-        $string = "SELECT * FROM delivery_cities";
-        $string_regions_cities = "SELECT * FROM delivery_regions_cities";
+        $string = "SELECT delivery_cities.id_region as city_region,
+                          delivery_cities.id as city_id,
+                          delivery_cities.name as city_name
+                    FROM delivery_cities, delivery_regions
+                    WHERE delivery_cities.id_region={$id}
+                    OR delivery_cities.id_region=0
+                    GROUP BY city_id;";
+        $string_regions = "SELECT * FROM delivery_regions";
+        $data['regions'] = $this->read_custom($string_regions);
         $data['cities'] = $this->read_custom($string);
-        $data['regions_cities'] = $this->read_custom($string_regions_cities);
         $data['id'] = $id;
 
         if(empty($data['cities']))

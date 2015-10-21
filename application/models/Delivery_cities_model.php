@@ -14,7 +14,7 @@
 class Delivery_cities_model extends CI_Model {
 
     var $id;
-
+    var $id_region;
     var $name;
 
 }

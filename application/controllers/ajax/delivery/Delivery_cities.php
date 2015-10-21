@@ -28,11 +28,9 @@ class Delivery_cities extends MY_Controller {
      */
     public function get_list_cities()
     {
-        $string_cities_regions = "SELECT * FROM delivery_regions_cities";
         $string = "SELECT * FROM delivery_regions";
         $data['cities'] = $this->read_all();
         $data['regions'] = $this->read_custom($string);
-        $data['cities_regions'] = $this->read_custom($string_cities_regions);
         if(empty($data['cities']) or empty($data['regions']))
         {
             $this->result = array('message' => 'Для отображения списка городов нужно добавить хотя бы один город!');
@@ -183,4 +181,49 @@ class Delivery_cities extends MY_Controller {
 
         $this->form_validation->run();
     }
+
+
+    public function add_regions_cities()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            $count = count($data['id_city']);
+
+            for($i=0; $i<=$count-1; $i++)
+            {
+
+                $string = "SELECT COUNT(*) as count FROM delivery_cities
+                            WHERE id_region='{$data['id_region']}'
+                            AND id='{$data['id_city'][$i]}'";
+
+                $result_count = $this->read_custom($string);
+
+                if($result_count['0']->count==0)
+                {
+                    if($this->update($data['id_city'][$i], array('id_region' => $data['id_region'])))
+                    {
+                        $this->result = array('message' => 'Город был успешно добавлен!');
+                    }
+                    else
+                    {
+                        throw new Exception("Can't add city to region.");
+                    }
+                }
+            }
+            echo $this->result['message'];
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
 }

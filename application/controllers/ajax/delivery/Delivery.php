@@ -174,17 +174,10 @@ class Delivery extends MY_Controller
      */
     public function load_delivery_department_view($id)
     {
-        $string_countries = "SELECT * FROM delivery_countries";
-        $string_regions = "SELECT * FROM delivery_regions";
-        $string_cities = "SELECT * FROM delivery_cities";
-        $string_streets = "SELECT * FROM delivery_streets";
-
-        $data['countries'] = $this->read_custom($string_countries);
-        $data['regions'] = $this->read_custom($string_regions);
-        $data['cities'] = $this->read_custom($string_cities);
-        $data['streets'] = $this->read_custom($string_streets);
+        $data['countries'] = $this->read_custom("SELECT * FROM delivery_countries");
+        $data['companies'] = $this->read_custom("SELECT * FROM delivery_companies");
         $data['id'] = $id;
-        if(empty($data['countries']) or empty($data['regions']) or empty($data['cities']) or empty($data['streets']))
+        if(empty($data['companies']) and empty($data['countries']))
         {
             $this->result = array('message' => 'Ошибка при загрузке данных!');
             echo $this->result['message'];
@@ -193,6 +186,32 @@ class Delivery extends MY_Controller
             $this->load->view('admin_panel/delivery_departments_new_view', $data);
         }
     }
+
+
+
+    public function load_regions($id)
+    {
+        $data['regions'] = $this->read_custom("SELECT * FROM delivery_regions WHERE id_country={$id}");
+        $this->load->view('admin_panel/delivery_department/delivery_department_regions_view', $data);
+    }
+
+    public function load_cities($id)
+    {
+        $data['cities'] = $this->read_custom("SELECT * FROM delivery_cities WHERE id_region={$id}");
+        $this->load->view('admin_panel/delivery_department/delivery_department_cities_view', $data);
+    }
+
+    public function load_streets($id)
+    {
+        $data['streets'] = $this->read_custom("SELECT * FROM delivery_streets WHERE id_city={$id}");
+        $this->load->view('admin_panel/delivery_department/delivery_department_streets_view', $data);
+    }
+
+    public function load_inputs()
+    {
+        $this->load->view('admin_panel/delivery_department/delivery_department_inputs_view');
+    }
+
 
     private function _validate_company()
     {
