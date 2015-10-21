@@ -10,17 +10,17 @@
         <label for="cities">Города</label>
         <select name="cities" multiple class="form-control" data-placeholder="Выберите города...">
             <?foreach($cities as $city):?>
-                <option value="<?=$city->id;?>"
-                    <?foreach($regions_cities as $data):
-                        if($city->id==$data->id_city)
+                <option value="<?=$city->city_id;?>"
+                    <?foreach($regions as $data):
+                        if($city->city_region==$data->id)
                             echo 'selected="selected"';
                         else
                             echo '';
-                    endforeach;
-                    ?>>
-                    <?=$city->name;?>
+                    endforeach;?>>
+                    <?=$city->city_name;?>
                 </option>
             <?endforeach;?>
+
         </select>
 
         <input type="hidden" name="id" value="<?=$id;?>">

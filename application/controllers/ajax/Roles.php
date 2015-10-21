@@ -208,10 +208,11 @@ class Roles extends MY_Controller
             }
             $data = $this->input->post();
 
-            $string = "SELECT notifications_roles.id as nr_id, notifications.id as not_id, notifications.notification, roles.id as roles_id, roles.name
+            $string = "SELECT notifications_roles.id as nr_id, notifications.id as not_id, notifications.notification, roles.name
                         FROM notifications, notifications_roles, roles
                         WHERE notifications_roles.id_role={$id}
-                        AND notifications_roles.id_role=roles.id";
+                        AND notifications_roles.id_role=roles.id
+                        AND notifications_roles.id_notification=notifications.id";
             if($this->read_custom($string) === FALSE)
             {
                 throw new Exception("Data was not update");

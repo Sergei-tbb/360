@@ -85,35 +85,17 @@ class Migration_delivery extends CI_Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
                 'null' => FALSE
+            ),
+            'id_region' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE
             )
         );
 
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->add_field($fields_delivery_cities);
         $this->dbforge->create_table('delivery_cities');
-
-        $fields_delivery_regions_cities = array(
-            'id' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE,
-                'auto_increment' => TRUE
-            ),
-            'id_region' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE
-            ),
-            'id_city' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE
-            ),
-        );
-
-        $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_field($fields_delivery_regions_cities);
-        $this->dbforge->create_table('delivery_regions_cities');
 
         $fields_delivery_streets = array(
             'id' => array(
@@ -126,35 +108,17 @@ class Migration_delivery extends CI_Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
                 'null' => FALSE
+            ),
+            'id_city' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE
             )
         );
 
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->add_field($fields_delivery_streets);
         $this->dbforge->create_table('delivery_streets');
-
-        $fields_delivery_regions_cities_streets = array(
-            'id' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE,
-                'auto_increment' => TRUE
-            ),
-            'id_region_city' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE
-            ),
-            'id_street' => array(
-                'type' => 'INT',
-                'constraint' => 11,
-                'null' => FALSE
-            ),
-        );
-
-        $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_field($fields_delivery_regions_cities_streets);
-        $this->dbforge->create_table('delivery_regions_cities_streets');
 
         $fields_delivery_addresses = array(
             'id' => array(
@@ -168,11 +132,26 @@ class Migration_delivery extends CI_Migration
                 'constraint' => 11,
                 'null' => FALSE
             ),
-            'id_region_city_street' => array(
+            'id_country' => array(
                 'type' => 'INT',
                 'constraint' => 11,
                 'null' => FALSE
             ),
+            'id_region' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE
+            ),
+            'id_city' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE
+             ),
+             'id_street' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => FALSE
+             ),
             'house_number' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 10,
@@ -195,6 +174,7 @@ class Migration_delivery extends CI_Migration
             ),
         );
 
+
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->add_field($fields_delivery_addresses);
         $this->dbforge->create_table('delivery_addresses');
@@ -206,9 +186,7 @@ class Migration_delivery extends CI_Migration
         $this->dbforge->drop_table('delivery_countries');
         $this->dbforge->drop_table('delivery_regions');
         $this->dbforge->drop_table('delivery_cities');
-        $this->dbforge->drop_table('delivery_regions_cities');
         $this->dbforge->drop_table('delivery_streets');
-        $this->dbforge->drop_table('delivery_regions_cities_streets');
         $this->dbforge->drop_table('delivery_addresses');
     }
 }

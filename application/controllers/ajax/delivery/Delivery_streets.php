@@ -29,6 +29,7 @@ class Delivery_streets extends MY_Controller {
     public function get_list_streets()
     {
         $data['streets'] = $this->read_all();
+        $data['cities'] = $this->read_custom("SELECT * FROM delivery_cities");
         if(empty($data['streets']))
         {
             $this->result = array('message' => 'Для отображения списка улиц нужно добавить хотя бы одну улицу!');
@@ -171,24 +172,68 @@ class Delivery_streets extends MY_Controller {
     }
 
     /**
-     * @param $region
      * @param $city
      * region - id region
      * city - id city
      * method for getting list of the streets in cities
      */
-    public function load_streets($region, $city)
+    public function load_streets($city)
     {
-        $string = "SELECT * FROM delivery_regions_cities_streets";
-        $data['region'] = $region;
-        $data['city'] = $city;
-        $data['streets'] = $this->read_all();
-        $data['rcs'] = $this->read_custom($string);
+        $data['streets'] = $this->read_custom("SELECT delivery_streets.id_city as id_city,
+                                                delivery_streets.id as street_id,
+                                                delivery_streets.name as street_name
+                                                FROM delivery_cities, delivery_streets
+                                                WHERE delivery_streets.id_city={$city}
+                                                OR delivery_streets.id_city=0
+                                                GROUP BY street_id;");
+        $data['id'] = $city;
+        $data['cities'] = $this->read_custom("SELECT * FROM delivery_cities");
         if(!empty($data['streets']))
         {
             $this->load->view('admin_panel/delivery_cities_streets_view', $data);
         }
     }
+
+    public function create_city_street()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            $count = count($data['id_street']);
+
+            for($i=0; $i<=$count-1; $i++)
+            {
+                $select_street = $this->read_custom("SELECT COUNT(*) as count
+                                                    FROM delivery_streets
+                                                    WHERE id={$data['id_street'][$i]}
+                                                    AND id_city={$data['id_city']}");
+                if($select_street['0']->count==0)
+                {
+                    if($this->update($data['id_street'][$i], array('id_city' => $data['id_city'])))
+                    {
+                        $this->result = array('message' => 'Улица(ы) успешно привязаны к городу');
+                    }
+                    else
+                    {
+                        throw new Exception('Ошибка при привязке улиц к городу');
+                    }
+                }
+            }
+            echo $this->result['message'];
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
 
     private function _validate_street()
     {

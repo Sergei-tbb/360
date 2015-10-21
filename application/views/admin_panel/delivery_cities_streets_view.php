@@ -10,16 +10,19 @@
         <label for="streets">Улицы</label>
         <select name="streets" multiple class="form-control" data-placeholder="Выберите улицы...">
             <?foreach($streets as $data):?>
-                <option value="<?=$data->id;?>"
-                    <?foreach($rcs as $val):
-                        if($val->id_street==$data->id) echo 'selected="selected"';
+                <option value="<?=$data->street_id;?>"
+                    <?foreach($cities as $city):
+                        if($city->id==$data->id_city):
+                            echo 'selected="selected"';
+                        else:
+                            echo '';
+                        endif;
                     endforeach;?>>
-                    <?=$data->name;?>
+                    <?=$data->street_name;?>
                 </option>
             <?endforeach;?>
         </select>
-        <input type="hidden" name="region" value="<?=$region;?>">
-        <input type="hidden" name="city" value="<?=$city;?>">
+        <input type="hidden" name="id" value="<?=$id;?>">
 
     </div>
 </div>

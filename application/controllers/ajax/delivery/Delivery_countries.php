@@ -178,8 +178,14 @@ class Delivery_countries extends MY_Controller {
      */
     public function load_countries_regions_view($id)
     {
-        $string = "SELECT * FROM delivery_regions";
+        $string = "SELECT delivery_regions.id_country as region_country, delivery_regions.id as region_id,
+                    delivery_regions.name as region_name
+                    FROM delivery_countries, delivery_regions
+                    WHERE delivery_regions.id_country={$id}
+                    OR delivery_regions.id_country=0
+                    GROUP BY region_id;";
         $data['regions'] = $this->read_custom($string);
+        $data['selected'] = $this->read_custom('SELECT * FROM delivery_countries');
         $data['id'] = $id;
         if(empty($data['regions']))
         {
