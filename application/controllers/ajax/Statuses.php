@@ -13,6 +13,11 @@ class Statuses extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * Crete new status
+     * public
+     * return null
+     */
     public function add_new_statuses()
     {
         try
@@ -66,6 +71,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Display list of all statuses
+     * public
+     * return null
+     */
     public function display_all()
     {
         $data['statuses']  = $this->read_all();
@@ -75,6 +85,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Delete status
+     * public
+     * return null
+     */
     public function delete_statuses()
     {
         try
@@ -109,6 +124,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Display data of one status
+     * public
+     * return null
+     */
     public function get_one_statuses()
     {
         try
@@ -140,6 +160,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Edit status
+     * public
+     * return null
+     */
     public function edit_statuses()
     {
         try {
@@ -185,6 +210,13 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Do image upload
+     * private
+     * @param int $id - id of status
+     * @return mixed
+     * @throws Exception
+     */
     private function _do_upload($id)
     {
         $config['upload_path']   = 'download/statuses_image';
@@ -209,15 +241,26 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Get id of current status
+     * private
+     * @param array $data - array with name of status
+     * @return int
+     */
     private function _get_id($data)
     {
         $query_str = $this->db->select("id")->from($this->tbname)->where("name", $data['name'])->limit(1)->order_by('id', 'DESC');
 
         $id = $this->read_custom_($query_str);
 
-        return $id[0]->id;
+        return (int)$id[0]->id;
     }
 
+    /**
+     * Validate input data
+     * private
+     * @return mixed
+     */
     private function _validate_statuses()
     {
         $this->form_validation->set_rules(
@@ -228,6 +271,12 @@ class Statuses extends MY_Controller
         return $this->form_validation->run();
     }
 
+    /**
+     * Delete image
+     * private
+     * @param int $id - status id
+     * @return bool
+     */
     private function _delete_picture($id)
     {
         $picture_name = $this->_get_picture_name($id);
@@ -242,6 +291,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Get image name
+     * @param int $id - id of status
+     * @return string
+     */
     private function _get_picture_name($id)
     {
         $query_str = $this->db->select("picture")->from($this->tbname)->where("id", $id)->limit(1);
