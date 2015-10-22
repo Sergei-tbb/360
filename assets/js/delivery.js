@@ -448,10 +448,9 @@ $(document).on('click', '.city-edit', function() {
 
 $(document).on('click', '.city-streets', function() {
 
-    var id_region = $('input[name="region"]').val();
     var id_city = $(this).parent().parent('tr').data('id_city');
     $.ajax({
-        url: '/index.php/ajax/delivery/Delivery_streets/load_streets/'+id_region+'/'+id_city,
+        url: '/index.php/ajax/delivery/Delivery_streets/load_streets/'+id_city,
         success: function(data)
         {
             bootbox.dialog({
@@ -463,13 +462,12 @@ $(document).on('click', '.city-streets', function() {
                         className: "btn-success",
                         callback: function()
                         {
-                            var id_region = $('input[name="region"]').val();
-                            var city = $('input[name="city"]').val();
+                            var city = $('input[name="id"]').val();
                             var id_street = $('select[name="streets"]').val();
                             $.ajax({
-                                url: '/index.php/ajax/delivery/Delivery_region_cities_streets/create_new_region_city_street/'+id_region+'/'+id_city,
+                                url: '/index.php/ajax/delivery/Delivery_streets/create_city_street/',
                                 type: 'POST',
-                                data: {id_street: id_street},
+                                data: {id_street: id_street, id_city: city},
                                 success: function(data)
                                 {
                                     bootbox.alert(data, function(){});
@@ -619,16 +617,20 @@ $(document).on('click', '.add-department', function() {
                         className: "btn-success",
                         callback: function()
                         {
-                            var street = $('select[name="street"]').val();
-                            var id_company = $('input[name="id"]').val();
+                            var country = $('select[name="country"] option:selected').val();
+                            var region = $('select[name="region"] option:selected').val();
+                            var city = $('select[name="city"] option:selected').val();
+                            var street = $('select[name="street"] option:selected').val();
                             var house_number = $('input[name="house_number"]').val();
-                            var department_number = $('input[name="department_number"]').val();
+                            var department_number = $('input[name="house_number"]').val();
                             var zip = $('input[name="zip"]').val();
                             var phone = $('input[name="phone"]').val();
+                            var id = $('input[name="id"]').val();
+
                             $.ajax({
-                                url: '/index.php/ajax/delivery/Delivery_addresses/new_department/'+street,
+                                url: '/index.php/ajax/delivery/Delivery_addresses/new_department/'+id,
                                 type: 'POST',
-                                data: {id_company: id_company, house_number: house_number, department_number: department_number, zip: zip, phone: phone},
+                                data: {id_company: id, id_country: country, id_region: region, id_city: city, id_street: street, house_number: house_number, department_number: department_number, zip: zip, phone: phone},
                                 success: function(data)
                                 {
                                     bootbox.alert(data, function(){});
@@ -667,13 +669,13 @@ $(document).on('click', '.country-region', function(){
                         label: "Создать",
                         className: "btn-success",
                         callback: function () {
-                            var region = $('select[name="region"] option:selected').val();
+                            var region = $('select[name="region"]').val();
                             var id_country = $('input[name="id"]').val();
 
                             $.ajax({
-                                url: '/index.php/ajax/delivery/Delivery_regions/add_country_regions/' + region,
+                                url: '/index.php/ajax/delivery/Delivery_regions/add_country_regions/',
                                 type: 'POST',
-                                data: {id_country: id_country},
+                                data: {id_country: id_country, id_region: region},
                                 success: function (data) {
                                     bootbox.alert(data, function () {
                                     });
@@ -721,7 +723,7 @@ $(document).on('click', '.region-city', function(){
                             var id_region = $('input[name="id"]').val();
 
                             $.ajax({
-                                url: '/index.php/ajax/delivery/Delivery_regions_cities/add_regions_cities/',
+                                url: '/index.php/ajax/delivery/Delivery_cities/add_regions_cities/',
                                 type: 'POST',
                                 data: {id_region: id_region, id_city: id_city},
                                 success: function (data) {

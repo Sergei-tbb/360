@@ -14,18 +14,12 @@
                     <td><?=$data->name?></td>
                     <td><?
                         foreach($regions as $val):
-                            if($data->id==$val->id)
+                            if($data->id_region==$val->id)
                             echo $val->name;
                         else
                             echo '';
                         endforeach;
 
-                        foreach($cities_regions as $region_city):
-                            if($region_city->id_city==$data->id and $region_city->id_region==$val->id)
-                                echo $val->name.'<br>'.'<input type="hidden" name="region" value="'.$val->id.'">';
-                            else
-                                echo '';
-                        endforeach;
                         ?>
                     </td>
                     <td>

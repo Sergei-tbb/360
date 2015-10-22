@@ -199,7 +199,10 @@ class Notifications extends MY_Controller
                 $data['roles'] = $this->read_custom($string);
                 $data['id'] = $this->input->post();
                 $data['selected'] = $this->get_notification_roles($data['id']['id']);
-                $this->load->view('admin_panel/notifications_roles_view', $data);
+                if(!empty($data['roles']) and !empty($data['id']))
+                {
+                    $this->load->view('admin_panel/notifications_roles_view', $data);
+                }
             }
             else
             {

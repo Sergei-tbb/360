@@ -15,9 +15,15 @@ class Delivery_addresses_model extends CI_Model {
 
     var $id;
 
-    var $id_delivery_companies;
+    var $id_company;
 
-    var $id_delivery_regions_cities_streets;
+    var $id_country;
+
+    var $id_region;
+
+    var $id_city;
+
+    var $id_street;
 
     var $house_number;
 

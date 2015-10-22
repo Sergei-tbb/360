@@ -6,7 +6,7 @@
                 <th>Страна</th>
                 <th></th>
             </tr>
-            <tr>
+            <tbody>
             <?foreach($country as $data):?>
                 <tr data-id_country="<?=$data->id;?>">
                     <td><?=$data->id;?></td>

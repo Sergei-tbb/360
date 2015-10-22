@@ -22,10 +22,9 @@ class Delivery_addresses extends MY_Controller {
     }
 
     /**
-     * @param $id_street
      * method for creating new department of delivery companies
      */
-    public function new_department($id_street)
+    public function new_department($id)
     {
         try
         {
@@ -36,40 +35,29 @@ class Delivery_addresses extends MY_Controller {
 
             $data = $this->input->post();
 
-            $select_count = "SELECT COUNT(*) as count, id FROM delivery_regions_cities_streets WHERE id_street={$id_street}";
+            $new_department = array(
+                'id_company' => $id,
+                'id_country' => $data['id_country'],
+                'id_region' => $data['id_region'],
+                'id_city' => $data['id_city'],
+                'id_street' => $data['id_street'],
+                'house_number' => $data['house_number'],
+                'department_number' => $data['department_number'],
+                'zip' => $data['zip'],
+                'phone' => $data['phone']
+            );
 
-            $result_count = $this->read_custom($select_count);
-
-            $check_department = "SELECT COUNT(*) as count FROM delivery_addresses
-                      WHERE id_company={$data['id_company']}
-                      AND id_region_city_street={$result_count['0']->id}
-                      AND house_number={$data['house_number']}";
-            $result_department = $this->read_custom($check_department);
-
-            if($result_department['0']->count==0)
+            if(!empty($new_department))
             {
-                if ($result_count['0']->count == 1)
+                if($this->create($new_department))
                 {
-                    $new_data = array(
-                        'id_company' => $data['id_company'],
-                        'id_region_city_street' => $result_count['0']->id,
-                        'house_number' => $data['house_number'],
-                        'department_number' => $data['department_number'],
-                        'zip' => $data['zip'],
-                        'phone' => $data['phone']
-                    );
-
-                    if ($this->create($new_data)) {
-                        $this->result = array('message' => "Отделение было успешно добавлено!");
-                        echo $this->result['message'];
-                    } else {
-                        throw new Exception("Can't add new delivery department.");
-                    }
+                    $this->result = array('message' => 'Новое отделение было успешно создано');
+                    echo $this->result['message'];
                 }
             }
             else
             {
-                throw new Exception("Это отделение было создано ранее!");
+                throw new Exception("Ошибка при создании нового отделения");
             }
 
         }
@@ -115,20 +103,28 @@ class Delivery_addresses extends MY_Controller {
      */
     public function get_list_addresses()
     {
-        $string_company = "SELECT * FROM delivery_companies";
-        $string_rcs = "SELECT * FROM delivery_regions_cities_streets";
-        $string_rc = "SELECT * FROM delivery_regions_cities";
-        $string_regions = "SELECT * FROM delivery_regions";
-        $string_cities = "SELECT * FROM delivery_cities";
-        $string_streets = "SELECT * FROM delivery_streets";
-        $data['companies'] = $this->read_custom($string_company);
-        $data['addresses'] = $this->read_all();
-        $data['rcs'] = $this->read_custom($string_rcs);
-        $data['rc'] = $this->read_custom($string_rc);
-        $data['streets'] = $this->read_custom($string_streets);
-        $data['cities'] = $this->read_custom($string_cities);
-        $data['regions'] = $this->read_custom($string_regions);
-        if(empty($data['addresses']) or empty($data['companies']))
+        $data['addresses'] = $this->read_custom("SELECT delivery_addresses.id as address_id,
+                delivery_addresses.id_company as company_id,
+                delivery_companies.name as company_name,
+                delivery_countries.name as country_name,
+                delivery_regions.name as region_name,
+                delivery_cities.name as city_name,
+                delivery_streets.name as street_name,
+                delivery_addresses.house_number as house_number,
+                delivery_addresses.department_number as department_number,
+                delivery_addresses.zip as zip,
+                delivery_addresses.phone as phone
+                FROM delivery_addresses, delivery_companies,
+                delivery_countries, delivery_regions,
+                delivery_cities, delivery_streets
+                WHERE delivery_addresses.id_company=delivery_companies.id
+                AND delivery_addresses.id_country=delivery_countries.id
+                AND delivery_addresses.id_region=delivery_regions.id
+                AND delivery_addresses.id_city=delivery_cities.id
+                AND delivery_addresses.id_street=delivery_streets.id
+                group by delivery_addresses.id");
+
+        if(empty($data['addresses']))
         {
             $this->result = array('message' => 'Для отображения списка отделений нужно добавить хотя бы одно отделение!');
             echo $this->result['message'];
