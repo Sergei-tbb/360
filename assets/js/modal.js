@@ -820,7 +820,21 @@ $(document).on('click', '.faq-edit', function(){
 
 });
 
+$(document).on('click', '.is_published_faq', function(){
+    var id = $(this).parent().parent('tr').data('id_faq');
 
+    $.ajax({
+        url: '/index.php/ajax/faq/Faq/publish_faq/'+id,
+        success: function(data)
+        {
+            bootbox.alert(data, function(){});
+        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+    });
+});
 
 
 
