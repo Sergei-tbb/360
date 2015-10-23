@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Регион</th>
-                <th>Страна</th>
-                <th></th>
-            </tr>
-            <tr>
+        <table class="table table-hover" id="table_delivery_regions">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Регион</th>
+                    <th>Страна</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
                 <?foreach($regions as $data):?>
             <tr data-id_region="<?=$data->id;?>">
                 <td><?=$data->id;?></td>
@@ -32,3 +34,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('#table_delivery_regions').DataTable();
+</script>

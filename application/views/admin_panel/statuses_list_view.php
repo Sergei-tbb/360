@@ -2,14 +2,16 @@
     Ни одной роли не было создано.
 <? else:  ?>
     <? $count = 1;?>
-    <table class="table">
-        <tr>
-            <th style="max-width: 0.5em;">#</th>
-            <th>Название</th>
-            <th></th>
-            <th></th>
+    <table class="table" id="table_statuses">
+        <thead>
+            <tr>
+                <th style="max-width: 0.5em;">#</th>
+                <th>Название</th>
+                <th></th>
+                <th></th>
 
-        </tr>
+            </tr>
+        </thead>
         <? foreach($statuses as $data):?>
             <tr data-id="<? if(!empty($data->id)) echo $data->id ;?>">
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
@@ -38,3 +40,6 @@
         });
     </script>
 <? endif;?>
+<script>
+    $('#table_statuses').DataTable();
+</script>

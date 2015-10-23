@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Страница</th>
-                <th>Опубликована</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_faq">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Страница</th>
+                    <th>Опубликована</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($faq as $data):?>
                 <tr data-id_faq="<?=$data->id;?>">
@@ -25,3 +27,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('#table_faq').DataTable();
+</script>

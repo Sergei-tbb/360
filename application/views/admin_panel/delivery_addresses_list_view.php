@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Служба доставки</th>
-                <th>Адрес</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_delivery_address">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Служба доставки</th>
+                    <th>Адрес</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($addresses as $address):?>
                 <tr data-id_address="<?=$address->address_id;?>">
@@ -27,3 +29,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('#table_delivery_address').DataTable();
+</script>

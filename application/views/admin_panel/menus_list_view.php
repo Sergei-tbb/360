@@ -1,11 +1,13 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Название</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_menus">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($menus as $data):?>
                 <tr data-id_menu="<?= $data->id;?>">
@@ -24,6 +26,8 @@
 </div>
 
 <script>
+    $('table[id="table_menus"]').dataTable({});
+
     $(document).on('click', '.page-menu-delete', function()
     {
         bootbox.hideAll();

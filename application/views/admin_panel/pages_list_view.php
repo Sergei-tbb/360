@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Заголовок</th>
-                <th>Опубликовано</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_pages">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Заголовок</th>
+                    <th>Опубликовано</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($pages as $data):?>
                 <tr data-id_page="<?= $data->id;?>">
@@ -24,3 +26,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('table[id="table_pages"]').dataTable({});
+</script>
