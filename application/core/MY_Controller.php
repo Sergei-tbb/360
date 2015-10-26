@@ -54,13 +54,13 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    private function _basic_validation(array $data) {
+    private function _basic_validation($data) {
         foreach ($data as $key => $value) {
             if (in_array($key, $this->tbfileds) === false) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -68,7 +68,7 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function create(array $data) {
+    public function create($data) {
         return $this->_basic_validation($data)
                 ? $this->instance->db->insert($this->tbname, $data)
                 : false;
@@ -97,9 +97,18 @@ class MY_Controller extends CI_Controller {
         return $this->instance->db
                 ->select(implode(",", $this->tbfileds))
                 ->from($this->tbname)
-                ->where(1)
+//                ->where(1)
                 ->get()
                 ->result();
+    }
+
+    /**
+     * Read operation custom query
+     * @param string $query_string
+     * @return object
+     */
+    public function read_custom($query_string) {
+        return $this->instance->db->query($query_string)->result();
     }
 
     /**
@@ -107,8 +116,28 @@ class MY_Controller extends CI_Controller {
      * @param object $obj
      * @return object
      */
-    public function read_custom($obj) {
+    public function read_custom_($obj) {
         return $obj->get()->result();
+    }
+
+    public function update_custom($data, $where) {
+        return $this->_basic_validation($data)
+            ? $this->instance->db->where($where)->update($this->tbname, $data)
+            : false;
+    }
+
+    public function update_free_custom($query_string)
+    {
+        return $this->instance->db->query($query_string)
+            ? false
+            : true;
+    }
+
+    public function create_custom($table_name, array $data)
+    {
+        return $this->instance->db->insert($table_name, $data)
+            ? true
+            : false;
     }
 
     /**
@@ -117,9 +146,9 @@ class MY_Controller extends CI_Controller {
      * @param array $data
      * @return boolean
      */
-    public function update($id,array $data) {
+    public function update($id, $data) {
         return $this->_basic_validation($data)
-                ? $this->instance->db->where("id", $id)->update($data)
+                ? $this->instance->db->where("id", $id)->update($this->tbname, $data)
                 : false;
     }
 
