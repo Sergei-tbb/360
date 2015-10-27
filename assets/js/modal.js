@@ -20,7 +20,7 @@ $(document).on("click", "#page-add", function() {
                     var description = $('textarea[name="description"]').val();
                     var page_data = CKEDITOR.instances.page_data.getData();
                     $.ajax({
-                        url: '/index.php/ajax/Pages/new_page/',
+                        url: '/index.php/ajax/Pages/new_page',
                         type: 'POST',
                         data: {title: title, date_time: date_time, keywords: keywords, description: description, page_data: page_data},
                         success: function(data)
@@ -53,7 +53,7 @@ $(document).on("click", ".page-del", function() {
         if(result==true)
         {
             $.ajax({
-                url: '/index.php/ajax/Pages/delete_page/',
+                url: '/index.php/ajax/Pages/delete_page',
                 type: 'POST',
                 data: {id: id},
                 success: function(data)
@@ -270,7 +270,7 @@ $(document).on('click', '.page-menu', function() {
 
 
                             $.ajax({
-                                url: '/index.php/ajax/Menus_pages/add_pages_menu/',
+                                url: '/index.php/ajax/Menus_pages/add_pages_menu',
                                 type: 'POST',
                                 data: {id_page: id_page, id_menu: id_menu},
                                 success: function(data)
@@ -362,7 +362,7 @@ $(document).on('click', '#notifications-add', function() {
                     var notification = $('textarea[name="notification"]').val();
 
                     $.ajax({
-                        url: '/index.php/ajax/Notifications/new_notification/',
+                        url: '/index.php/ajax/Notifications/new_notification',
                         type: 'POST',
                         data: {title: title, notification: notification},
                         success: function(data)
@@ -468,7 +468,7 @@ $(document).on('click', '.notification-roles', function() {
     var id_notification = $(this).parent().parent('tr').data('id_notification');
 
     $.ajax({
-        url: '/index.php/ajax/Notifications/notifications_roles/',
+        url: '/index.php/ajax/Notifications/notifications_roles',
         type: 'POST',
         data: {id: id_notification},
         success: function(data)
@@ -486,7 +486,7 @@ $(document).on('click', '.notification-roles', function() {
                             var id = $('input[name="id"]').val();
 
                             $.ajax({
-                                url: '/index.php/ajax/Notifications_roles/new_notification_role/',
+                                url: '/index.php/ajax/Notifications_roles/new_notification_role',
                                 type: 'POST',
                                 data: {id_notification: id, id_role: roles},
                                 success: function(data)
