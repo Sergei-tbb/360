@@ -17,6 +17,9 @@
                         <input type="button" class="btn btn-primary notification-roles" value="Роли">
                         <input type="button" class="btn btn-warning notification-edit" value="Редактировать">
                         <input type="button" class="btn btn-danger notification-del" value="Удалить">
+                        <input type="button" class="btn btn-success email-notification" value="Отправить на e-mail">
+                        <input type="button" class="btn btn-success site-notification" value="Отправить на сайт">
+                        <input type="button" class="btn btn-success phone-notification" value="Отправить на телефон">
                     </td>
                 </tr>
             <?endforeach;?>
