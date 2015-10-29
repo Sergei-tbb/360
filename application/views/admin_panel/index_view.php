@@ -228,24 +228,47 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="#" id="pages">Страницы</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Страницы сайта<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li class="page" data-page="help_pages_view">
-                                    <a href="#">Помощь</a>
+                            <a href="#" id="menus">Меню</a>
+                        </li>
+                        <li>
+                            <a href="#" id="roles">Роли</a>
+                        </li>
+                        <li>
+                            <a href="#" id="notifications">Уведомления</a>
+                        </li>
+                        <li>
+                            <a href="#" id="statuses">Статусы</a>
+                        </li>
+                        <li>
+                            <a href="#" id="users">Пользователи</a>
+                        </li>
+                        <li>
+                            <a href="#" id="delivery">Службы доставки <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                <li>
+                                    <a href="#" id="addresses">Отделения</a>
                                 </li>
                                 <li>
-                                    <a href="#">Мой кабинет</a>
+                                    <a href="#" id="countries">Страны</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="regions">Регионы</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="cities">Города</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="streets">Улицы</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-
-
+                        <li>
+                            <a href="#" id="faq">Раздел помощи</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

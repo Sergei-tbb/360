@@ -1,159 +1,308 @@
 <?php
-defined("BASEPATH") or exit("No direct script access allowed!");
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Created by PhpStorm.
+ * User: sasha
+ * Date: 13.10.15
+ * Time: 17:04
  */
+defined("BASEPATH") or exit("No direct script access allowed");
 
-class Pages extends CI_Controller {
+class Pages extends MY_Controller
+{
+    public function __construct()
+    {
+        parent::__construct(array("tbname" => "pages"));
+        $this->load->helper(array('form', 'url'));
+        $this->load->library("form_validation");
+        $this->load->helper("security");
 
-    /**
-     * Variable for sending data
-     * @var type array
-     */
-    public $returned_data;
-
-    /**
-     * Constructor
-     * Load Pages_model
-     * @todo: load helpers
-     */
-    public function __construct() {
-        parent::__construct();
-
-        $this->load->model('Pages_model');
+        $this->result = array();
     }
 
     /**
-     * Create new page
-     * get POST data
-     * and send request to Pages_model
-     * @throws Exception when something wrong
+     * getting list of pages
      */
-    public function create() {
-        try {
+    public function pages_list()
+    {
+        $data['pages'] = $this->read_all();
+        $this->load->view('admin_panel/pages_list_view', $data);
+    }
+
+    /**
+     * deleting page
+     */
+    public function delete_page()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
             $data = $this->input->post();
 
-            if (empty($data)) {
-                throw new Exception('Empty data');
+            if(is_null($data) || $this->_validation_delete_page()===false)
+            {
+                throw new Exception("Invalid data!");
             }
 
-            if ($this->Pages_model->create($data)) {
-                $this->returned_data["error"] = false;
-            } else {
-                throw new Exception("Can't add new page");
+            if($this->delete($data['id']))
+            {
+                $this->result = array("message" => "Page was delete successfully.");
+                echo $this->result['message'];
             }
-        } catch (Exception $exp) {
-            $this->returned_data['error'] = true;
-            $this->returned_data['message'] = $exp->getMessage();
+            else
+            {
+                throw new Exception(".");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    private function _validation_delete_page()
+    {
+        $this->form_validation->set_rules('id', 'Номер страницы', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
     /**
-     * Update page data
-     * by id
-     * @throws Exception
+     * creating new page
      */
-    public function update() {
-        try {
+    public function new_page()
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
             $data = $this->input->post();
 
-            if (empty($data)) {
-                throw new Exception('Empty data');
+            if($this->_validation_new_page() === false)
+            {
+                throw new Exception("Invalid data!");
             }
 
-            $id = $data['id'];
-
-            if (is_null($id) || !is_numeric($id)) {
-                throw new Exception("Invalid id");
+            if($this->create($data))
+            {
+                $this->result = array("message" => "Page was successfully created.");
+                echo $this->result['message'];
+            }
+            else
+            {
+                throw new Exception(".");
             }
 
-            unset($data['id']);
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
 
-            if ($this->Pages_model->update($id, $data)) {
-                $this->returned_data["error"] = false;
-            } else {
-                throw new Exception("Can't update current page");
-            }
-        } catch (Exception $exp) {
-            $this->returned_data['error'] = true;
-            $this->returned_data['message'] = $exp->getMessage();
+    private function _validation_new_page()
+    {
+        $this->form_validation->set_rules('title', 'Заголовок', 'required');
+        $this->form_validation->set_rules('date_time', 'Дата создания', 'required');
+        $this->form_validation->set_rules('keywords', 'Ключевые слова', 'required');
+        $this->form_validation->set_rules('description', 'Описание страницы', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
     /**
-     * Delete page data
-     * by id
-     * @throws Exception
+     * @param $id - id of page for publish/unpublish
      */
-    public function delete() {
-        try {
-            $id = $this->input->post("id");
-
-            if (is_null($id) || !is_numeric($id)) {
-                throw new Exception("Invalid id");
+    public function publish_page($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
             }
 
-            if ($this->Pages_model->delete($id)) {
-                $this->returned_data["error"] = false;
-            } else {
-                throw new Exception("Can't delete current page");
+            if($this->read_one($id))
+            {
+                $state = $this->read_one($id);
+
+                if($state['0']->is_published==1)
+                {
+                    $new_data = array('is_published' => 0);
+                }
+                elseif($state['0']->is_published==0)
+                {
+                    $new_data = array('is_published' => 1);
+                }
+
+                if ($this->update($id, $new_data))
+                {
+                    $this->result = array("message" => "Page was updated successfully.");
+                    echo $this->result['message'];
+                }
+                else
+                {
+                    throw new Exception(".");
+                }
             }
-        } catch (Exception $exp) {
-            $this->returned_data['error'] = true;
-            $this->returned_data['message'] = $exp->getMessage();
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    private function _validation_publish_page()
+    {
+        $this->form_validation->set_rules('is_published', 'Опубликовано', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
     /**
-     * Get page data by id
-     * @throws Exception
+     * @param $id - id of page for getting all data
      */
-    public function get() {
-        try {
-            $id = $this->input->post("id");
-
-            if (is_null($id) || !is_numeric($id)) {
-                throw new Exception("Invalid id");
+    public function get_page($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
             }
 
-            $data = $this->Pages_model->get($id);
-
-            if (empty($data)) {
-                $this->returned_data["error"] = false;
-                $this->returned_data['page_data'] = $data;
-            } else {
-                throw new Exception("Can't delete current page");
+            if($this->read_one($id))
+            {
+                $data['pages'] = $this->read_one($id);
+                $this->load->view('admin_panel/pages_edit_view', $data);
             }
-        } catch (Exception $exp) {
-            $this->returned_data['error'] = true;
-            $this->returned_data['message'] = $exp->getMessage();
+            else
+            {
+                throw new Exception(".");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
         }
     }
 
     /**
-     * Get all pages by id
-     * @throws Exception
+     * @param $id - id of page for updating
      */
-    public function get_all() {
-        try {
-            $data = $this->Pages_model->get();
-
-            if (empty($data)) {
-                $this->returned_data["error"] = false;
-                $this->returned_data['page_data'] = $data;
-            } else {
-                throw new Exception("Can't get pages");
+    public function update_page($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
             }
-        } catch (Exception $exp) {
-            $this->returned_data['error'] = true;
-            $this->returned_data['message'] = $exp->getMessage();
+
+            $data = $this->input->post();
+
+            if($this->_validation_update_page()===false)
+            {
+                throw new Exception("Invalid data!");
+            }
+
+            if($this->update($id, $data))
+            {
+                $this->result = array("message" => "Page was updated successfully.");
+                echo $this->result['message'];
+            }
+            else
+            {
+                throw new Exception(".");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
         }
     }
 
-    public function __destruct() {
-        $this->load->view("returned_ajax_view", $this->returned_data);
+    private function _validation_update_page()
+    {
+        $this->form_validation->set_rules('title', 'Заголовок', 'required');
+        $this->form_validation->set_rules('keywords', 'Ключевые слова', 'required');
+        $this->form_validation->set_rules('description', 'Описание страницы', 'required');
+        $this->form_validation->set_rules('page_data', 'Текст страницы', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public function display_page($id)
+    {
+        if($this->read_custom("SELECT COUNT(*) as count FROM menus_pages WHERE id_page={$id}"))
+        {
+            $count = $this->read_custom("SELECT COUNT(*) as count FROM menus_pages WHERE id_page={$id}");
+            if($count['0']->count==1)
+            {
+                if($this->read_one($id))
+                {
+                    $data['page'] = $this->read_one($id);
+                    $this->load->view('static_page/index_view', $data);
+                }
+            }
+        }
+    }
+
+
+    public function display_faq($id)
+    {
+        if($this->read_custom("SELECT *, COUNT(*) as count FROM faq WHERE id={$id}"))
+        {
+            $count = $this->read_custom("SELECT *, COUNT(*) as count FROM faq WHERE id={$id}");
+            if($count['0']->count==1)
+            {
+                $data['page'] = $count;
+                $this->load->view('static_page/index_view', $data);
+            }
+        }
     }
 
 }
