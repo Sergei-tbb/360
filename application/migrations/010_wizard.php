@@ -171,7 +171,7 @@ class Migration_wizard extends CI_Migration
             )
         );
         $this->dbforge->add_key('id', TRUE);
-        $this->dbfroge->add_field($fields_groups);
+        $this->dbforge->add_field($fields_groups);
         $this->dbforge->create_table('groups');
 
         $fields_parameters = array(
