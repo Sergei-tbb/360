@@ -193,7 +193,7 @@ class Migration_wizard extends CI_Migration
             )
         );
         $this->dbforge->add_key('id', TRUE);
-        $this->dbfroge->add_field($fields_parameters);
+        $this->dbforge->add_field($fields_parameters);
         $this->dbforge->create_table('parameters');
 
         $fields_parameters_types = array(
@@ -259,7 +259,7 @@ class Migration_wizard extends CI_Migration
             )
         );
         $this->dbforge->add_key('id', TRUE);
-        $this->dbfroge->add_field($fields_types_values);
+        $this->dbforge->add_field($fields_types_values);
         $this->dbforge->create_table('types_values');
 
 
