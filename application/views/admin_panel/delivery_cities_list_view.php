@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>Город</th>
-                <th>Регион</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_delivery_cities">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Город</th>
+                    <th>Регион</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($cities as $data):?>
                 <tr data-id_city="<?=$data->id;?>">
@@ -33,3 +35,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('#table_delivery_cities').DataTable();
+</script>

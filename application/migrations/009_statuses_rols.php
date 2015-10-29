@@ -22,8 +22,15 @@ class Migration_statuses_rols extends CI_Migration
             )
         );
 
+        $foreign_array = array(
+            'field' => 'id_roles',
+            'foreign_table' => 'roles',
+            'foreign_field' => 'id'
+        );
+
         $this->load->dbforge();
         $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_foreign_key($foreign_array);
         $this->dbforge->add_field($fields_pages);
         $this->dbforge->create_table('statuses_rols');
     }

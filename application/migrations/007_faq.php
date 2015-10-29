@@ -35,6 +35,11 @@ class Migration_faq extends CI_Migration
                 'type' => 'TEXT',
                 'null' => FALSE
             ),
+            'is_published' => array(
+                'type' => 'TINYINT',
+                'constraint' => 1,
+                'null' => FALSE
+            )
 
         );
         $this->load->dbforge();

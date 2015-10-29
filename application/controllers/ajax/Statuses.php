@@ -13,6 +13,11 @@ class Statuses extends MY_Controller
         $this->result = array();
     }
 
+    /**
+     * Crete new status
+     * public
+     * return null
+     */
     public function add_new_statuses()
     {
         try
@@ -58,11 +63,19 @@ class Statuses extends MY_Controller
         }
         catch(Exception $exp)
         {
-            $this->delete($id);
+            if($id)
+            {
+                $this->delete($id);
+            }
             $this->result = array("message" => $exp->getMessage());
         }
     }
 
+    /**
+     * Display list of all statuses
+     * public
+     * return null
+     */
     public function display_all()
     {
         $data['statuses']  = $this->read_all();
@@ -72,6 +85,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Delete status
+     * public
+     * return null
+     */
     public function delete_statuses()
     {
         try
@@ -106,6 +124,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Display data of one status
+     * public
+     * return null
+     */
     public function get_one_statuses()
     {
         try
@@ -137,6 +160,11 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Edit status
+     * public
+     * return null
+     */
     public function edit_statuses()
     {
         try {
@@ -182,13 +210,20 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Do image upload
+     * private
+     * @param int $id - id of status
+     * @return mixed
+     * @throws Exception
+     */
     private function _do_upload($id)
     {
         $config['upload_path']   = 'download/statuses_image';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size']      = 50;
-        $config['max_width']     = '100';
-        $config['max_height']    = '100';
+        $config['max_width']     = 100;
+        $config['max_height']    = 100;
         $config['file_name']     = $id."_status_image";
 
         $this->load->library('upload', $config);
@@ -202,18 +237,30 @@ class Statuses extends MY_Controller
         }
         else
         {
-            throw new Exception("Image was not save");
+            throw new Exception("Invalid image data. Image was not save.");
         }
     }
 
+    /**
+     * Get id of current status
+     * private
+     * @param array $data - array with name of status
+     * @return int
+     */
     private function _get_id($data)
     {
         $query_str = $this->db->select("id")->from($this->tbname)->where("name", $data['name'])->limit(1)->order_by('id', 'DESC');
-        $id = $this->read_custom($query_str);
 
-        return $id[0]->id;
+        $id = $this->read_custom_($query_str);
+
+        return (int)$id[0]->id;
     }
 
+    /**
+     * Validate input data
+     * private
+     * @return mixed
+     */
     private function _validate_statuses()
     {
         $this->form_validation->set_rules(
@@ -224,6 +271,12 @@ class Statuses extends MY_Controller
         return $this->form_validation->run();
     }
 
+    /**
+     * Delete image
+     * private
+     * @param int $id - status id
+     * @return bool
+     */
     private function _delete_picture($id)
     {
         $picture_name = $this->_get_picture_name($id);
@@ -238,10 +291,15 @@ class Statuses extends MY_Controller
         }
     }
 
+    /**
+     * Get image name
+     * @param int $id - id of status
+     * @return string
+     */
     private function _get_picture_name($id)
     {
         $query_str = $this->db->select("picture")->from($this->tbname)->where("id", $id)->limit(1);
-        $picture = $this->read_custom($query_str);
+        $picture = $this->read_custom_($query_str);
 
         return $picture[0]->picture;
     }

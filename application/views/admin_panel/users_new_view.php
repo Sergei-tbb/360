@@ -15,7 +15,8 @@
             <select name="roles" class="form-control">
                 <option value="def">Выберите роль пользователя</option>
                 <?foreach($roles as $role):?>
-                    <option value="<?if(!empty($role->id)) echo $role->id; else echo '';?>">
+                    <option value="<?if(!empty($role->id)) echo $role->id; else echo '';?>"
+                        <?if($role->id==1): echo 'selected="selected"'; else: echo ''; endif;?>>
                         <?if(!empty($role->name)) echo $role->name; else echo '';?></option>
                 <?endforeach;?>
             </select>

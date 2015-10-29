@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-lg-12">
-        <table class="table table-hover">
-            <tr>
-                <th>#</th>
-                <th>ФИО</th>
-                <th>E-mail</th>
-                <th>Роль</th>
-                <th></th>
-            </tr>
+        <table class="table table-hover" id="table_users">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ФИО</th>
+                    <th>E-mail</th>
+                    <th>Роль</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
             <?foreach($users as $data):?>
                 <tr data-id_user="<?=$data->id;?>">
@@ -33,3 +35,6 @@
         </table>
     </div>
 </div>
+<script>
+    $('#table_users').DataTable();
+</script>

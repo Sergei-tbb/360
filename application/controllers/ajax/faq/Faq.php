@@ -189,4 +189,52 @@ class Faq extends MY_Controller
             return true;
         }
     }
+
+    public function publish_faq($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === false)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            if($this->read_one($id))
+            {
+                $result = $this->read_one($id);
+                if($result['0']->is_published==0)
+                {
+                    if($this->update($id, array('is_published' => 1)))
+                    {
+                        echo 'Страница помощи успешно опубликована!';
+                    }
+                    else
+                    {
+                        throw new Exception("Ошибка при опубликовании страницы помощи!");
+                    }
+                }
+                elseif($result['0']->is_published==1)
+                {
+                    if($this->update($id, array('is_published' => 0)))
+                    {
+                        echo 'Страница помощи убрана из публикации!';
+                    }
+                    else
+                    {
+                        throw new Exception("Ошибка при снятии страницы помощи из публикации");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Ошибка при обновлении данных страницы");
+            }
+
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
 }

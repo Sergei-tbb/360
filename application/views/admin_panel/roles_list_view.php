@@ -2,12 +2,14 @@
     Ни одной роли не было создано.
 <? else:  ?>
     <? $count = 1;?>
-    <table class="table">
-        <tr>
-            <th style="max-width: 0.5em;">#</th>
-            <th>Название</th>
-            <th></th>
-        </tr>
+    <table class="table" id="table_roles">
+        <thead>
+            <tr>
+                <th style="max-width: 0.5em;">#</th>
+                <th>Название</th>
+                <th></th>
+            </tr>
+        </thead>
         <? foreach($roles as $data):?>
             <tr data-id="<?= $data->id ;?>">
                 <td style="max-width: 0.5em;"><?= $count ;?></td>
@@ -41,3 +43,7 @@
         });
     </script>
 <? endif;?>
+
+<script>
+    $('table[id="table_roles"]').dataTable({});
+</script>

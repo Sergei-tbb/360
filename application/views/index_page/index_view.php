@@ -21,21 +21,22 @@
                         <a href="#" class="page-scroll static_page"><?=$data->title;?></a>
                     </li>
                 <?endforeach;?>
-                <?foreach($faq as $val):?>
+                <?foreach($faq as $val):
+                    if($val->is_published==1):?>
                     <li data-id_faq="<?=$val->id;?>">
                         <a href="#" class="page-scroll faq_page"><?=$val->title;?></a>
                     </li>
-                <?endforeach;?>
+                <?endif;endforeach;?>
 
                 <li>
-                    <a href="<?=base_url();?>index.php/admin_panel/" class="page-scroll">Админ-панель</a>
+                    <a href="<?=base_url();?>index.php/admin_panel" class="page-scroll">Админ-панель</a>
                 </li>
                 <?
                 if($this->session->has_userdata('id'))
                 {
                     ?>
                     <li>
-                        <a class="page-scroll personal_page" href="<?=base_url();?>index.php/personal_page/">Личный кабинет</a>
+                        <a class="page-scroll personal_page" href="<?=base_url();?>index.php/personal_page">Личный кабинет</a>
                     </li>
                     <li>
                         <a class="page-scroll logout" href="#">Выйти</a>

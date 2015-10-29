@@ -111,6 +111,15 @@ class MY_Controller extends CI_Controller {
         return $this->instance->db->query($query_string)->result();
     }
 
+    /**
+     * Read operation custom query
+     * @param object $obj
+     * @return object
+     */
+    public function read_custom_($obj) {
+        return $obj->get()->result();
+    }
+
     public function update_custom($data, $where) {
         return $this->_basic_validation($data)
             ? $this->instance->db->where($where)->update($this->tbname, $data)

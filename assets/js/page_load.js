@@ -229,9 +229,6 @@ function sendFormData(controllerName, methodName, id, formId) {
             if(controllerName != "statuses_rols") {
                 displayListData(controllerName, "display_all", controllerName);
             }
-        },
-        error:function() {
-            alert("Error!");
         }
     });
 }

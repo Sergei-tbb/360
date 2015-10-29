@@ -34,7 +34,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id, name,")->from("statuses")->order_by("name");
-            $all_statuses = $this->read_custom($query_str);
+            $all_statuses = $this->read_custom_($query_str);
 
             if(!empty($all_statuses))
             {
@@ -42,7 +42,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id_statuses")->from($this->tbname)->where("id_roles", $data['id']);
-            $selected = $this->read_custom($query_str);
+            $selected = $this->read_custom_($query_str);
             if(!empty($selected))
             {
                 $data['selected'] = $selected;
@@ -78,7 +78,7 @@ class Statuses_rols extends MY_Controller
             }
 
             $query_str = $this->db->select("id_statuses")->from("statuses_rols")->where("id_roles", $id);
-            $query_res = $this->read_custom($query_str);
+            $query_res = $this->read_custom_($query_str);
 
             if(!empty($query_res))
             {
@@ -97,7 +97,7 @@ class Statuses_rols extends MY_Controller
             $delete_id = array_diff($select, $data['id_statuses']);
             $insert_id = array_diff($data['id_statuses'],$select);
 
-            if(!is_null($delete_id) || !is_null($insert_id))
+            if(count($delete_id) || count($insert_id))
             {
                 if($this->_update_statuses($delete_id, $insert_id, $id))
                 {
@@ -121,28 +121,28 @@ class Statuses_rols extends MY_Controller
      */
     private function _update_statuses($delete_id, $insert_id, $id)
     {
-        if(!is_null($delete_id))
+        $delete = '';
+        $insert = '';
+
+        if(count($delete_id))
         {
-            foreach($delete_id as $id_statuses)
+            if($this->_delete_record($id, $delete_id) != FALSE)
             {
-                $this->db->where("id_roles", $id, "id_statuses", $id_statuses)->delete("statuses_rols");
+                $delete = TRUE;
             }
-            $delete = TRUE;
         }
 
-        if(!is_null($insert_id))
+        if(count($insert_id))
         {
-            foreach($insert_id as $id_statuses)
+            if($this->_insert_record($id, $insert_id) != FALSE)
             {
-                $insert_data = array("id_roles" => $id, "id_statuses" => $id_statuses);
-                $this->db->insert("statuses_rols", $insert_data);
+                $insert = TRUE;
             }
-            $insert = TRUE;
         }
-        if($delete === TRUE || $insert ===TRUE)
-        {
-            return TRUE;
-        }
+
+        return $delete === TRUE || $insert === TRUE
+            ? TRUE
+            : FALSE;
     }
 
     /**
@@ -160,6 +160,68 @@ class Statuses_rols extends MY_Controller
             $i++;
         }
         return $select;
+    }
+
+    /**
+     * Insert record in db
+     * private
+     * @param int $id - id of role
+     * @param array $data - array of statuses id
+     * @return bool
+     */
+    private function _insert_record($id, $data)
+    {
+        $result = TRUE;
+        foreach($data as $id_statuses)
+        {
+            $insert_data = array("id_roles" => $id, "id_statuses" => $id_statuses);
+            $this->db->insert("statuses_rols", $insert_data);
+            if($this->db->affected_rows() == FALSE)
+            {
+                $result = FALSE;
+                break;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Delete record from db
+     * private
+     * @param int $id - id of role
+     * @param array $data - array of statuses id
+     * @return bool
+     */
+    private function _delete_record($id, $data)
+    {
+        $result = TRUE;
+        foreach($data as $id_statuses)
+        {
+            $delete_data = array("id_roles" => $id, "id_statuses" => $id_statuses);
+            $this->db->delete("statuses_rols", $delete_data);
+            if($this->db->affected_rows() == FALSE)
+            {
+                $result = FALSE;
+                break;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Delete all record of current role
+     * @param int $id - id of role
+     * @return bool
+     */
+    private function _delete_all_records($id)
+    {
+        $remove_role = array("id_roles" => $id);
+            $this->db->delete("statuses_rols", $remove_role);
+            return $this->db->affected_rows()
+                ? TRUE
+                : FALSE;
     }
 
     public function __destruct()
