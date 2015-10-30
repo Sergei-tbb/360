@@ -90,7 +90,7 @@ class Api extends CI_Controller
             else
             {
                 set_status_header(200);
-                $file_list = $this->_do_proper_form_array($file_info);
+                $file_list = $this->_do_proper_form_array($file_info, $id_user);
                 echo json_encode($file_list);
             }
         }
@@ -134,9 +134,10 @@ class Api extends CI_Controller
     /**
      * It makes an array of appropriate type
      * @param array $data - array of data
+     * @param int $id_user - id of user
      * @return array
      */
-    private function _do_proper_form_array($data)
+    private function _do_proper_form_array($data, $id_user)
     {
         $result = array();
         $count = 1;
@@ -145,7 +146,7 @@ class Api extends CI_Controller
              array_push($result, array(
                      $count => array(
                         "name:" => $val['name'],
-                        "size:" => $val['size']
+                        "hash:" => md5_file(base_url()."users_files/".$id_user."/".$val['name'])
                     )
                  )
              );
