@@ -32,4 +32,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ;?>assets/DataTables-1.10.9/media/css/jquery.dataTables.css">
+
 </head>

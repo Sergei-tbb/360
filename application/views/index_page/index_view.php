@@ -46,6 +46,9 @@
                 elseif(!$this->session->has_userdata('id'))
                 {?>
                     <li>
+                        <a class="page-scroll price_list" href="#">Прайс-лист </a>
+                    </li>
+                    <li>
                         <a class="page-scroll registration" href="#">Регистрация</a>
                     </li>
                     <li>

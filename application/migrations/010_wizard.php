@@ -113,7 +113,7 @@ class Migration_wizard extends CI_Migration
         $this->dbforge->add_field($fields_steps);
         $this->dbforge->create_table('steps');
 
-        $fields_steps_groups_parametrs = array(
+        $fields_steps_groups_parameters = array(
             'id' => array(
                 'type' => 'INT',
                 'constraint' => 11,
@@ -132,10 +132,10 @@ class Migration_wizard extends CI_Migration
             )
         );
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_field($fields_steps_groups_parametrs);
-        $this->dbforge->create_table('steps_groups_parametrs');
+        $this->dbforge->add_field($fields_steps_groups_parameters);
+        $this->dbforge->create_table('steps_groups_parameters');
 
-        $fields_group_parametrs = array(
+        $fields_group_parameters = array(
             'id' => array(
                 'type' => 'INT',
                 'constraint' => 11,
@@ -154,8 +154,8 @@ class Migration_wizard extends CI_Migration
             )
         );
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_field($fields_group_parametrs);
-        $this->dbforge->create_table('groups_parametrs');
+        $this->dbforge->add_field($fields_group_parameters);
+        $this->dbforge->create_table('groups_parameters');
 
         $fields_groups = array(
             'id' => array(
@@ -272,8 +272,8 @@ class Migration_wizard extends CI_Migration
         $this->dbforge->drop_table('wizard_categories');
         $this->dbforge->drop_table('wizard_steps');
         $this->dbforge->drop_table('steps');
-        $this->dbforge->drop_table('steps_groups_parametrs');
-        $this->dbforge->drop_table('groups_parametrs');
+        $this->dbforge->drop_table('steps_groups_parameters');
+        $this->dbforge->drop_table('groups_parameters');
         $this->dbforge->drop_table('groups');
         $this->dbforge->drop_table('parameters');
         $this->dbforge->drop_table('parameters_types');

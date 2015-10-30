@@ -26,3 +26,19 @@ $(document).on('click', '.faq_page', function(){
         }
     });
 });
+
+$(".price_list").on("click", function() {
+    $.ajax({
+        type:"GET",
+        url:"/index.php/price_list/price_list/display_parameters_list",
+        success: function(data) {
+            $("section#about").children("div.container").html(data);
+
+            var top = $("#table-price-list").offset().top;
+            $('body,html').animate({scrollTop: top}, 1500);
+        },
+        error: function() {
+            alert("Error!!!");
+        }
+    });
+});
