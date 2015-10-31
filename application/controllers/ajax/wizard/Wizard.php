@@ -251,6 +251,65 @@ class Wizard extends MY_Controller
         }
     }
 
+    public function publish_wizard()
+    {
+        try
+        {
+            if($this->input->is_ajax_request===FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            if(empty($data['id']))
+            {
+                throw new Exception("Ошибка при публикации/снятия с публикации мастера заказов");
+            }
+
+            $select = "SELECT is_published FROM wizard WHERE id={$data['id']}";
+
+            if($this->read_custom($select))
+            {
+                $result = $this->read_custom($select);
+
+                if($result['0']->is_published==1)
+                {
+                    $update_data = array('is_published' => 0);
+
+                    if($this->update($data['id'], $update_data))
+                    {
+                        $this->result = array('message' => 'Мастер заказов был успешно снят с опубликации');
+                        echo $this->result['message'];
+                    }
+                    else
+                    {
+                        throw new Exception("При снятии с публикации мастера заказов произошла ошибка");
+                    }
+                }
+                elseif($result['0']->is_published==0)
+                {
+                    $update_data = array('is_published' => 1);
+
+                    if($this->update($data['id'], $update_data))
+                    {
+                        $this->result = array('message' => 'Мастера заказов был успешно опубликован!');
+                        echo $this->result['message'];
+                    }
+                    else
+                    {
+                        throw new Exception("При опубликации мастера заказов произошла ошибка");
+                    }
+                }
+            }
+        }
+        catch(Exception $ex)
+        {
+            $this->result = array('message' => $ex->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
     private function _validate_wizard()
     {
         $this->form_validation->set_rules(

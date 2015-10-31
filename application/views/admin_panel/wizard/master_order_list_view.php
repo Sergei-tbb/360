@@ -6,6 +6,7 @@
                     <th>#</th>
                     <th>Мастер</th>
                     <th>Изображение</th>
+                    <th>Опубликовано</th>
                     <th></th>
                 </tr>
             </thead>
@@ -14,7 +15,18 @@
                 <tr data-id_wizard="<?=$data->id;?>">
                     <td><?if(!empty($data->id)) echo $data->id; else echo '';?></td>
                     <td><?if(!empty($data->name)) echo $data->name; else echo '';?></td>
-                    <td><img class="img-rounded center-block" style="max-height: 50px;" src="<?= base_url() ;?>download/wizard_images/<?  if(!empty($data->picture)) echo $data->picture."?".time() ;?>"/>
+                    <td>
+                        <img class="img-rounded center-block" style="max-height: 50px;" src="<?= base_url() ;?>download/wizard_images/<?  if(!empty($data->picture)) echo $data->picture."?".time() ;?>"/>
+                    </td>
+                    <td>
+                        <input type="checkbox" class="is_published_wizard"
+                            <?
+                            if($data->is_published==1):
+                                echo 'checked="checked"';
+                            elseif($data->is_published==0):
+                                echo '';
+                            endif;
+                            ?>>
                     </td>
                     <td>
                         <input type="button" class="btn btn-success wizard-step" value="Шаги">

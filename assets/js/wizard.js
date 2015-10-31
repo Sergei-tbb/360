@@ -958,5 +958,25 @@ $(document).on('click', '.parameters', function(){
     });
 });
 
+$(document).on('click', '.is_published_wizard', function(){
+   var id = $(this).parent().parent('tr').data('id_wizard');
+
+    $.ajax({
+        url: '/index.php/ajax/wizard/Wizard/publish_wizard/',
+        type: 'POST',
+        data: {id: id},
+        success: function(data)
+        {
+            bootbox.alert(data, function(){});
+            updateListWithDirectory('wizard', 'Wizard', 'master_orders_list', 'master-orders');
+        },
+        error: function(data)
+        {
+            bootbox.alert(data, function(){});
+        }
+
+    });
+});
+
 
 
