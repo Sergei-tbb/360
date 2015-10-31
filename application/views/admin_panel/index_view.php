@@ -269,6 +269,26 @@
                         <li>
                             <a href="#" id="faq">Раздел помощи</a>
                         </li>
+                        <li>
+                            <a href="#" id="master_orders">Мастер заказов <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                <li>
+                                    <a href="#" id="wizard_categories">Категории</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="wizard_parameters">Параметры</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="wizard_groups">Группы параметров</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="wizard_steps">Шаги</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="wizard_values">Значения</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
