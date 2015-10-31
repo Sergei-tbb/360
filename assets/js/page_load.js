@@ -52,7 +52,6 @@ function getPageDataFolders(pageMethod, folderName, pageName, pageType) {
     return pageData;
 }
 
-
 /**
  * Display modal window of create and edit
  * @param title - title of modal

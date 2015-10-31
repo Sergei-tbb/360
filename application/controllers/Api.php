@@ -30,19 +30,19 @@ class Api extends CI_Controller
         {
             if(empty($data['email']) || empty($data['password']))
             {
-                throw new Exception('400');
+                throw new Exception('Invalid data');
             }
 
             if($this->_validate_email() === FALSE)
             {
-                throw new Exception("400");
+                throw new Exception("Invalid email");
             }
 
             $user_id = $this->_get_user_id($data['email'], $data['password']);
 
             if($user_id === FALSE)
             {
-                throw new Exception("400");
+                throw new Exception("No found id");
             }
             else
             {
@@ -52,7 +52,8 @@ class Api extends CI_Controller
         }
         catch(Exception $exp)
         {
-            set_status_header($exp->getMessage());
+            set_status_header(400);
+            echo json_encode($exp->getMessage());
         }
 
     }
@@ -107,11 +108,9 @@ class Api extends CI_Controller
      */
     private function _validate_email()
     {
-        $this->form_validation->set_rules("email", "Email", "required|trim|valid_email|xss_clean");
+        $this->form_validation->set_rules("email", "Email", "trim|valid_email");
 
-        return $this->form_validation->run() == FALSE
-            ? FALSE
-            : TRUE;
+        return $this->form_validation->run();
     }
 
     /**

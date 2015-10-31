@@ -154,7 +154,8 @@ class Migration_wizard_logic extends CI_Migration
         $query_str = "ALTER TABLE {$table}
                       ADD CONSTRAINT {$constraint}
                       FOREIGN KEY ({$fk})
-                      REFERENCES {$refer_table}($refer_field)";
+                      REFERENCES {$refer_table}($refer_field)
+                      ON DELETE CASCADE ";
         $this->db->query($query_str);
     }
 }

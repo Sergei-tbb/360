@@ -27,7 +27,7 @@ class Api_test extends CI_Controller
         $test_query = array(
             0 => array(
                 'data' => array(
-                    "email" => "mail@mail.ru",
+                    "email" => "mail@mail.com",
                     "password" => 12345
                 ),
                 'check_data' => 200,
