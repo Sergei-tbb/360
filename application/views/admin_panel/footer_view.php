@@ -39,6 +39,8 @@
 
     <script src="<?= base_url();?>assets/js/delivery.js"></script>
 
+    <script src="<?= base_url();?>assets/js/wizard.js"></script>
+
 </script>
 </body>
 </html>
