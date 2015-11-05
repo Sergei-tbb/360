@@ -52,6 +52,7 @@ function getPageDataFolders(pageMethod, folderName, pageName, pageType) {
     return pageData;
 }
 
+
 /**
  * Display modal window of create and edit
  * @param title - title of modal
@@ -62,7 +63,7 @@ function getPageDataFolders(pageMethod, folderName, pageName, pageType) {
  * @param methodName - name of method
  * @param handler - if file used method sendFormDataWithFile()
  */
-function addObjectModal(title, pageData, size, formId, directoryName, controllerName, methodName, buttonName, id, heandler, updateMethod) {
+function addObjectModal(title, pageData, size, formId, controllerName, methodName, buttonName, id, heandler) {
     bootbox.dialog({
         title: title,
         message: pageData,
@@ -73,23 +74,9 @@ function addObjectModal(title, pageData, size, formId, directoryName, controller
                 className: "btn-success pull-left",
                 callback: function() {
                     if(heandler == "file") {
-                        if(directoryName=='')
-                        {
-                            sendFormDataWithFile(controllerName, methodName, id, formId);
-                        }
-                        else
-                        {
-                            sendFormDataWithFileWithDirectory(directoryName, controllerName, methodName, formId);
-                        }
+                        sendFormDataWithFile(controllerName, methodName, id, formId);
                     }else{
-                        if(directoryName=='')
-                        {
-                            sendFormData(controllerName, methodName, id, formId);
-                        }
-                        else
-                        {
-                            sendFormDataWithDirectory(directoryName, controllerName, methodName, formId);
-                        }
+                        sendFormData(controllerName, methodName, id, formId);
                     }
                 }
             },
@@ -114,21 +101,6 @@ function displayListData(controllerName, methodName, idName) {
         url:"ajax/"+controllerName+"/"+methodName,
         success: function(data) {
             $("."+idName+"-body").html(data);
-        }
-    });
-}
-
-function displayListDataWithDirectory(directoryName, controllerName, methodName, idName) {
-    $.ajax({
-        url: "/index.php/ajax/"+directoryName+"/"+controllerName+"/"+methodName,
-        success: function(data)
-        {
-            $("."+idName+"-body").empty();
-            $("."+idName+"-body").html(data);
-        },
-        error: function(data)
-        {
-            $('.'+idName+'-body').html(data);
         }
     });
 }
@@ -191,20 +163,6 @@ function getEditForm(id, controllerName, methodName) {
     return pageData;
 }
 
-function getEditFormWithFolder(id, folderName, controllerName, methodName) {
-    var pageData = "";
-    $.ajax({
-        url:"/index.php/ajax/"+folderName+"/"+controllerName+"/"+methodName,
-        type:"POST",
-        data: "id="+id,
-        async: false,
-        success: function(data) {
-            pageData = data;
-        }
-    });
-    return pageData;
-}
-
 /**
  * Display preview of select image
  * @param input - used input
@@ -215,7 +173,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#preview-img').attr('src', e.target.result);
-        };
+        }
 
         reader.readAsDataURL(input.files[0]);
     }
@@ -230,49 +188,22 @@ function readURL(input) {
  * @returns {boolean}
  */
 function sendFormDataWithFile(controllerName, methodName, id, formId) {
-        var formData = new FormData($("#"+formId)[0]);
-        if(id) {
-            formData.append("id", id);
-        }
-
-        $.ajax({
-            url:"/index.php/ajax/"+controllerName+"/"+methodName,
-            type:"POST",
-            cache:false,
-            contentType:false,
-            processData:false,
-            dataType:"json",
-            data:formData,
-            success:function(data) {
-                bootbox.alert(data.message);
-                displayListData(controllerName, "display_all", controllerName);
-            }
-        });
-    return false;
-}
-
-function sendFormDataWithFileWithDirectory(directoryName, controllerName, methodName, formId) {
     var formData = new FormData($("#"+formId)[0]);
-
+    if(id) {
+        formData.append("id", id);
+    }
 
     $.ajax({
-        url:"/index.php/ajax/"+directoryName+"/"+controllerName+"/"+methodName,
+        url:"/index.php/ajax/"+controllerName+"/"+methodName,
         type:"POST",
         cache:false,
         contentType:false,
         processData:false,
-        //dataType:"json",
+        dataType:"json",
         data:formData,
-        success:function(data)
-        {
-            bootbox.alert(data, function(){});
-            displayListDataWithDirectory(directoryName, controllerName, "master_orders_list", controllerName);
-            updateListWithDirectory('wizard', 'Wizard', 'master_orders_list', 'master-orders');
-
-        },
-        error: function(data)
-        {
-            bootbox.alert(data, function(){});
+        success:function(data) {
+            bootbox.alert(data.message);
+            displayListData(controllerName, "display_all", controllerName);
         }
     });
     return false;
@@ -296,34 +227,9 @@ function sendFormData(controllerName, methodName, id, formId) {
 
             bootbox.alert(data.message);
             if(controllerName != "statuses_rols") {
-                if(directoryName=='') {
-                    displayListData(controllerName, "display_all", controllerName);
-                }
-                else
-                {
-                    displayListData(directoryName, controllerName, 'master_orders_list', controllerName);
-                }
+                displayListData(controllerName, "display_all", controllerName);
             }
         }
-    });
-}
-
-function sendFormDataWithDirectory(directoryName, controllerName, methodName, id, formId) {
-    var formData = $("#"+formId).serialize();
-    $.ajax({
-        url : "/index.php/ajax/"+directoryName+"/"+controllerName+"/"+methodName+"/"+id,
-        type: "POST",
-        data: formData,
-        dataType: "json",
-        success: function(data) {
-            bootbox.alert(data.message, function () {});
-            displayListDataWithDirectory(directoryName, controllerName, 'master_orders_list', controllerName);
-        },
-        error: function(data)
-        {
-            bootbox.alert(data, function(){});
-        }
-
     });
 }
 
@@ -392,22 +298,6 @@ function updateList(name_module, name_method, inId)
 {
     $.ajax({
         url: '/index.php/ajax/'+name_module+'/'+name_method,
-        success: function(data)
-        {
-            $('.'+inId+'-body').empty();
-            $('.'+inId+'-body').html(data);
-        },
-        error: function(data)
-        {
-            $('.'+inId+'-body').html(data);
-        }
-    });
-}
-
-function updateListWithDirectory(directoryName, name_module, name_method, inId)
-{
-    $.ajax({
-        url: '/index.php/ajax/'+directoryName+'/'+name_module+'/'+name_method,
         success: function(data)
         {
             $('.'+inId+'-body').empty();
