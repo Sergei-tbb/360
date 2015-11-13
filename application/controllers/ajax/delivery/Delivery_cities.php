@@ -182,7 +182,6 @@ class Delivery_cities extends MY_Controller {
         $this->form_validation->run();
     }
 
-
     public function add_regions_cities()
     {
         try

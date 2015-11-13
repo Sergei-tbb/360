@@ -201,9 +201,21 @@ class Delivery extends MY_Controller
         $this->load->view('admin_panel/delivery_department/delivery_department_cities_view', $data);
     }
 
+    public function load_areas($id)
+    {
+        $data['areas'] = $this->read_custom("SELECT delivery_areas.id, delivery_areas.name
+				FROM delivery_areas, delivery_cities_areas
+				WHERE delivery_cities_areas.id_city={$id}
+				AND delivery_areas.id=delivery_cities_areas.id_area");
+        $this->load->view('admin_panel/delivery_department/delivery_department_areas_view', $data);
+    }
+
     public function load_streets($id)
     {
-        $data['streets'] = $this->read_custom("SELECT * FROM delivery_streets WHERE id_city={$id}");
+        $data['streets'] = $this->read_custom("SELECT delivery_streets.id, delivery_streets.name
+				FROM 360dpi.delivery_streets, 360dpi.delivery_areas_streets
+				WHERE delivery_areas_streets.id_area={$id}
+				AND delivery_streets.id=delivery_areas_streets.id_street");
         $this->load->view('admin_panel/delivery_department/delivery_department_streets_view', $data);
     }
 

@@ -17,11 +17,12 @@
                     <td>
                         <?
                         echo $address->country_name.', '.$address->region_name.', г. '.
-                            $address->city_name.', ул. '.$address->street_name.' '.$address->house_number.',<br> Отделение № '.
+                            $address->city_name.', '.$address->area_name.', '.$address->street_name.' '.$address->house_number.',<br> Отделение № '.
                             $address->department_number.', Индекс '.$address->zip.', Телефон '.$address->phone;
                         ?>
                     </td>
                     <td>
+                        <input type="button" class="btn btn-warning department-edit" value="Изменить">
                         <input type="button" class="btn btn-danger department-delete" value="Удалить">
                     </td>
             <?endforeach;?>

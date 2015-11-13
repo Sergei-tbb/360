@@ -25,7 +25,6 @@
                         ?>
                     </td>
                     <td>
-                        <input type="button" class="btn btn-success city-streets" value="Улицы">
                         <input type="button" class="btn btn-warning city-edit" value="Изменить">
                         <input type="button" class="btn btn-danger city-delete" value="Удалить">
                     </td>

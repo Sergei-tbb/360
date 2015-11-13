@@ -625,12 +625,16 @@ $(document).on('click', '.add-department', function() {
                             var department_number = $('input[name="house_number"]').val();
                             var zip = $('input[name="zip"]').val();
                             var phone = $('input[name="phone"]').val();
+                            var schedule = $('input[name="schedule"]').val();
+                            var location = $('input[name="location"]').val();
+                            var note = $('textarea[name="note"]').val();
                             var id = $('input[name="id"]').val();
+                            var area = $('select[name="area"] option:selected').val();
 
                             $.ajax({
                                 url: '/index.php/ajax/delivery/Delivery_addresses/new_department/'+id,
                                 type: 'POST',
-                                data: {id_company: id, id_country: country, id_region: region, id_city: city, id_street: street, house_number: house_number, department_number: department_number, zip: zip, phone: phone},
+                                data: {id_company: id, id_country: country, id_region: region, id_city: city, id_street: street, house_number: house_number, department_number: department_number, zip: zip, phone: phone, schedule: schedule, note: note, location: location, id_area: are},
                                 success: function(data)
                                 {
                                     bootbox.alert(data, function(){});
@@ -776,6 +780,286 @@ $(document).on('click', '.department-delete', function(){
     });
 });
 
+$(document).on('click', '.department-edit', function(){
+    var id = $(this).parent().parent('tr').data('id_address');
+
+    $.ajax({
+        url: '/index.php/ajax/delivery/Delivery_addresses/get_one_department/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: 'Изменение отделения',
+                buttons: {
+                    success: {
+                        label: 'Изменить',
+                        className: 'btn-success',
+                        callback: function(){
+                            var id_country = $('select[name="coutry"] option:selected').val();
+                            var id_region = $('select[name="region"] option:selected').val();
+                            var id_city = $('select[name="city"] option:selected').val();
+                            var id_street = $('select[name="street"] option:selected').val();
+                            var house_number = $('input[name="house_number"]').val();
+                            var department_number = $('input[name="department_number"]').val();
+                            var zip = $('input[name="zip"]').val();
+                            var phone = $('input[name="phone"]').val();
+                            var schedule = $('input[name="schedule"]').val();
+                            var location = $('input[name="location"]').val();
+                            var note = $('textarea[name="note"]').val();
+                            var id = $('input[name="id"]').val();
+                            var id_company = $('input[name="id_company"]').val();
+                            var id_area = $('select[name="area"] option:selected').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/delivery/Delivery_addresses/update_department/'+id,
+                                type: 'POST',
+                                data: {id_company: id_company, id_country: id_country, id_region: id_region, id_city: id_city, id_street: id_street, house_number: house_number, department_number: department_number, zip: zip, phone: phone, schedule: schedule, location: location, note: note, id_area: id_area},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('delivery/Delivery_addresses', 'get_list_addresses', 'addresses');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger: {
+                        label: 'Отмена',
+                        className: 'btn-danger',
+                        callback: function(){
+
+                        }
+                    }
+                }
+
+            });
+        }
+    });
+
+});
+
+$(document).on('click', '.area-add', function() {
+
+    var modal_body = getPageData('admin', 'delivery_areas_new', 'html');
+
+    bootbox.dialog({
+        message: modal_body,
+        title: 'Создание нового района',
+        buttons:{
+            success: {
+                label: 'Создать',
+                className: 'btn-success',
+                callback: function()
+                {
+                    var name = $('input[name="name"]').val();
+
+                    $.ajax({
+                        url: '/index.php/ajax/delivery/Delivery_areas/create_new_area/',
+                        type: 'POST',
+                        data: {name: name},
+                        success: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                            updateList('delivery/Delivery_areas', 'display_all', 'areas');
+                        },
+                        error: function(data)
+                        {
+                            bootbox.alert(data, function(){});
+                        }
+                    });
+                }
+            },
+            danger:{
+                label: 'Отмена',
+                className: 'btn-danger',
+                callback: function()
+                {
+
+                }
+            }
+        }
+    });
+});
+
+$(document).on('click', '.area-edit', function(){
+    var id = $(this).parent().parent('tr').data('id_area');
+    $.ajax({
+        url: '/index.php/ajax/delivery/Delivery_areas/read_one_area/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: 'Изменение района',
+                buttons:{
+                    success: {
+                        label: 'Изменить',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+                            var id = $('input[name="id"]').val();
+                            var name = $('input[name="name"]').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/delivery/Delivery_areas/update_area/'+id,
+                                type: 'POST',
+                                data: {name: name},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('delivery/Delivery_areas', 'display_all', 'areas');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger:{
+                        label: 'Отмена',
+                        className: 'btn-danger',
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        },
+        error: function(data)
+        {
+
+        }
+    });
+});
+
+$(document).on('click', '.area-delete', function(){
+    var id = $(this).parent().parent('tr').data('id_area');
+
+    bootbox.confirm('Вы действительно хотите удалить выбранный район?', function(result)
+    {
+        if(result==true)
+        {
+            $.ajax({
+                url: '/index.php/ajax/delivery/Delivery_areas/delete_area/'+id,
+                success: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                    updateList('delivery/Delivery_areas', 'display_all', 'areas');
+                },
+                error: function(data)
+                {
+                    bootbox.alert(data, function(){});
+                }
+            });
+        }
+    });
+});
+
+$(document).on('click', '.area-city', function(){
+    var id = $(this).parent().parent('tr').data('id_area');
+
+    $.ajax({
+        url: '/index.php/ajax/delivery/Delivery_cities_areas/load_cities_areas/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: 'Привязка района к городу',
+                buttons:{
+                    success: {
+                        label: 'Создать',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+                            var id_area = $('input[name="id"]').val();
+                            var id_city = $('select[name="city"] option:selected').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/delivery/Delivery_cities_areas/add_cities_areas/',
+                                type: 'POST',
+                                data: {id_area: id_area, id_city: id_city},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('delivery/Delivery_areas', 'display_all', 'areas');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    error: {
+                        label: 'Отмена',
+                        className: 'btn-danger',
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        },
+        error: function(data)
+        {
+
+        }
+    });
+});
+
+$(document).on('click', '.street-area', function(){
+    var id = $(this).parent().parent('tr').data('id_street');
+
+    $.ajax({
+        url: '/index.php/ajax/delivery/Delivery_areas_streets/load_areas_streets/'+id,
+        success: function(data)
+        {
+            bootbox.dialog({
+                message: data,
+                title: 'Привязка улицы к району',
+                buttons:{
+                    success: {
+                        label: 'Привязать',
+                        className: 'btn-success',
+                        callback: function()
+                        {
+                            var id_street = $('input[name="id"]').val();
+                            var id_area = $('select[name="area"] option:selected').val();
+
+                            $.ajax({
+                                url: '/index.php/ajax/delivery/Delivery_areas_streets/add_area_street/',
+                                type: 'POST',
+                                data: {id_street: id_street, id_area: id_area},
+                                success: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                    updateList('delivery/Delivery_streets', 'get_list_streets', 'streets');
+                                },
+                                error: function(data)
+                                {
+                                    bootbox.alert(data, function(){});
+                                }
+                            });
+                        }
+                    },
+                    danger:{
+                        label: 'Отмена',
+                        className: 'btn-danger',
+                        callback: function()
+                        {
+
+                        }
+                    }
+                }
+            });
+        }
 
 
+    });
 
+});

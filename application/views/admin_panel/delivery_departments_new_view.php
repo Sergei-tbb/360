@@ -18,6 +18,10 @@
 
         </div>
 
+        <div class="areas">
+
+        </div>
+
         <div class="streets">
 
         </div>
@@ -37,6 +41,7 @@
             url: '/index.php/ajax/delivery/Delivery/load_regions/'+country,
             success: function(data)
             {
+                $('.regions').empty();
                 $('.regions').html(data);
             }
         });
@@ -49,6 +54,7 @@
             url: '/index.php/ajax/delivery/Delivery/load_cities/'+region,
             success: function(data)
             {
+                $('.cities').empty();
                 $('.cities').html(data);
             }
         });
@@ -58,9 +64,22 @@
     {
         var city = $('select[name="city"] option:selected').val();
         $.ajax({
-            url: '/index.php/ajax/delivery/Delivery/load_streets/'+city,
+            url: '/index.php/ajax/delivery/Delivery/load_areas/'+city,
             success: function(data)
             {
+                $('.areas').empty();
+                $('.areas').html(data);
+            }
+        });
+    });
+
+    $(document).on('change', 'select[name="area"]', function(){
+        var area = $('select[name="area"] option:selected').val();
+        $.ajax({
+            url: '/index.php/ajax/delivery/Delivery/load_streets/'+area,
+            success: function(data)
+            {
+                $('.streets').empty();
                 $('.streets').html(data);
             }
         });

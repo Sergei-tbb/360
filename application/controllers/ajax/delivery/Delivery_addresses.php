@@ -44,7 +44,11 @@ class Delivery_addresses extends MY_Controller {
                 'house_number' => $data['house_number'],
                 'department_number' => $data['department_number'],
                 'zip' => $data['zip'],
-                'phone' => $data['phone']
+                'phone' => $data['phone'],
+                'schedule' => $data['schedule'],
+                'location' => $data['location'],
+                'note' => $data['note'],
+                'id_area' => $data['id_area']
             );
 
             if(!empty($new_department))
@@ -113,15 +117,18 @@ class Delivery_addresses extends MY_Controller {
                 delivery_addresses.house_number as house_number,
                 delivery_addresses.department_number as department_number,
                 delivery_addresses.zip as zip,
-                delivery_addresses.phone as phone
+                delivery_addresses.phone as phone,
+                delivery_areas.name as area_name
                 FROM delivery_addresses, delivery_companies,
                 delivery_countries, delivery_regions,
-                delivery_cities, delivery_streets
+                delivery_cities, delivery_streets,
+				delivery_areas
                 WHERE delivery_addresses.id_company=delivery_companies.id
                 AND delivery_addresses.id_country=delivery_countries.id
                 AND delivery_addresses.id_region=delivery_regions.id
                 AND delivery_addresses.id_city=delivery_cities.id
                 AND delivery_addresses.id_street=delivery_streets.id
+				AND delivery_addresses.id_area=delivery_areas.id
                 group by delivery_addresses.id");
 
         if(empty($data['addresses']))
@@ -131,6 +138,66 @@ class Delivery_addresses extends MY_Controller {
         }
         else {
             $this->load->view('admin_panel/delivery_addresses_list_view', $data);
+        }
+    }
+
+    public function get_one_department($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            if($this->read_one($id))
+            {
+                $data['department'] = $this->read_one($id);
+                $data['countries'] = $this->read_custom('SELECT id,  name FROM delivery_countries');
+                $data['regions'] = $this->read_custom('SELECT id,  name FROM delivery_regions');
+                $data['cities'] = $this->read_custom('SELECT id,  name FROM delivery_cities');
+                $data['streets'] = $this->read_custom('SELECT id,  name FROM delivery_streets');
+                $data['areas'] = $this->read_custom("SELECT id, name FROM delivery_areas");
+                $data['id'] = $id;
+                $this->load->view('admin_panel/delivery_department/delivery_department_edit_view', $data);
+            }
+            else
+            {
+                throw new Exception("Не удалось загрузить выбранное отделение.");
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
+        }
+    }
+
+    public function update_department($id)
+    {
+        try
+        {
+            if($this->input->is_ajax_request() === FALSE)
+            {
+                throw new Exception("No direct script access allowed.");
+            }
+
+            $data = $this->input->post();
+
+            if($this->update($id, $data))
+            {
+                $this->result = array('message' => 'Данные отделения успешно обновлены');
+                echo $this->result['message'];
+            }
+            else
+            {
+                throw new Exception("Не удалось загрузить выбранное отделение.");
+            }
+        }
+        catch(Exception $exp)
+        {
+            $this->result = array("message" => $exp->getMessage());
+            echo $this->result['message'];
         }
     }
 }

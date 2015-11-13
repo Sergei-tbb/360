@@ -30,6 +30,11 @@ class Delivery_streets extends MY_Controller {
     {
         $data['streets'] = $this->read_all();
         $data['cities'] = $this->read_custom("SELECT * FROM delivery_cities");
+        $query_string = "select delivery_areas.id as area_id, delivery_areas.name as area_name,
+                            delivery_areas_streets.id_street
+                            from delivery_areas, delivery_areas_streets
+                            where delivery_areas.id=delivery_areas_streets.id_area";
+        $data['areas_streets'] = $this->read_custom($query_string);
         if(empty($data['streets']))
         {
             $this->result = array('message' => 'Для отображения списка улиц нужно добавить хотя бы одну улицу!');

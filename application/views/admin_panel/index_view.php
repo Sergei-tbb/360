@@ -262,6 +262,9 @@
                                     <a href="#" id="cities">Города</a>
                                 </li>
                                 <li>
+                                    <a href="#" id="areas">Районы</a>
+                                </li>
+                                <li>
                                     <a href="#" id="streets">Улицы</a>
                                 </li>
                             </ul>
